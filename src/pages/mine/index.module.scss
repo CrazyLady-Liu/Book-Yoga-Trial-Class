@@ -6,13 +6,17 @@
   padding-bottom: 120rpx;
 }
 
+.scrollView {
+  min-height: 100vh;
+}
+
 .header {
   padding: $spacing-xl $page-padding $spacing-lg;
   background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
   color: $color-text-white;
 }
 
-.userInfo {
+.topBar {
   display: flex;
   align-items: center;
   margin-bottom: $spacing-xl;
@@ -26,6 +30,28 @@
   border: 4rpx solid rgba(255, 255, 255, 0.4);
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  @include flex-center;
+  transition: all $transition-base;
+}
+
+.avatarClickable {
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.96);
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+}
+
+.avatarPlaceholder {
+  font-size: 64rpx;
+  opacity: 0.8;
 }
 
 .userDetail {
@@ -47,22 +73,6 @@
 .phone {
   font-size: $font-size-sm;
   opacity: 0.85;
-  @include text-ellipsis;
-}
-
-.notLoginTitle {
-  font-size: $font-size-xxl;
-  font-weight: $font-weight-semibold;
-  line-height: $line-height-normal;
-  white-space: nowrap;
-  @include text-ellipsis;
-}
-
-.notLoginDesc {
-  font-size: $font-size-sm;
-  opacity: 0.85;
-  line-height: $line-height-normal;
-  white-space: nowrap;
   @include text-ellipsis;
 }
 
@@ -116,6 +126,123 @@
   opacity: 0.9;
 }
 
+.notLoginGuide {
+  padding: $spacing-xl $page-padding;
+}
+
+.guideContent {
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  padding: $spacing-xl $spacing-lg;
+  margin-bottom: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: $shadow-card;
+}
+
+.guideIcon {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, rgba($color-primary, 0.15) 0%, rgba($color-primary-light, 0.25) 100%);
+  @include flex-center;
+  font-size: 80rpx;
+  margin-bottom: $spacing-lg;
+}
+
+.guideTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-sm;
+}
+
+.guideSubtitle {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xl;
+}
+
+.guideLoginBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-button;
+  box-shadow: 0 8rpx 24rpx rgba($color-primary, 0.3);
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+.benefitsSection {
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.benefitsTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  text-align: center;
+}
+
+.benefitsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.benefitItem {
+  width: calc(50% - #{$spacing-sm});
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.benefitIcon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, rgba($color-primary, 0.15) 0%, rgba($color-primary-light, 0.2) 100%);
+  @include flex-center;
+  font-size: 40rpx;
+  margin-bottom: $spacing-sm;
+}
+
+.benefitName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+  white-space: nowrap;
+}
+
+.benefitDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-align: center;
+  line-height: $line-height-normal;
+}
+
 .menuSection {
   margin: $spacing-md $page-padding;
   background: $color-bg-card;
@@ -152,7 +279,7 @@
   width: 56rpx;
   height: 56rpx;
   border-radius: $radius-md;
-  background: linear-gradient(135deg, rgba(76, 175, 124, 0.15) 0%, rgba(129, 199, 132, 0.25) 100%);
+  background: linear-gradient(135deg, rgba($color-primary, 0.15) 0%, rgba($color-primary-light, 0.25) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,5 +323,5 @@
   text-align: center;
   color: $color-text-tertiary;
   font-size: $font-size-sm;
-  margin-top: $spacing-xl;
+  margin: $spacing-xl 0 $spacing-lg;
 }
