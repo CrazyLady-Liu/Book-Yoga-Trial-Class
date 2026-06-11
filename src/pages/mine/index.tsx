@@ -68,49 +68,42 @@ const MinePage: React.FC = () => {
     <View className={styles.page}>
       <ScrollView className={styles.scrollView} scrollY>
         <View className={styles.header}>
-          <View className={styles.topBar}>
-            <View
-              className={classnames(styles.avatar, !isLoggedIn && styles.avatarClickable)}
-              onClick={!isLoggedIn ? handleLogin : undefined}
-            >
-              {isLoggedIn && userInfo ? (
-                <Image
-                  className={styles.avatarImg}
-                  src={userInfo.avatarUrl}
-                  mode='aspectFill'
-                  onError={handleImageError}
-                />
-              ) : (
-                <Text className={styles.avatarPlaceholder}>👤</Text>
-              )}
-            </View>
-            {isLoggedIn && userInfo ? (
-              <View className={styles.userDetail}>
-                <Text className={styles.nickName}>{userInfo.nickName}</Text>
-                <Text className={styles.phone}>{userInfo.phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')}</Text>
-              </View>
-            ) : (
-              <Button className={styles.loginBtn} onClick={handleLogin}>
-                登录 / 注册
-              </Button>
-            )}
-          </View>
-
           {isLoggedIn && (
-            <View className={styles.stats}>
-              <View className={styles.statItem}>
-                <Text className={styles.statValue}>{stats.total}</Text>
-                <Text className={styles.statLabel}>总预约</Text>
+            <>
+              <View className={styles.topBar}>
+                <View className={styles.avatar}>
+                  {userInfo && (
+                    <Image
+                      className={styles.avatarImg}
+                      src={userInfo.avatarUrl}
+                      mode='aspectFill'
+                      onError={handleImageError}
+                    />
+                  )}
+                </View>
+                {userInfo && (
+                  <View className={styles.userDetail}>
+                    <Text className={styles.nickName}>{userInfo.nickName}</Text>
+                    <Text className={styles.phone}>{userInfo.phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')}</Text>
+                  </View>
+                )}
               </View>
-              <View className={styles.statItem}>
-                <Text className={styles.statValue}>{stats.completed}</Text>
-                <Text className={styles.statLabel}>已完成</Text>
+
+              <View className={styles.stats}>
+                <View className={styles.statItem}>
+                  <Text className={styles.statValue}>{stats.total}</Text>
+                  <Text className={styles.statLabel}>总预约</Text>
+                </View>
+                <View className={styles.statItem}>
+                  <Text className={styles.statValue}>{stats.completed}</Text>
+                  <Text className={styles.statLabel}>已完成</Text>
+                </View>
+                <View className={styles.statItem}>
+                  <Text className={styles.statValue}>{stats.cancelled}</Text>
+                  <Text className={styles.statLabel}>已取消</Text>
+                </View>
               </View>
-              <View className={styles.statItem}>
-                <Text className={styles.statValue}>{stats.cancelled}</Text>
-                <Text className={styles.statLabel}>已取消</Text>
-              </View>
-            </View>
+            </>
           )}
         </View>
 
