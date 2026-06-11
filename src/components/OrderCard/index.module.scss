@@ -149,4 +149,52 @@
   color: $color-text-disabled;
   border: 1rpx solid $color-border;
   opacity: 0.6;
+  pointer-events: none;
+}
+
+.btnTooltipWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(100% + 12rpx);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-base, visibility $transition-base, transform $transition-base;
+  pointer-events: none;
+}
+
+.btnTooltipWrapper:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-4rpx);
+}
+
+.tooltipArrow {
+  position: absolute;
+  left: 50%;
+  bottom: -12rpx;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12rpx solid transparent;
+  border-right: 12rpx solid transparent;
+  border-top: 12rpx solid rgba(31, 41, 55, 0.92);
+}
+
+.tooltipText {
+  display: block;
+  background: rgba(31, 41, 55, 0.92);
+  color: #ffffff;
+  font-size: $font-size-xs;
+  padding: 12rpx 20rpx;
+  border-radius: $radius-md;
+  white-space: nowrap;
+  line-height: 1.4;
+  box-shadow: $shadow-popup;
 }

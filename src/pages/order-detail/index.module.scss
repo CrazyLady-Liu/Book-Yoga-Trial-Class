@@ -231,17 +231,52 @@
     pointer-events: none;
   }
 
-  .btnDisabledWrapper {
+  .btnTooltipWrapper {
     width: 100%;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $spacing-xs;
+    justify-content: center;
   }
 
-  .disabledTip {
+  .tooltip {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100% + 16rpx);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition-base, visibility $transition-base, transform $transition-base;
+    pointer-events: none;
+  }
+
+  .btnTooltipWrapper:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-4rpx);
+  }
+
+  .tooltipArrow {
+    position: absolute;
+    left: 50%;
+    bottom: -12rpx;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12rpx solid transparent;
+    border-right: 12rpx solid transparent;
+    border-top: 12rpx solid rgba(31, 41, 55, 0.92);
+  }
+
+  .tooltipText {
+    display: block;
+    background: rgba(31, 41, 55, 0.92);
+    color: #ffffff;
     font-size: $font-size-xs;
-    color: $color-text-tertiary;
-    text-align: center;
+    padding: 14rpx 22rpx;
+    border-radius: $radius-md;
+    white-space: nowrap;
+    line-height: 1.4;
+    box-shadow: $shadow-popup;
   }
 }

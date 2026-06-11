@@ -325,36 +325,44 @@ const OrderDetailPage: React.FC = () => {
           </Button>
         )}
         {order.status === 'completed' && (
-          <>
-            {isCourseFull() ? (
-              <View className={styles.btnDisabledWrapper}>
-                <Button className={classnames(styles.btn, styles.btnFull, styles.btnDisabled)} disabled>
-                  立即再次预约
-                </Button>
-                <Text className={styles.disabledTip}>本期课程名额已满，可查看其他排期</Text>
-              </View>
-            ) : (
-              <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
+          isCourseFull() ? (
+            <View className={styles.btnTooltipWrapper}>
+              <Button
+                className={classnames(styles.btn, styles.btnFull, styles.btnDisabled)}
+                disabled
+              >
                 立即再次预约
               </Button>
-            )}
-          </>
+              <View className={styles.tooltip}>
+                <View className={styles.tooltipArrow} />
+                <Text className={styles.tooltipText}>本期课程名额已满，可查看其他排期</Text>
+              </View>
+            </View>
+          ) : (
+            <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
+              立即再次预约
+            </Button>
+          )
         )}
         {order.status === 'cancelled' && (
-          <>
-            {isCourseFull() ? (
-              <View className={styles.btnDisabledWrapper}>
-                <Button className={classnames(styles.btn, styles.btnFull, styles.btnDisabled)} disabled>
-                  立即再次预约
-                </Button>
-                <Text className={styles.disabledTip}>本期课程名额已满，可查看其他排期</Text>
-              </View>
-            ) : (
-              <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
+          isCourseFull() ? (
+            <View className={styles.btnTooltipWrapper}>
+              <Button
+                className={classnames(styles.btn, styles.btnFull, styles.btnDisabled)}
+                disabled
+              >
                 立即再次预约
               </Button>
-            )}
-          </>
+              <View className={styles.tooltip}>
+                <View className={styles.tooltipArrow} />
+                <Text className={styles.tooltipText}>本期课程名额已满，可查看其他排期</Text>
+              </View>
+            </View>
+          ) : (
+            <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
+              立即再次预约
+            </Button>
+          )
         )}
         {order.status === 'pending' && (
           <Button className={classnames(styles.btn, styles.btnFull)}>

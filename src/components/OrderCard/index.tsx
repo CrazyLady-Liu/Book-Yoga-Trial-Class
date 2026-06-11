@@ -41,6 +41,10 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain }) =
 
   const handleBookAgainClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (isCourseFull()) {
+      console.warn('[OrderCard] 名额已满，阻断再次预约流程');
+      return;
+    }
     if (onBookAgain) {
       onBookAgain(order);
     }
@@ -104,12 +108,18 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain }) =
           )}
           {order.status === 'completed' && (
             isCourseFull() ? (
-              <Button
-                className={classnames(styles.btn, styles.btnOutline, styles.btnDisabled)}
-                disabled
-              >
-                名额已满
-              </Button>
+              <View className={styles.btnTooltipWrapper}>
+                <Button
+                  className={classnames(styles.btn, styles.btnOutline, styles.btnDisabled)}
+                  disabled
+                >
+                  再次预约
+                </Button>
+                <View className={styles.tooltip}>
+                  <View className={styles.tooltipArrow} />
+                  <Text className={styles.tooltipText}>本期课程名额已满，可查看其他排期</Text>
+                </View>
+              </View>
             ) : (
               <Button
                 className={classnames(styles.btn, styles.btnOutline)}
