@@ -222,4 +222,26 @@
     background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
     color: $color-text-white;
   }
+
+  .btnDisabled {
+    background: $color-bg-page;
+    color: $color-text-disabled;
+    border: 1rpx solid $color-border;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .btnDisabledWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  .disabledTip {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    text-align: center;
+  }
 }

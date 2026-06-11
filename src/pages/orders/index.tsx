@@ -7,6 +7,7 @@ import OrderCard from '@/components/OrderCard';
 import EmptyState from '@/components/EmptyState';
 import { Order } from '@/types';
 import { getOrders, cancelOrder } from '@/data/orders';
+import { getCourseById } from '@/data/courses';
 import { useUser } from '@/store/UserContext';
 import { showToast, showModal, navigateTo, switchTab } from '@/utils';
 
@@ -98,6 +99,25 @@ const OrdersPage: React.FC = () => {
     navigateTo('/pages/login/index');
   };
 
+  const handleBookAgain = async (order: Order) => {
+    const latestCourse = getCourseById(order.courseId);
+    if (!latestCourse || latestCourse.remainingSlots <= 0) {
+      showToast('本期课程名额已满，可查看其他排期', 'none');
+      return;
+    }
+
+    const confirmed = await showModal(
+      '再次预约',
+      `是否再次预约${order.course.teacherName}老师的${order.course.name}？`,
+      { confirmText: '确认', cancelText: '取消' }
+    );
+
+    if (!confirmed) return;
+
+    console.log('[OrdersPage] 再次预约课程, courseId:', order.courseId);
+    navigateTo(`/pages/course-detail/index?id=${order.courseId}`);
+  };
+
   const handleGoBook = () => {
     switchTab('/pages/courses/index');
   };
@@ -149,6 +169,7 @@ const OrdersPage: React.FC = () => {
               key={order.id}
               order={order}
               onCancel={() => handleCancelOrder(order)}
+              onBookAgain={handleBookAgain}
             />
           ))
         ) : (

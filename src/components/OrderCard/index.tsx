@@ -4,13 +4,15 @@ import classnames from 'classnames';
 import styles from './index.module.scss';
 import { Order } from '@/types';
 import { formatDate, getStatusText, navigateTo } from '@/utils';
+import { getCourseById } from '@/data/courses';
 
 interface OrderCardProps {
   order: Order;
   onCancel?: () => void;
+  onBookAgain?: (order: Order) => void;
 }
 
-const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel }) => {
+const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain }) => {
   const handleCardClick = () => {
     console.log('[OrderCard] 点击订单:', order.orderNo);
     navigateTo(`/pages/order-detail/index?id=${order.id}`);
@@ -35,6 +37,18 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel }) => {
     if (onCancel) {
       onCancel();
     }
+  };
+
+  const handleBookAgainClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onBookAgain) {
+      onBookAgain(order);
+    }
+  };
+
+  const isCourseFull = () => {
+    const latestCourse = getCourseById(order.courseId);
+    return !latestCourse || latestCourse.remainingSlots <= 0;
   };
 
   return (
@@ -89,11 +103,21 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel }) => {
             </>
           )}
           {order.status === 'completed' && (
-            <Button
-              className={classnames(styles.btn, styles.btnOutline)}
-            >
-              再次预约
-            </Button>
+            isCourseFull() ? (
+              <Button
+                className={classnames(styles.btn, styles.btnOutline, styles.btnDisabled)}
+                disabled
+              >
+                名额已满
+              </Button>
+            ) : (
+              <Button
+                className={classnames(styles.btn, styles.btnOutline)}
+                onClick={handleBookAgainClick}
+              >
+                再次预约
+              </Button>
+            )
           )}
         </View>
       </View>

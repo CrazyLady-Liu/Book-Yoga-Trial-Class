@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import styles from './index.module.scss';
 import { Order } from '@/types';
 import { getOrderById, cancelOrder, verifyOrder } from '@/data/orders';
+import { getCourseById } from '@/data/courses';
 import {
   formatDate,
   getStatusText,
@@ -13,6 +14,7 @@ import {
   hideLoading,
   showModal,
   navigateBack,
+  navigateTo,
   switchTab
 } from '@/utils';
 
@@ -116,9 +118,31 @@ const OrderDetailPage: React.FC = () => {
     }
   };
 
-  const handleBookAgain = () => {
-    console.log('[OrderDetailPage] 再次预约课程');
-    switchTab('/pages/courses/index');
+  const handleBookAgain = async () => {
+    if (!order) return;
+
+    const latestCourse = getCourseById(order.courseId);
+    if (!latestCourse || latestCourse.remainingSlots <= 0) {
+      showToast('本期课程名额已满，可查看其他排期', 'none');
+      return;
+    }
+
+    const confirmed = await showModal(
+      '再次预约',
+      `是否再次预约${order.course.teacherName}老师的${order.course.name}？`,
+      { confirmText: '确认', cancelText: '取消' }
+    );
+
+    if (!confirmed) return;
+
+    console.log('[OrderDetailPage] 再次预约课程, courseId:', order.courseId);
+    navigateTo(`/pages/course-detail/index?id=${order.courseId}`);
+  };
+
+  const isCourseFull = (): boolean => {
+    if (!order) return false;
+    const latestCourse = getCourseById(order.courseId);
+    return !latestCourse || latestCourse.remainingSlots <= 0;
   };
 
   const getStatusIcon = (status: string) => {
@@ -301,14 +325,36 @@ const OrderDetailPage: React.FC = () => {
           </Button>
         )}
         {order.status === 'completed' && (
-          <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
-            再次预约课程
-          </Button>
+          <>
+            {isCourseFull() ? (
+              <View className={styles.btnDisabledWrapper}>
+                <Button className={classnames(styles.btn, styles.btnFull, styles.btnDisabled)} disabled>
+                  立即再次预约
+                </Button>
+                <Text className={styles.disabledTip}>本期课程名额已满，可查看其他排期</Text>
+              </View>
+            ) : (
+              <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
+                立即再次预约
+              </Button>
+            )}
+          </>
         )}
         {order.status === 'cancelled' && (
-          <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
-            重新预约课程
-          </Button>
+          <>
+            {isCourseFull() ? (
+              <View className={styles.btnDisabledWrapper}>
+                <Button className={classnames(styles.btn, styles.btnFull, styles.btnDisabled)} disabled>
+                  立即再次预约
+                </Button>
+                <Text className={styles.disabledTip}>本期课程名额已满，可查看其他排期</Text>
+              </View>
+            ) : (
+              <Button className={classnames(styles.btn, styles.btnFull)} onClick={handleBookAgain}>
+                立即再次预约
+              </Button>
+            )}
+          </>
         )}
         {order.status === 'pending' && (
           <Button className={classnames(styles.btn, styles.btnFull)}>
