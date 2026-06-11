@@ -1,0 +1,92 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.tabBar {
+  display: flex;
+  background: $color-bg-card;
+  padding: 0 $page-padding;
+  box-shadow: $shadow-card;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.tabItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-md 0;
+  position: relative;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.tabText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+}
+
+.tabTextActive {
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.tabIndicator {
+  position: absolute;
+  bottom: 0;
+  width: 48rpx;
+  height: 6rpx;
+  background: linear-gradient(90deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-xs;
+  transition: all $transition-base;
+}
+
+.content {
+  padding: $spacing-md $page-padding;
+}
+
+.loading {
+  padding: $spacing-xl;
+  text-align: center;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+.loginTip {
+  margin: $spacing-xl;
+  text-align: center;
+}
+
+.loginTipText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-lg;
+}
+
+.loginBtn {
+  @include button-reset;
+  display: inline-flex;
+  height: $button-height-md;
+  padding: 0 $spacing-xl;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  border-radius: $radius-button;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.96);
+  }
+}

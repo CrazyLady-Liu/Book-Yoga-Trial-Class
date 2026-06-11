@@ -1,0 +1,253 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #EDE9FE 0%, $color-bg-page 100%);
+  padding-bottom: 120rpx;
+}
+
+.header {
+  padding: $spacing-lg $page-padding $spacing-md;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+}
+
+.brand {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  letter-spacing: 4rpx;
+}
+
+.subBrand {
+  font-size: $font-size-sm;
+  opacity: 0.85;
+  margin-top: 4rpx;
+}
+
+.loginBtn {
+  @include button-reset;
+  height: $button-height-sm;
+  padding: 0 $spacing-lg;
+  background: rgba(255, 255, 255, 0.25);
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  border-radius: $radius-button;
+  border: 1rpx solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10rpx);
+  transition: all $transition-base;
+
+  &:active {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(0.96);
+  }
+}
+
+.greeting {
+  font-size: $font-size-md;
+  opacity: 0.9;
+  margin-bottom: 4rpx;
+}
+
+.slogan {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+}
+
+.bannerSection {
+  padding: $spacing-md $page-padding;
+  margin-top: -40rpx;
+}
+
+.bannerSwiper {
+  width: 100%;
+  height: 320rpx;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-float;
+}
+
+.bannerItem {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+}
+
+.bannerOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: $spacing-lg;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+  color: $color-text-white;
+}
+
+.bannerTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  margin-bottom: 4rpx;
+}
+
+.bannerDesc {
+  font-size: $font-size-sm;
+  opacity: 0.9;
+}
+
+.quickEntry {
+  display: flex;
+  justify-content: space-around;
+  padding: $spacing-lg $page-padding;
+  margin: 0 $page-spacing $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+}
+
+.entryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.entryIcon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.15) 0%, rgba(167, 139, 250, 0.25) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-bottom: $spacing-sm;
+}
+
+.entryText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-lg $page-padding $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  position: relative;
+  padding-left: $spacing-md;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6rpx;
+    height: 36rpx;
+    background: linear-gradient(180deg, $color-primary 0%, $color-primary-light 100%);
+    border-radius: $radius-xs;
+  }
+}
+
+.seeMore {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: flex;
+  align-items: center;
+
+  &:active {
+    color: $color-primary;
+  }
+}
+
+.courseList {
+  padding: 0 $page-padding;
+}
+
+.courseItem {
+  margin-bottom: $spacing-md;
+}
+
+.newCourseSection {
+  margin-top: $spacing-md;
+}
+
+.newCourseScroll {
+  padding: 0 $page-padding;
+  @include scroll-x-container;
+}
+
+.newCourseCard {
+  @include scroll-x-item(560rpx);
+  margin-right: $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.newCourseCover {
+  width: 100%;
+  height: 280rpx;
+}
+
+.newCourseContent {
+  padding: $spacing-md;
+}
+
+.newCourseName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  margin-bottom: $spacing-sm;
+}
+
+.newCourseMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.newCoursePrice {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.loading {
+  padding: $spacing-xl;
+  text-align: center;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}

@@ -1,0 +1,148 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, $color-primary-light 0%, $color-bg-page 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.brandSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl * 2 $page-padding;
+}
+
+.logoCircle {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100rpx;
+  margin-bottom: $spacing-xl;
+  box-shadow: 0 8rpx 32rpx rgba($color-primary, 0.35);
+}
+
+.brandName {
+  font-size: 56rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  letter-spacing: 8rpx;
+  margin-bottom: $spacing-sm;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.brandSlogan {
+  font-size: $font-size-md;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 2rpx;
+}
+
+.loginSection {
+  padding: $spacing-xl * 2 $page-padding $spacing-xl;
+  background: $color-bg-card;
+  border-radius: $radius-xl $radius-xl 0 0;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.welcomeTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  text-align: center;
+  margin-bottom: $spacing-sm;
+}
+
+.welcomeDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  text-align: center;
+  margin-bottom: $spacing-xl * 2;
+}
+
+.loginBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, #07C160 0%, #06AE56 100%);
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-button;
+  margin-bottom: $spacing-lg;
+  transition: all $transition-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+}
+
+.wechatIcon {
+  font-size: 36rpx;
+}
+
+.phoneLogin {
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xl;
+
+  .link {
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.agreement {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 $spacing-lg;
+}
+
+.checkbox {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: $radius-xs;
+  border: 2rpx solid $color-border;
+  margin-right: $spacing-sm;
+  margin-top: 2rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+}
+
+.checkboxChecked {
+  background: $color-primary;
+  border-color: $color-primary;
+
+  &::after {
+    content: '✓';
+    color: $color-text-white;
+    font-size: 20rpx;
+    font-weight: bold;
+  }
+}
+
+.agreementText {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+
+  .link {
+    color: $color-primary;
+  }
+}

@@ -1,0 +1,218 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 160rpx;
+}
+
+.courseCard {
+  display: flex;
+  gap: $spacing-md;
+  margin: $spacing-md $page-padding;
+  padding: $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+}
+
+.cover {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+}
+
+.courseInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.courseName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  margin-bottom: $spacing-sm;
+}
+
+.courseMeta {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.formSection {
+  margin: $spacing-md $page-padding;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  padding: $spacing-lg $spacing-lg $spacing-md;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  border-bottom: 1rpx solid $color-divider;
+}
+
+.formItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.formLabel {
+  width: 160rpx;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  flex-shrink: 0;
+}
+
+.required {
+  color: $color-error;
+  margin-right: $spacing-xs;
+}
+
+.formInput {
+  flex: 1;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  text-align: right;
+}
+
+.inputPlaceholder {
+  color: $color-text-tertiary;
+}
+
+.genderOptions {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-md;
+}
+
+.genderOption {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-button;
+  border: 2rpx solid $color-border;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.genderOptionActive {
+  background: $color-tag-bg;
+  border-color: $color-primary;
+  color: $color-primary;
+}
+
+.formTextarea {
+  flex: 1;
+  min-height: 160rpx;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  text-align: left;
+  padding: $spacing-sm 0;
+}
+
+.remarkTips {
+  padding: 0 $spacing-lg $spacing-lg;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-align: right;
+}
+
+.noticeSection {
+  margin: $spacing-md $page-padding;
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, rgba(255, 183, 77, 0.1) 0%, rgba(255, 183, 77, 0.05) 100%);
+  border-radius: $radius-lg;
+  border: 1rpx solid rgba(255, 183, 77, 0.3);
+}
+
+.noticeTitle {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-warning;
+  margin-bottom: $spacing-sm;
+}
+
+.noticeIcon {
+  margin-right: $spacing-sm;
+}
+
+.noticeContent {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+  padding-left: 40rpx;
+}
+
+.noticeItem {
+  margin-bottom: $spacing-xs;
+}
+
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding calc(env(safe-area-inset-bottom) + #{$spacing-md});
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.priceLabel {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}
+
+.priceValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.submitBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-button;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+
+  &.disabled {
+    background: $color-text-disabled;
+  }
+}

@@ -1,0 +1,294 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 160rpx;
+}
+
+.coverContainer {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+}
+
+.coverImage {
+  width: 100%;
+  height: 100%;
+}
+
+.tagContainer {
+  position: absolute;
+  top: $spacing-md;
+  left: $spacing-md;
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.tag {
+  padding: 4rpx 12rpx;
+  background: rgba($color-success, 0.9);
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  border-radius: $radius-xs;
+}
+
+.hotTag {
+  background: rgba($color-warning, 0.95);
+}
+
+.newTag {
+  background: rgba($color-error, 0.95);
+}
+
+.content {
+  padding: 0 $page-padding;
+}
+
+.basicInfo {
+  background: $color-bg-card;
+  border-radius: 0 0 $radius-lg $radius-lg;
+  padding: $spacing-lg;
+  margin-top: -40rpx;
+  box-shadow: $shadow-card;
+  position: relative;
+  z-index: 10;
+}
+
+.courseName {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  line-height: $line-height-tight;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.levelTag {
+  padding: 4rpx 12rpx;
+  background: $color-tag-bg;
+  color: $color-primary;
+  font-size: $font-size-xs;
+  border-radius: $radius-xs;
+}
+
+.priceSection {
+  display: flex;
+  align-items: baseline;
+}
+
+.priceLabel {
+  font-size: $font-size-md;
+  color: $color-price;
+  margin-right: $spacing-xs;
+}
+
+.price {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.originalPrice {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  margin-left: $spacing-sm;
+}
+
+.slotsInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  background: linear-gradient(135deg, rgba(76, 175, 124, 0.08) 0%, rgba(129, 199, 132, 0.12) 100%);
+  border-radius: $radius-md;
+}
+
+.slotsText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.slotsCount {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+.section {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-top: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  position: relative;
+  padding-left: $spacing-md;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6rpx;
+    height: 32rpx;
+    background: linear-gradient(180deg, $color-primary 0%, $color-primary-light 100%);
+    border-radius: $radius-xs;
+  }
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.infoIcon {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: $radius-md;
+  background: linear-gradient(135deg, rgba(76, 175, 124, 0.15) 0%, rgba(129, 199, 132, 0.25) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  margin-right: $spacing-md;
+  flex-shrink: 0;
+}
+
+.infoContent {
+  flex: 1;
+}
+
+.infoLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-bottom: 4rpx;
+}
+
+.infoValue {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.teacherCard {
+  display: flex;
+  align-items: center;
+}
+
+.teacherAvatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: $radius-round;
+  margin-right: $spacing-md;
+}
+
+.teacherInfo {
+  flex: 1;
+}
+
+.teacherName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+}
+
+.teacherTitle {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.teacherIntro {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.description {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+}
+
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding calc(env(safe-area-inset-bottom) + #{$spacing-md});
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.pricePreview {
+  flex: 1;
+}
+
+.pricePreviewLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-bottom: 2rpx;
+}
+
+.pricePreviewValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.bookBtn {
+  @include button-reset;
+  flex: 2;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-button;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+
+  &.disabled {
+    background: $color-text-disabled;
+    color: $color-text-white;
+  }
+}
+
+.fullBtn {
+  @include button-reset;
+  flex: 2;
+  height: $button-height-lg;
+  background: $color-text-disabled;
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-button;
+}

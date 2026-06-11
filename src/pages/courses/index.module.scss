@@ -1,0 +1,110 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.filterBar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding;
+  box-shadow: $shadow-card;
+}
+
+.categoryScroll {
+  @include scroll-x-container;
+  margin-bottom: $spacing-md;
+}
+
+.categoryItem {
+  @include scroll-x-item(auto);
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-lg;
+  margin-right: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.categoryItemActive {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.subFilter {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+}
+
+.filterGroup {
+  display: flex;
+  gap: $spacing-sm;
+  align-items: center;
+  flex: 1;
+}
+
+.filterBtn {
+  @include button-reset;
+  flex: 1;
+  height: $button-height-sm;
+  padding: 0 $spacing-md;
+  background: $color-bg-page;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.filterBtnActive {
+  background: $color-tag-bg;
+  border-color: $color-primary;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.sortSelect {
+  display: flex;
+  align-items: center;
+  padding: 0 $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+
+  .sortIcon {
+    margin-left: $spacing-xs;
+    font-size: $font-size-xs;
+  }
+}
+
+.content {
+  padding: $spacing-md $page-padding;
+}
+
+.courseItem {
+  margin-bottom: $spacing-md;
+}
+
+.loading {
+  padding: $spacing-xl;
+  text-align: center;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
