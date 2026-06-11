@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   margin-bottom: $spacing-xl;
+  gap: $spacing-lg;
 }
 
 .avatar {
@@ -23,34 +24,59 @@
   height: 140rpx;
   border-radius: $radius-round;
   border: 4rpx solid rgba(255, 255, 255, 0.4);
-  margin-right: $spacing-lg;
+  flex-shrink: 0;
   background: rgba(255, 255, 255, 0.2);
 }
 
 .userDetail {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-sm;
+  overflow: hidden;
 }
 
 .nickName {
   font-size: $font-size-xxl;
   font-weight: $font-weight-semibold;
-  margin-bottom: $spacing-xs;
+  @include text-ellipsis;
 }
 
 .phone {
   font-size: $font-size-sm;
   opacity: 0.85;
+  @include text-ellipsis;
+}
+
+.notLoginTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  white-space: nowrap;
+  @include text-ellipsis;
+}
+
+.notLoginDesc {
+  font-size: $font-size-sm;
+  opacity: 0.85;
+  line-height: $line-height-normal;
+  white-space: nowrap;
+  @include text-ellipsis;
 }
 
 .loginBtn {
   @include button-reset;
   height: $button-height-md;
-  padding: 0 $spacing-xl;
+  padding: 0 $spacing-lg;
   background: rgba(255, 255, 255, 0.25);
   color: $color-text-white;
   font-size: $font-size-md;
   border-radius: $radius-button;
   border: 1rpx solid rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all $transition-base;
 
   &:active {

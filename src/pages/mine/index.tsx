@@ -77,8 +77,8 @@ const MinePage: React.FC = () => {
             <>
               <View className={styles.avatar} />
               <View className={styles.userDetail}>
-                <Text className={styles.nickName}>未登录</Text>
-                <Text className={styles.phone}>登录后查看更多功能</Text>
+                <Text className={styles.notLoginTitle}>未登录</Text>
+                <Text className={styles.notLoginDesc}>登录后查看更多功能</Text>
               </View>
               <Button className={styles.loginBtn} onClick={handleLogin}>
                 登录 / 注册
