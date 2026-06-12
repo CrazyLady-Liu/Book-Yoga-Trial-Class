@@ -166,17 +166,19 @@ export const getAvailableCoupons = (): Coupon[] => {
   );
 };
 
+const normalizeUserCouponStatus = (uc: UserCoupon): UserCoupon => {
+  const now = new Date();
+  if (uc.status === 'available' && new Date(uc.coupon.endTime) < now) {
+    return { ...uc, status: 'expired' as CouponStatus };
+  }
+  return uc;
+};
+
 export const getUserCoupons = (userId: string, status?: CouponStatus): UserCoupon[] => {
   const userCoupons = getStorage<UserCoupon[]>(USER_COUPONS_STORAGE_KEY) || [];
-  let filtered = userCoupons.filter(uc => uc.userId === userId);
-  
-  const now = new Date();
-  filtered = filtered.map(uc => {
-    if (uc.status === 'available' && new Date(uc.coupon.endTime) < now) {
-      return { ...uc, status: 'expired' as CouponStatus };
-    }
-    return uc;
-  });
+  let filtered = userCoupons
+    .filter(uc => uc.userId === userId)
+    .map(normalizeUserCouponStatus);
   
   if (status) {
     filtered = filtered.filter(uc => uc.status === status);
