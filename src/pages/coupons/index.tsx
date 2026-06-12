@@ -36,8 +36,9 @@ const CouponsPage: React.FC = () => {
         return;
       }
       const result = getUserCoupons(userInfo.id, status, 1, 50);
-      setCoupons(result.list);
-      setStats(result.stats);
+      const { list, stats } = result;
+      setCoupons(Array.isArray(list) ? list : []);
+      setStats(stats || { available: 0, used: 0, expired: 0 });
     },
     [isLoggedIn, userInfo]
   );

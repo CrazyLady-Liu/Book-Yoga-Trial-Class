@@ -192,9 +192,11 @@ export const getUserCoupons = (
   page: number = 1,
   pageSize: number = 20
 ): UserCouponsResult => {
-  const userCoupons = getStorage<UserCoupon[]>(USER_COUPONS_STORAGE_KEY) || [];
+  const stored = getStorage<UserCoupon[]>(USER_COUPONS_STORAGE_KEY);
+  const userCoupons = Array.isArray(stored) ? stored : [];
+
   const allForUser = userCoupons
-    .filter(uc => uc.userId === userId)
+    .filter(uc => uc && uc.userId === userId)
     .map(normalizeUserCouponStatus);
 
   const allAvailable = allForUser.filter(uc => uc.status === 'available');

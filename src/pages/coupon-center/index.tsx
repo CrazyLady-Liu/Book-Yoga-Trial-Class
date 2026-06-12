@@ -17,9 +17,9 @@ const CouponCenterPage: React.FC = () => {
 
   const userReceivedMap = useMemo(() => {
     if (!isLoggedIn || !userInfo) return new Map<string, number>();
-    const userCoupons = getUserCoupons(userInfo.id);
+    const { list } = getUserCoupons(userInfo.id);
     const map = new Map<string, number>();
-    userCoupons.forEach(uc => {
+    list.forEach(uc => {
       const count = map.get(uc.couponId) || 0;
       map.set(uc.couponId, count + 1);
     });
