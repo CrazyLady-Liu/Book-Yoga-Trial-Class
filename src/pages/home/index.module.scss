@@ -4,6 +4,11 @@
   min-height: 100vh;
   background: linear-gradient(180deg, #EDE9FE 0%, $color-bg-page 100%);
   padding-bottom: 120rpx;
+  position: relative;
+}
+
+.scrollView {
+  min-height: 100vh;
 }
 
 .header {

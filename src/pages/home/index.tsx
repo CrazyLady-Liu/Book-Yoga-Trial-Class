@@ -103,7 +103,8 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <ScrollView className={styles.page} scrollY>
+    <View className={styles.page}>
+      <ScrollView className={styles.scrollView} scrollY>
       <View className={styles.header}>
         <View className={styles.topBar}>
           <View>
@@ -244,6 +245,7 @@ const HomePage: React.FC = () => {
         </Text>
       )}
     </View>
+  </View>
   );
 };
 
