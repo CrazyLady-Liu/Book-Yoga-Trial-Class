@@ -1,10 +1,10 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, Button, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow, usePullDownRefresh } from '@tarojs/taro';
 import classnames from 'classnames';
 import styles from './index.module.scss';
 import { UserCoupon, CouponStatus } from '@/types';
-import { getUserCoupons } from '@/data/coupons';
+import { getUserCoupons, UserCouponsResult } from '@/data/coupons';
 import { useUser } from '@/store/UserContext';
 import { showToast, navigateTo, formatDate } from '@/utils';
 import EmptyState from '@/components/EmptyState';
@@ -17,50 +17,48 @@ const tabList: { key: TabType; text: string }[] = [
   { key: 'expired', text: '已过期' }
 ];
 
-const filterByStatus = (coupons: UserCoupon[], status: CouponStatus): UserCoupon[] => {
-  return coupons.filter(c => c.status === status);
-};
-
 const CouponsPage: React.FC = () => {
   const { userInfo, isLoggedIn } = useUser();
   const [activeTab, setActiveTab] = useState<TabType>('available');
-  const [allCoupons, setAllCoupons] = useState<UserCoupon[]>([]);
+  const [coupons, setCoupons] = useState<UserCoupon[]>([]);
+  const [stats, setStats] = useState<UserCouponsResult['stats']>({
+    available: 0,
+    used: 0,
+    expired: 0
+  });
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const loadAllCoupons = useCallback(() => {
-    if (!isLoggedIn || !userInfo) {
-      setAllCoupons([]);
-      return;
-    }
-    const data = getUserCoupons(userInfo.id);
-    setAllCoupons(data);
-  }, [isLoggedIn, userInfo]);
+  const loadCoupons = useCallback(
+    (status: CouponStatus) => {
+      if (!isLoggedIn || !userInfo) {
+        setCoupons([]);
+        setStats({ available: 0, used: 0, expired: 0 });
+        return;
+      }
+      const result = getUserCoupons(userInfo.id, status, 1, 50);
+      setCoupons(result.list);
+      setStats(result.stats);
+    },
+    [isLoggedIn, userInfo]
+  );
 
   useEffect(() => {
-    loadAllCoupons();
-  }, [loadAllCoupons]);
+    loadCoupons(activeTab);
+  }, [activeTab, loadCoupons]);
 
   useDidShow(() => {
-    loadAllCoupons();
+    loadCoupons(activeTab);
   });
 
   usePullDownRefresh(() => {
     setIsRefreshing(true);
-    loadAllCoupons();
+    loadCoupons(activeTab);
     setTimeout(() => {
       setIsRefreshing(false);
       Taro.stopPullDownRefresh();
       showToast('刷新成功', 'success');
     }, 1000);
   });
-
-  const stats = useMemo(() => ({
-    available: filterByStatus(allCoupons, 'available').length,
-    used: filterByStatus(allCoupons, 'used').length,
-    expired: filterByStatus(allCoupons, 'expired').length
-  }), [allCoupons]);
-
-  const coupons = useMemo(() => filterByStatus(allCoupons, activeTab), [allCoupons, activeTab]);
 
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);

@@ -174,19 +174,57 @@ const normalizeUserCouponStatus = (uc: UserCoupon): UserCoupon => {
   return uc;
 };
 
-export const getUserCoupons = (userId: string, status?: CouponStatus): UserCoupon[] => {
+export interface UserCouponsResult {
+  list: UserCoupon[];
+  stats: {
+    available: number;
+    used: number;
+    expired: number;
+  };
+  total: number;
+  page: number;
+  pageSize: number;
+}
+
+export const getUserCoupons = (
+  userId: string,
+  status?: CouponStatus,
+  page: number = 1,
+  pageSize: number = 20
+): UserCouponsResult => {
   const userCoupons = getStorage<UserCoupon[]>(USER_COUPONS_STORAGE_KEY) || [];
-  let filtered = userCoupons
+  const allForUser = userCoupons
     .filter(uc => uc.userId === userId)
     .map(normalizeUserCouponStatus);
-  
+
+  const allAvailable = allForUser.filter(uc => uc.status === 'available');
+  const allUsed = allForUser.filter(uc => uc.status === 'used');
+  const allExpired = allForUser.filter(uc => uc.status === 'expired');
+
+  let filtered = allForUser;
   if (status) {
-    filtered = filtered.filter(uc => uc.status === status);
+    filtered = allForUser.filter(uc => uc.status === status);
   }
-  
-  return filtered.sort((a, b) => 
-    new Date(b.receiveTime).getTime() - new Date(a.receiveTime).getTime()
+
+  filtered = filtered.sort(
+    (a, b) => new Date(b.receiveTime).getTime() - new Date(a.receiveTime).getTime()
   );
+
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+  const list = filtered.slice(start, end);
+
+  return {
+    list,
+    stats: {
+      available: allAvailable.length,
+      used: allUsed.length,
+      expired: allExpired.length
+    },
+    total: filtered.length,
+    page,
+    pageSize
+  };
 };
 
 export const receiveCoupon = (userId: string, couponId: string): UserCoupon | null => {
@@ -245,7 +283,8 @@ export const useCoupon = (userCouponId: string, orderId: string): boolean => {
 };
 
 export const getApplicableCoupons = (userId: string, courseId: string, amount: number, courseCategories: string[] = []): UserCoupon[] => {
-  const userCoupons = getUserCoupons(userId, 'available');
+  const { list } = getUserCoupons(userId, 'available');
+  const userCoupons = list;
   
   return userCoupons.filter(uc => {
     const coupon = uc.coupon;
