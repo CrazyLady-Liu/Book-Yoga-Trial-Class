@@ -63,6 +63,57 @@ export const mockOrders: Order[] = [
     verifyCode: '345678',
     isVerified: false,
     cancelReason: '个人时间安排冲突'
+  },
+  {
+    id: '4',
+    orderNo: 'YO20260612091522GHI001',
+    courseId: '11',
+    course: courseList[10],
+    bookingInfo: {
+      name: '张小雨',
+      phone: '138****5678',
+      gender: '女',
+      birthday: '1995-06-15',
+      remark: ''
+    },
+    status: 'completed',
+    createTime: '2026-06-11 09:15:22',
+    verifyCode: '111222',
+    isVerified: true
+  },
+  {
+    id: '5',
+    orderNo: 'YO20260613142205JKL002',
+    courseId: '12',
+    course: courseList[11],
+    bookingInfo: {
+      name: '张小雨',
+      phone: '138****5678',
+      gender: '女',
+      birthday: '1995-06-15',
+      remark: '请帮忙安排靠前的位置'
+    },
+    status: 'completed',
+    createTime: '2026-06-12 14:22:05',
+    verifyCode: '333444',
+    isVerified: true
+  },
+  {
+    id: '6',
+    orderNo: 'YO20260614151833MNO003',
+    courseId: '13',
+    course: courseList[12],
+    bookingInfo: {
+      name: '张小雨',
+      phone: '138****5678',
+      gender: '女',
+      birthday: '1995-06-15',
+      remark: '第一次尝试空中瑜伽'
+    },
+    status: 'completed',
+    createTime: '2026-06-13 15:18:33',
+    verifyCode: '555666',
+    isVerified: true
   }
 ];
 

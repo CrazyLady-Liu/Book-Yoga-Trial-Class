@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { View, Text, Button, Image, Swiper, SwiperItem, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow, usePullDownRefresh } from '@tarojs/taro';
 import styles from './index.module.scss';
 import CourseCard from '@/components/CourseCard';
 import { Course } from '@/types';
 import { courseList, getHotCourses, getNewCourses } from '@/data/courses';
+import { getAvailableCoupons } from '@/data/coupons';
 import { useUser } from '@/store/UserContext';
 import { showToast, navigateTo, switchTab, formatDate } from '@/utils';
 
@@ -31,9 +32,9 @@ const banners = [
 
 const quickEntries = [
   { icon: '🧘', text: '全部课程', action: () => switchTab('/pages/courses/index') },
+  { icon: '🎫', text: '领券中心', action: () => navigateTo('/pages/coupon-center/index') },
   { icon: '📅', text: '我的预约', action: () => switchTab('/pages/orders/index') },
-  { icon: '⭐', text: '收藏课程', action: () => showToast('功能开发中') },
-  { icon: '🎁', text: '会员中心', action: () => showToast('功能开发中') }
+  { icon: '⭐', text: '收藏课程', action: () => showToast('功能开发中') }
 ];
 
 const HomePage: React.FC = () => {
@@ -41,6 +42,10 @@ const HomePage: React.FC = () => {
   const [hotCourses, setHotCourses] = useState<Course[]>([]);
   const [newCourses, setNewCourses] = useState<Course[]>([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const availableCouponsCount = useMemo(() => {
+    return getAvailableCoupons().length;
+  }, []);
 
   const loadData = useCallback(() => {
     console.log('[HomePage] 加载首页数据');
@@ -90,6 +95,11 @@ const HomePage: React.FC = () => {
 
   const handleImageError = () => {
     console.error('[HomePage] 图片加载失败');
+  };
+
+  const handleGoToCouponCenter = () => {
+    console.log('[HomePage] 点击领券中心');
+    navigateTo('/pages/coupon-center/index');
   };
 
   return (
@@ -161,6 +171,19 @@ const HomePage: React.FC = () => {
         ))}
       </View>
 
+      <View className={styles.couponBanner} onClick={handleGoToCouponCenter}>
+        <View className={styles.couponBannerLeft}>
+          <View className={styles.couponBannerIcon}>🎁</View>
+          <View className={styles.couponBannerText}>
+            <Text className={styles.couponBannerTitle}>领券中心</Text>
+            <Text className={styles.couponBannerDesc}>
+              {availableCouponsCount}张优惠券等你领取
+            </Text>
+          </View>
+        </View>
+        <Text className={styles.couponBannerBtn}>立即领取</Text>
+      </View>
+
       <View className={styles.sectionHeader}>
         <Text className={styles.sectionTitle}>热门推荐</Text>
         <Text className={styles.seeMore} onClick={handleSeeMore}>
@@ -211,6 +234,16 @@ const HomePage: React.FC = () => {
         </ScrollView>
       </View>
     </ScrollView>
+
+    <View className={styles.floatCouponBtn} onClick={handleGoToCouponCenter}>
+      <Text className={styles.icon}>🎫</Text>
+      <Text className={styles.text}>领券</Text>
+      {availableCouponsCount > 0 && (
+        <Text className={styles.badge}>
+          {availableCouponsCount > 99 ? '99+' : availableCouponsCount}
+        </Text>
+      )}
+    </View>
   );
 };
 

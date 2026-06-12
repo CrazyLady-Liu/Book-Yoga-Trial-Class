@@ -9,7 +9,7 @@ import { showToast, showModal, navigateTo, switchTab } from '@/utils';
 const menuItems = [
   { icon: '📅', text: '我的预约', action: () => switchTab('/pages/orders/index') },
   { icon: '⭐', text: '收藏课程', action: () => showToast('功能开发中') },
-  { icon: '🎫', text: '优惠券', action: () => showToast('功能开发中') },
+  { icon: '🎫', text: '优惠券', action: () => navigateTo('/pages/coupons/index') },
   { icon: '💬', text: '我的评价', action: () => showToast('功能开发中') }
 ];
 

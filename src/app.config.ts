@@ -9,6 +9,8 @@ export default defineAppConfig({
     'pages/booking-form/index',
     'pages/booking-success/index',
     'pages/order-detail/index',
+    'pages/coupons/index',
+    'pages/coupon-center/index',
     'pages/index/index'
   ],
   window: {

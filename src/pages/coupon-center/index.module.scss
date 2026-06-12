@@ -1,0 +1,251 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.header {
+  padding: $spacing-xl $page-padding $spacing-lg;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  color: $color-text-white;
+}
+
+.headerTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-xs;
+}
+
+.headerDesc {
+  font-size: $font-size-sm;
+  opacity: 0.9;
+}
+
+.section {
+  margin: $spacing-md $page-padding;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  .icon {
+    font-size: $font-size-lg;
+  }
+}
+
+.couponCard {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-md;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  position: relative;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.couponLeft {
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  color: $color-text-white;
+  position: relative;
+
+  &.discount {
+    background: linear-gradient(135deg, #4CAF7C 0%, #66BB8F 100%);
+  }
+
+  &.free {
+    background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    right: -12rpx;
+    width: 24rpx;
+    height: 24rpx;
+    border-radius: 50%;
+    background: $color-bg-page;
+  }
+
+  &::before {
+    top: -12rpx;
+  }
+
+  &::after {
+    bottom: -12rpx;
+  }
+}
+
+.couponValue {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  display: flex;
+  align-items: baseline;
+
+  .symbol {
+    font-size: $font-size-lg;
+    margin-right: 2rpx;
+  }
+}
+
+.couponCondition {
+  font-size: $font-size-xs;
+  opacity: 0.9;
+  margin-top: $spacing-xs;
+}
+
+.couponRight {
+  flex: 1;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.couponInfo {
+  margin-bottom: $spacing-sm;
+}
+
+.couponName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.couponDesc {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.couponMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.couponStock {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.receiveBtn {
+  @include button-reset;
+  height: 56rpx;
+  padding: 0 $spacing-lg;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  color: $color-text-white;
+  border-radius: $radius-button;
+
+  &.discount {
+    background: linear-gradient(135deg, #4CAF7C 0%, #66BB8F 100%);
+  }
+
+  &.free {
+    background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+  }
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
+
+  &.received {
+    background: $color-bg-hover;
+    color: $color-text-tertiary;
+  }
+}
+
+.couponDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.myCouponEntry {
+  margin: $spacing-md $page-padding;
+  padding: $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.myCouponLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.myCouponIcon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-md;
+  background: linear-gradient(135deg, rgba($color-primary, 0.15) 0%, rgba($color-primary-light, 0.25) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}
+
+.myCouponText {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.myCouponTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.myCouponDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.myCouponArrow {
+  font-size: $font-size-xl;
+  color: $color-text-tertiary;
+}
+
+.receivedTag {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  padding: 4rpx 12rpx;
+  font-size: $font-size-xs;
+  border-radius: $radius-xs;
+  background: rgba(124, 92, 255, 0.1);
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}

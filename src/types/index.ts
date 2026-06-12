@@ -61,3 +61,37 @@ export interface TabItem {
   title: string;
   pagePath: string;
 }
+
+export type CouponType = 'discount' | 'cash' | 'free';
+export type CouponStatus = 'available' | 'used' | 'expired';
+export type CouponScope = 'all' | 'course' | 'category';
+
+export interface Coupon {
+  id: string;
+  name: string;
+  type: CouponType;
+  value: number;
+  minAmount: number;
+  discount?: number;
+  description: string;
+  scope: CouponScope;
+  courseIds?: string[];
+  categories?: string[];
+  startTime: string;
+  endTime: string;
+  stock: number;
+  received: number;
+  limitPerUser: number;
+  isActive: boolean;
+}
+
+export interface UserCoupon {
+  id: string;
+  couponId: string;
+  coupon: Coupon;
+  userId: string;
+  status: CouponStatus;
+  receiveTime: string;
+  usedTime?: string;
+  orderId?: string;
+}
