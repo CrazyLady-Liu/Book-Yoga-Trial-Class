@@ -12,7 +12,7 @@ import EmptyState from '@/components/EmptyState';
 type TabType = 'available' | 'used' | 'expired';
 
 const tabList: { key: TabType; text: string }[] = [
-  { key: 'available', text: '可使用' },
+  { key: 'available', text: '未使用' },
   { key: 'used', text: '已使用' },
   { key: 'expired', text: '已过期' }
 ];
@@ -145,7 +145,7 @@ const CouponsPage: React.FC = () => {
           <View className={styles.stats}>
             <View className={styles.statItem}>
               <Text className={styles.statValue}>{stats.available}</Text>
-              <Text className={styles.statLabel}>可使用</Text>
+              <Text className={styles.statLabel}>未使用</Text>
             </View>
             <View className={styles.statItem}>
               <Text className={styles.statValue}>{stats.used}</Text>
@@ -228,7 +228,7 @@ const CouponsPage: React.FC = () => {
         ) : (
           <EmptyState
             icon='🎫'
-            title={`暂无${activeTab === 'available' ? '可使用的' : activeTab === 'used' ? '已使用的' : '已过期的'}优惠券`}
+            title={`暂无${activeTab === 'available' ? '未使用的' : activeTab === 'used' ? '已使用的' : '已过期的'}优惠券`}
             description={activeTab === 'available' ? '去领券中心领取更多优惠吧~' : '您还没有相关的优惠券记录'}
             actionText={activeTab === 'available' ? '去领券' : undefined}
             onAction={activeTab === 'available' ? handleGoToCenter : undefined}
