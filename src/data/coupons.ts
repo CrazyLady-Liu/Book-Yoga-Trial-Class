@@ -4,7 +4,7 @@ import { generateId, getStorage, setStorage } from '@/utils';
 const COUPONS_STORAGE_KEY = 'available_coupons';
 const USER_COUPONS_STORAGE_KEY = 'user_coupons';
 const STORAGE_VERSION_KEY = 'coupons_data_version';
-const CURRENT_DATA_VERSION = '20260615_v2';
+const CURRENT_DATA_VERSION = '20260615_v3';
 
 const mockCoupons: Coupon[] = [
   {
@@ -129,6 +129,52 @@ const mockCoupons: Coupon[] = [
     endTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
     stock: 200,
     received: 45,
+    limitPerUser: 1,
+    isActive: true
+  },
+  {
+    id: 'coupon_009',
+    name: '新人立减券',
+    type: 'cash',
+    value: 20,
+    minAmount: 50,
+    description: '新用户专享，满50减20',
+    scope: 'all',
+    startTime: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    endTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    stock: 500,
+    received: 234,
+    limitPerUser: 1,
+    isActive: true
+  },
+  {
+    id: 'coupon_010',
+    name: '周末特惠券',
+    type: 'cash',
+    value: 15,
+    minAmount: 0,
+    description: '周末通用，无门槛立减15元',
+    scope: 'all',
+    startTime: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    endTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    stock: 300,
+    received: 128,
+    limitPerUser: 1,
+    isActive: true
+  },
+  {
+    id: 'coupon_011',
+    name: '全场通用折扣券',
+    type: 'discount',
+    value: 0,
+    minAmount: 0,
+    discount: 0.9,
+    description: '全场通用9折优惠',
+    scope: 'all',
+    startTime: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    endTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    stock: 400,
+    received: 189,
     limitPerUser: 1,
     isActive: true
   }
