@@ -43,10 +43,6 @@ const CouponsPage: React.FC = () => {
     [isLoggedIn, userInfo]
   );
 
-  useEffect(() => {
-    loadCoupons(activeTab);
-  }, [activeTab, loadCoupons]);
-
   useDidShow(() => {
     loadCoupons(activeTab);
   });
@@ -63,6 +59,7 @@ const CouponsPage: React.FC = () => {
 
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);
+    loadCoupons(tab);
   };
 
   const handleUseCoupon = (coupon: UserCoupon) => {
