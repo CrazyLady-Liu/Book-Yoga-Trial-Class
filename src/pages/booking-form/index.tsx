@@ -43,6 +43,7 @@ const BookingFormPage: React.FC = () => {
   });
 
   const courseId = router.params.courseId as string;
+  const preselectedCouponId = router.params.preselectedCouponId as string;
 
   const priceInfo = useMemo(() => {
     if (!course) {
@@ -80,11 +81,19 @@ const BookingFormPage: React.FC = () => {
     );
     setApplicableCoupons(coupons);
 
+    if (preselectedCouponId) {
+      const preselected = coupons.find(c => c.id === preselectedCouponId);
+      if (preselected) {
+        setSelectedCoupon(preselected);
+        return;
+      }
+    }
+
     if (coupons.length > 0 && !selectedCoupon) {
       const bestCoupon = getBestCoupon(coupons, course.price);
       setSelectedCoupon(bestCoupon);
     }
-  }, [isLoggedIn, userInfo, course, selectedCoupon]);
+  }, [isLoggedIn, userInfo, course, selectedCoupon, preselectedCouponId]);
 
   useDidShow(() => {
     loadApplicableCoupons();

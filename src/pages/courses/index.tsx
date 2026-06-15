@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { View, Text, Button, ScrollView } from '@tarojs/components';
-import Taro, { useDidShow, usePullDownRefresh } from '@tarojs/taro';
+import Taro, { useRouter, useDidShow, usePullDownRefresh } from '@tarojs/taro';
 import classnames from 'classnames';
 import styles from './index.module.scss';
 import CourseCard from '@/components/CourseCard';
 import EmptyState from '@/components/EmptyState';
 import { Course } from '@/types';
 import { courseList } from '@/data/courses';
-import { showToast, switchTab } from '@/utils';
+import { showToast, switchTab, navigateTo } from '@/utils';
 
 const categories = [
   { key: 'all', label: '全部' },
@@ -33,12 +33,24 @@ const sortOptions = [
   { key: 'price', label: '价格最低' }
 ];
 
+interface CouponFilterInfo {
+  couponId: string;
+  couponType: string;
+  couponValue: number;
+  minAmount: number;
+  scope: string;
+  categories?: string[];
+  courseIds?: string[];
+}
+
 const CoursesPage: React.FC = () => {
+  const router = useRouter();
   const [courses, setCourses] = useState<Course[]>([]);
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeLevel, setActiveLevel] = useState('all');
   const [sortBy, setSortBy] = useState('time');
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [couponFilter, setCouponFilter] = useState<CouponFilterInfo | null>(null);
 
   const loadData = useCallback(() => {
     console.log('[CoursesPage] 加载课程列表');
@@ -59,6 +71,32 @@ const CoursesPage: React.FC = () => {
     loadData();
   });
 
+  useEffect(() => {
+    const params = router.params;
+    if (params.couponId && params.couponType === 'cash') {
+      const filterInfo: CouponFilterInfo = {
+        couponId: params.couponId,
+        couponType: params.couponType,
+        couponValue: Number(params.couponValue),
+        minAmount: Number(params.minAmount),
+        scope: params.scope || 'all',
+        categories: params.categories ? params.categories.split(',') : undefined,
+        courseIds: params.courseIds ? params.courseIds.split(',') : undefined
+      };
+      setCouponFilter(filterInfo);
+
+      if (filterInfo.scope === 'category' && filterInfo.categories?.length) {
+        const matchCat = filterInfo.categories[0];
+        const found = categories.find(c => c.key === matchCat);
+        if (found) {
+          setActiveCategory(matchCat);
+        }
+      }
+    } else {
+      setCouponFilter(null);
+    }
+  }, [router.params]);
+
   usePullDownRefresh(() => {
     console.log('[CoursesPage] 下拉刷新');
     setIsRefreshing(true);
@@ -72,6 +110,24 @@ const CoursesPage: React.FC = () => {
 
   const filteredCourses = useMemo(() => {
     let result = [...courses];
+
+    if (couponFilter) {
+      result = result.filter(c => {
+        if (c.price < couponFilter.minAmount && c.originalPrice < couponFilter.minAmount) {
+          return false;
+        }
+        if (couponFilter.scope === 'category' && couponFilter.categories?.length) {
+          const hasMatch = couponFilter.categories.some(cat =>
+            c.name.includes(cat) || c.tags.includes(cat)
+          );
+          if (!hasMatch) return false;
+        }
+        if (couponFilter.scope === 'course' && couponFilter.courseIds?.length) {
+          if (!couponFilter.courseIds.includes(c.id)) return false;
+        }
+        return true;
+      });
+    }
 
     if (activeCategory !== 'all') {
       result = result.filter(c => c.name.includes(activeCategory) || c.tags.includes(activeCategory));
@@ -99,7 +155,7 @@ const CoursesPage: React.FC = () => {
 
     console.log(`[CoursesPage] 筛选结果: ${result.length}条, 分类: ${activeCategory}, 难度: ${activeLevel}, 排序: ${sortBy}`);
     return result;
-  }, [courses, activeCategory, activeLevel, sortBy]);
+  }, [courses, activeCategory, activeLevel, sortBy, couponFilter]);
 
   const handleCategoryChange = (key: string) => {
     console.log('[CoursesPage] 切换分类:', key);
@@ -122,8 +178,32 @@ const CoursesPage: React.FC = () => {
     switchTab('/pages/home/index');
   };
 
+  const handleDismissCouponTip = () => {
+    setCouponFilter(null);
+  };
+
+  const handleCourseClick = (course: Course) => {
+    let url = `/pages/booking-form/index?courseId=${course.id}`;
+    if (couponFilter) {
+      url += `&preselectedCouponId=${encodeURIComponent(couponFilter.couponId)}`;
+    }
+    navigateTo(url);
+  };
+
   return (
     <View className={styles.page}>
+      {couponFilter && (
+        <View className={styles.couponTipBar}>
+          <View className={styles.couponTipContent}>
+            <Text className={styles.couponTipIcon}>🎫</Text>
+            <Text className={styles.couponTipText}>
+              当前使用满{couponFilter.minAmount}减{couponFilter.couponValue}优惠券，订单满{couponFilter.minAmount}元可抵扣
+            </Text>
+          </View>
+          <Text className={styles.couponTipClose} onClick={handleDismissCouponTip}>✕</Text>
+        </View>
+      )}
+
       <View className={styles.filterBar}>
         <ScrollView className={styles.categoryScroll} scrollX>
           {categories.map(cat => (
@@ -166,7 +246,10 @@ const CoursesPage: React.FC = () => {
         {filteredCourses.length > 0 ? (
           filteredCourses.map(course => (
             <View key={course.id} className={styles.courseItem}>
-              <CourseCard course={course} />
+              <CourseCard
+                course={course}
+                {...(couponFilter ? { onClick: () => handleCourseClick(course) } : {})}
+              />
             </View>
           ))
         ) : (

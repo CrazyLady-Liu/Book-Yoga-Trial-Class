@@ -64,6 +64,26 @@ const CouponsPage: React.FC = () => {
 
   const handleUseCoupon = (coupon: UserCoupon) => {
     if (coupon.status !== 'available') return;
+
+    if (coupon.coupon.type === 'cash') {
+      const params: Record<string, string> = {
+        couponId: coupon.id,
+        couponType: coupon.coupon.type,
+        couponValue: String(coupon.coupon.value),
+        minAmount: String(coupon.coupon.minAmount),
+        scope: coupon.coupon.scope
+      };
+      if (coupon.coupon.scope === 'category' && coupon.coupon.categories?.length) {
+        params.categories = coupon.coupon.categories.join(',');
+      }
+      if (coupon.coupon.scope === 'course' && coupon.coupon.courseIds?.length) {
+        params.courseIds = coupon.coupon.courseIds.join(',');
+      }
+      const query = Object.entries(params).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+      navigateTo(`/pages/courses/index?${query}`);
+      return;
+    }
+
     navigateTo('/pages/courses/index');
   };
 
