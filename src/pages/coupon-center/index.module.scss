@@ -12,15 +12,137 @@
   color: $color-text-white;
 }
 
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerText {
+  flex: 1;
+}
+
 .headerTitle {
   font-size: $font-size-xxl;
   font-weight: $font-weight-bold;
-  margin-bottom: $spacing-xs;
 }
 
-.headerDesc {
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-button;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.rulesIcon {
+  width: 32rpx;
+  height: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-text-white;
+  color: #FF6B6B;
   font-size: $font-size-sm;
-  opacity: 0.9;
+  font-weight: $font-weight-bold;
+  border-radius: 50%;
+}
+
+.rulesText {
+  font-size: $font-size-sm;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  width: 80%;
+  max-width: 600rpx;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+}
+
+.modalTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.modalClose {
+  font-size: $font-size-xl;
+  color: $color-text-tertiary;
+  line-height: 1;
+  padding: $spacing-xs;
+
+  &:active {
+    color: $color-text-secondary;
+  }
+}
+
+.modalBody {
+  flex: 1;
+  padding: $spacing-lg;
+  max-height: 60vh;
+}
+
+.modalText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+  white-space: pre-wrap;
+}
+
+.modalFooter {
+  padding: $spacing-md $spacing-lg $spacing-lg;
+  display: flex;
+  gap: $spacing-md;
+}
+
+.modalConfirmBtn {
+  @include button-reset;
+  flex: 1;
+  height: 80rpx;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  color: $color-text-white;
+  border-radius: $radius-button;
+
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
 }
 
 .section {

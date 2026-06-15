@@ -9,11 +9,24 @@ import { useUser } from '@/store/UserContext';
 import { showToast, navigateTo, formatDate, showModal } from '@/utils';
 import EmptyState from '@/components/EmptyState';
 
+const COUPON_RULES = `1. 优惠券仅限在有效期内使用，过期自动作废；
+2. 每张优惠券仅限使用一次，不可拆分、不可兑现、不找零；
+3. 同一优惠券每位用户限领指定次数，不可重复领取；
+4. 优惠券需满足使用条件（如满减金额、适用范围）方可使用；
+5. 优惠券不可与其他优惠叠加使用，除非另有说明；
+6. 若订单发生退款，已使用的优惠券将不予退还；
+7. 优惠券最终解释权归本平台所有。`;
+
 const CouponCenterPage: React.FC = () => {
   const { userInfo, isLoggedIn } = useUser();
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [receivingId, setReceivingId] = useState<string | null>(null);
+  const [showRulesModal, setShowRulesModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorTitle, setErrorTitle] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [claimedCouponIds, setClaimedCouponIds] = useState<Set<string>>(new Set());
 
   const userReceivedMap = useMemo(() => {
     if (!isLoggedIn || !userInfo) return new Map<string, number>();
@@ -45,6 +58,24 @@ const CouponCenterPage: React.FC = () => {
     }, 1000);
   });
 
+  const handleShowRules = () => {
+    setShowRulesModal(true);
+  };
+
+  const handleCloseRulesModal = () => {
+    setShowRulesModal(false);
+  };
+
+  const handleCloseErrorModal = () => {
+    setShowErrorModal(false);
+  };
+
+  const showError = (title: string, message: string) => {
+    setErrorTitle(title);
+    setErrorMessage(message);
+    setShowErrorModal(true);
+  };
+
   const handleReceiveCoupon = async (coupon: Coupon) => {
     if (!isLoggedIn) {
       const confirmed = await showModal(
@@ -60,9 +91,32 @@ const CouponCenterPage: React.FC = () => {
 
     if (!userInfo) return;
 
+    if (claimedCouponIds.has(coupon.id)) {
+      showError('领取失败', '您已领取过该优惠券，不可重复领取');
+      return;
+    }
+
     const receivedCount = userReceivedMap.get(coupon.id) || 0;
     if (receivedCount >= coupon.limitPerUser) {
-      showToast('您已达到领取上限', 'none');
+      showError('领取失败', '您已达到该优惠券的领取上限');
+      return;
+    }
+
+    const now = new Date();
+    const couponStart = new Date(coupon.startTime);
+    const couponEnd = new Date(coupon.endTime);
+    if (now < couponStart || now > couponEnd) {
+      showError('领取失败', '该优惠券不在领取时间范围内');
+      return;
+    }
+
+    if (coupon.stock <= 0) {
+      showError('领取失败', '该优惠券已被领完，下次早点来哦');
+      return;
+    }
+
+    if (!coupon.isActive) {
+      showError('领取失败', '该优惠券活动已结束');
       return;
     }
 
@@ -72,14 +126,15 @@ const CouponCenterPage: React.FC = () => {
       await new Promise(resolve => setTimeout(resolve, 500));
       const result = receiveCoupon(userInfo.id, coupon.id);
       if (result) {
-        showToast('领取成功', 'success');
+        setClaimedCouponIds(prev => new Set(prev).add(coupon.id));
+        showToast('领取成功！前往我的优惠券查看', 'success', 2500);
         loadCoupons();
       } else {
-        showToast('领取失败，请重试', 'error');
+        showError('领取失败', '领取失败，请稍后重试');
       }
     } catch (error) {
       console.error('[CouponCenter] 领取优惠券失败:', error);
-      showToast('领取失败，请重试', 'error');
+      showError('领取失败', '系统异常，请稍后重试');
     } finally {
       setReceivingId(null);
     }
@@ -144,6 +199,7 @@ const CouponCenterPage: React.FC = () => {
 
   const hasReceived = (coupon: Coupon) => {
     if (!isLoggedIn || !userInfo) return false;
+    if (claimedCouponIds.has(coupon.id)) return true;
     const receivedCount = userReceivedMap.get(coupon.id) || 0;
     return receivedCount >= coupon.limitPerUser;
   };
@@ -157,10 +213,15 @@ const CouponCenterPage: React.FC = () => {
     <View className={styles.page}>
       <ScrollView className={styles.scrollView} scrollY>
         <View className={styles.header}>
-          <Text className={styles.headerTitle}>🎁 领券中心</Text>
-          <Text className={styles.headerDesc}>
-            精选优惠券，限时领取，先到先得
-          </Text>
+          <View className={styles.headerContent}>
+            <View className={styles.headerText}>
+              <Text className={styles.headerTitle}>🎁 领券中心</Text>
+            </View>
+            <View className={styles.headerRight} onClick={handleShowRules}>
+              <Text className={styles.rulesIcon}>?</Text>
+              <Text className={styles.rulesText}>规则说明</Text>
+            </View>
+          </View>
         </View>
 
         {isLoggedIn && (
@@ -249,6 +310,44 @@ const CouponCenterPage: React.FC = () => {
           )}
         </View>
       </ScrollView>
+
+      {showRulesModal && (
+        <View className={styles.modalOverlay} onClick={handleCloseRulesModal}>
+          <View className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <View className={styles.modalHeader}>
+              <Text className={styles.modalTitle}>优惠券通用规则</Text>
+              <Text className={styles.modalClose} onClick={handleCloseRulesModal}>×</Text>
+            </View>
+            <ScrollView className={styles.modalBody} scrollY>
+              <Text className={styles.modalText}>{COUPON_RULES}</Text>
+            </ScrollView>
+            <View className={styles.modalFooter}>
+              <Button className={styles.modalConfirmBtn} onClick={handleCloseRulesModal}>
+                我知道了
+              </Button>
+            </View>
+          </View>
+        </View>
+      )}
+
+      {showErrorModal && (
+        <View className={styles.modalOverlay} onClick={handleCloseErrorModal}>
+          <View className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <View className={styles.modalHeader}>
+              <Text className={styles.modalTitle}>{errorTitle}</Text>
+              <Text className={styles.modalClose} onClick={handleCloseErrorModal}>×</Text>
+            </View>
+            <View className={styles.modalBody}>
+              <Text className={styles.modalText}>{errorMessage}</Text>
+            </View>
+            <View className={styles.modalFooter}>
+              <Button className={styles.modalConfirmBtn} onClick={handleCloseErrorModal}>
+                确定
+              </Button>
+            </View>
+          </View>
+        </View>
+      )}
     </View>
   );
 };
