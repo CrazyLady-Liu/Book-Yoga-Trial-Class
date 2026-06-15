@@ -6,10 +6,13 @@
   padding-bottom: 120rpx;
 }
 
-.filterBar {
+.stickyHeader {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.filterBar {
   background: $color-bg-card;
   padding: $spacing-md $page-padding;
   box-shadow: $shadow-card;
@@ -110,9 +113,6 @@
 }
 
 .couponTipBar {
-  position: sticky;
-  top: 0;
-  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,0 +1,424 @@
+👽 Taro v4.1.9
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+ℹ 预览端口 10086 被占用, 自动切换到空闲端口 10088
+
+→ Watching... [2026/6/15 10:24:26]
+
+
+ℹ️  Listening at http://192.168.3.208:10088/
+
+监听文件修改中...
+
+asset [1m[32mjs/app.9912170d.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+asset [1m[32mjs/node_modules_hls_js_dist_hls_mjs.0e0a16a9.js[39m[22m 3.23 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_home_index_tsx.f1929733.js[39m[22m 2.89 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_booking-form_index_tsx.2e467962.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_orders_index_tsx.827da4ef.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_courses_index_tsx.d050c5a8.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_order-detail_index_tsx.d221c4f6.js[39m[22m 2.8 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_coupon-center_index_tsx.72aadba8.js[39m[22m 2.8 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_coupons_index_tsx.7f2c61e4.js[39m[22m 2.8 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_mine_index_tsx.bb1a3aa6.js[39m[22m 2.78 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_course-detail_index_tsx.c629876e.js[39m[22m 2.76 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_booking-success_index_tsx.682513d8.js[39m[22m 2.75 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_login_index_tsx.2909aa94.js[39m[22m 2.68 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+asset [1m[32mjs/src_pages_index_index_tsx.5afc835e.js[39m[22m 2.65 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
++ 4 assets
+Entrypoint [1mapp[39m[22m 6.38 MiB = [1m[32mjs/runtime.9912170d.js[39m[22m 49.6 KiB [1m[32mjs/taro.9912170d.js[39m[22m 1.29 MiB [1m[32mjs/app.9912170d.js[39m[22m 5.05 MiB
+orphan modules 679 KiB [1m[33m[orphan][39m[22m 292 modules
+runtime modules 32.9 KiB 18 modules
+modules by path [1m./node_modules/[39m[22m 4.43 MiB 434 modules
+modules by path [1m./src/[39m[22m 640 KiB
+  modules by path [1m./src/pages/[39m[22m 511 KiB 36 modules
+  modules by path [1m./src/components/[39m[22m 73.3 KiB 9 modules
+  modules by path [1m./src/data/*.ts[39m[22m 27.1 KiB
+    [1m./src/data/courses.ts[39m[22m 11.6 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    + 2 modules
+  modules by path [1m./src/*.scss[39m[22m 10.9 KiB
+    [1m./src/app.scss[39m[22m 2.88 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[2].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/app.scss[39m[22m 8.02 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  + 4 modules
+[1mdata:application/octet-stream;base64,AAEAAAALAIAAAwAw..[39m[22m 6.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 30297 ms
+→ Watching... [2026/6/15 10:45:29]
+
+assets by status 14.2 MiB [1m[32m[cached][39m[22m 6 assets
+assets by info 29.2 MiB [1m[32m[immutable][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 29 MiB
+    asset [1m[32mjs/app.9b7898a7.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_home_index_tsx.64301e09.js[39m[22m 2.89 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_booking-form_index_tsx.034ce714.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_orders_index_tsx.f987ac87.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    + 7 assets
+  assets by info 260 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.9912170dec7c091681a1.hot-update.js[39m[22m 32.2 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_course-detail_index_tsx.9912170dec7c091681a1.hot-update.js[39m[22m 32.2 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-form_index_tsx.9912170dec7c091681a1.hot-update.js[39m[22m 32.2 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_order-detail_index_tsx.9912170dec7c091681a1.hot-update.js[39m[22m 32.2 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    + 6 assets
+asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.9b7898a7.js[39m[22m 49.6 KiB [1m[32mruntime.9912170dec7c091681a1.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.9b7898a7.js[39m[22m 1.29 MiB [1m[32mjs/app.9b7898a7.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/data/courses.ts[39m[22m 11.6 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 3103 ms
+→ Watching... [2026/6/15 10:46:41]
+
+assets by status 14.2 MiB [1m[32m[cached][39m[22m 6 assets
+assets by info 29.2 MiB [1m[32m[immutable][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 29 MiB
+    asset [1m[32mjs/app.82573a5c.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_home_index_tsx.418cf656.js[39m[22m 2.89 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_booking-form_index_tsx.305b20d2.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_orders_index_tsx.285a3955.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    + 7 assets
+  assets by info 260 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.9b7898a777e93dd60278.hot-update.js[39m[22m 32.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_course-detail_index_tsx.9b7898a777e93dd60278.hot-update.js[39m[22m 32.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-form_index_tsx.9b7898a777e93dd60278.hot-update.js[39m[22m 32.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_order-detail_index_tsx.9b7898a777e93dd60278.hot-update.js[39m[22m 32.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    + 6 assets
+asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.82573a5c.js[39m[22m 49.6 KiB [1m[32mruntime.9b7898a777e93dd60278.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.82573a5c.js[39m[22m 1.29 MiB [1m[32mjs/app.82573a5c.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/data/courses.ts[39m[22m 11.6 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 644 ms
+→ Watching... [2026/6/15 10:47:19]
+
+assets by status 33.9 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.29 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.25 MiB
+    asset [1m[32mjs/app.a8b1ac30.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.b16ea50a.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.a8b1ac30.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.a8b1ac30.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 36.9 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.82573a5cf29b5c7c20cf.hot-update.js[39m[22m 35 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.82573a5cf29b5c7c20cf.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.82573a5cf29b5c7c20cf.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.a8b1ac30.js[39m[22m 49.6 KiB [1m[32mruntime.82573a5cf29b5c7c20cf.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.a8b1ac30.js[39m[22m 1.29 MiB [1m[32mjs/app.a8b1ac30.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/courses/index.tsx[39m[22m 12.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 997 ms
+✖ Errors: 
+
+ModuleBuildError: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: D:\traenewfile\Book Yoga Trial Class\src\pages\courses\index.tsx: Unterminated JSX contents. (266:11)
+
+[0m [90m 264 |[39m         )}
+ [90m 265 |[39m       [33m<[39m[33m/[39m[33mScrollView[39m[33m>[39m
+[31m[1m>[22m[39m[90m 266 |[39m     [33m<[39m[33m/[39m[33mView[39m[33m>[39m
+ [90m     |[39m            [31m[1m^[22m[39m
+ [90m 267 |[39m   )[33m;[39m
+ [90m 268 |[39m }[33m;[39m
+ [90m 269 |[39m[0m
+
+→ Watching... [2026/6/15 11:07:12]
+
+ModuleBuildError: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: D:\traenewfile\Book Yoga Trial Class\src\pages\courses\index.tsx: Unterminated JSX contents. (266:11)
+
+[0m [90m 264 |[39m         )}
+ [90m 265 |[39m       [33m<[39m[33m/[39m[33mScrollView[39m[33m>[39m
+[31m[1m>[22m[39m[90m 266 |[39m     [33m<[39m[33m/[39m[33mView[39m[33m>[39m
+ [90m     |[39m            [31m[1m^[22m[39m
+ [90m 267 |[39m   )[33m;[39m
+ [90m 268 |[39m }[33m;[39m
+ [90m 269 |[39m[0m
+
+assets by status 33.9 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 6.41 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 6.39 MiB
+    asset [1m[32mjs/app.36df4e77.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/taro.36df4e77.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.36df4e77.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+    asset [1m[32mjs/src_pages_courses_index_tsx.bb5220a4.js[39m[22m 8.99 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+  assets by info 11.2 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.a8b1ac30739167cbf453.hot-update.js[39m[22m 8.97 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.a8b1ac30739167cbf453.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.a8b1ac30739167cbf453.hot-update.json[39m[22m 395 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.36df4e77.js[39m[22m 49.6 KiB [1m[32mruntime.a8b1ac30739167cbf453.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.36df4e77.js[39m[22m 1.29 MiB [1m[32mjs/app.36df4e77.js[39m[22m 5.05 MiB
+cached modules 5.68 MiB [1m[32m[cached][39m[22m 777 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 7.24 KiB
+  [1m./src/app.config.ts[39m[22m 7.2 KiB [1m[33m[code generated][39m[22m
+  [1m./src/pages/courses/index.tsx[39m[22m 39 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m [1m[31m[1 error][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/pages/courses/index.tsx[39m[22m
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: D:\traenewfile\Book Yoga Trial Class\src\pages\courses\index.tsx: Unterminated JSX contents. (266:11)
+
+[0m [90m 264 |[39m         )}
+ [90m 265 |[39m       [33m<[39m[33m/[39m[33mScrollView[39m[33m>[39m
+[31m[1m>[22m[39m[90m 266 |[39m     [33m<[39m[33m/[39m[33mView[39m[33m>[39m
+ [90m     |[39m            [31m[1m^[22m[39m
+ [90m 267 |[39m   )[33m;[39m
+ [90m 268 |[39m }[33m;[39m
+ [90m 269 |[39m[0m
+    at toParseError (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parse-error.ts:95:45)
+    at TypeScriptParserMixin.raise (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:1504:19)
+    at TypeScriptParserMixin.jsxReadToken (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:104:22)
+    at TypeScriptParserMixin.getTokenFromCode (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:596:14)
+    at TypeScriptParserMixin.getTokenFromCode (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:4138:13)
+    at TypeScriptParserMixin.nextToken (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:279:10)
+    at TypeScriptParserMixin.next (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:122:10)
+    at TypeScriptParserMixin.eat (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:127:12)
+    at TypeScriptParserMixin.expect (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\util.ts:156:15)
+    at TypeScriptParserMixin.jsxParseClosingElementAt (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:460:12)
+    at TypeScriptParserMixin.jsxParseElementAt (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:480:39)
+    at TypeScriptParserMixin.jsxParseElementAt (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:483:34)
+    at TypeScriptParserMixin.jsxParseElement (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:559:19)
+    at TypeScriptParserMixin.parseExprAtom (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:573:21)
+    at TypeScriptParserMixin.parseExprSubscripts (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:742:23)
+    at TypeScriptParserMixin.parseUpdate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:721:21)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:683:23)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3893:20)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:417:14)
+    at TypeScriptParserMixin.parseExprOps (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:429:23)
+    at TypeScriptParserMixin.parseMaybeConditional (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:384:23)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:301:21)
+    at fn (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3745:23)
+    at TypeScriptParserMixin.tryParse (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\util.ts:174:20)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3744:20)
+    at callback (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:257:12)
+    at TypeScriptParserMixin.allowInAnd (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:3197:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:256:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:3311:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:1825:16)
+    at TypeScriptParserMixin.parseExprAtom (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:1170:21)
+    at TypeScriptParserMixin.parseExprAtom (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:583:22)
+    at TypeScriptParserMixin.parseExprSubscripts (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:742:23)
+    at TypeScriptParserMixin.parseUpdate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:721:21)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:683:23)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3893:20)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:417:14)
+    at TypeScriptParserMixin.parseExprOps (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:429:23)
+    at TypeScriptParserMixin.parseMaybeConditional (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:384:23)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:301:21)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3764:22)
+    at TypeScriptParserMixin.parseExpressionBase (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:226:23)
+    at callback (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:217:39)
+    at TypeScriptParserMixin.allowInAnd (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:3192:16)
+    at TypeScriptParserMixin.parseExpression (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:217:17)
+    at TypeScriptParserMixin.parseReturnStatement (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:1115:28)
+    at TypeScriptParserMixin.parseStatementContent (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:543:21)
+    at TypeScriptParserMixin.parseStatementContent (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3220:20)
+    at TypeScriptParserMixin.parseStatementLike (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:482:17)
+    at TypeScriptParserMixin.parseStatementListItem (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:431:17)
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[31m1 error[39m[22m in 1130 ms
+→ Watching... [2026/6/15 11:07:24]
+
+assets by status 33.9 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 12.1 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.25 MiB
+    asset [1m[32mjs/app.e41d246e.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.11952090.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.e41d246e.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.e41d246e.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 2.87 MiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.36df4e77950c98209a7c.hot-update.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.36df4e77950c98209a7c.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.36df4e77950c98209a7c.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.e41d246e.js[39m[22m 49.6 KiB [1m[32mruntime.36df4e77950c98209a7c.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.e41d246e.js[39m[22m 1.29 MiB [1m[32mjs/app.e41d246e.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 779 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 19.5 KiB
+  [1m./src/app.config.ts[39m[22m 7.2 KiB [1m[33m[code generated][39m[22m
+  [1m./src/pages/courses/index.tsx[39m[22m 12.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 775 ms
+→ Watching... [2026/6/15 11:07:31]
+
+assets by status 33.9 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.3 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.25 MiB
+    asset [1m[32mjs/app.fd100e0d.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.9fbe0218.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.fd100e0d.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.fd100e0d.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 55.5 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.e41d246e6a7cb847d5e1.hot-update.js[39m[22m 53.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.e41d246e6a7cb847d5e1.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.e41d246e6a7cb847d5e1.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.fd100e0d.js[39m[22m 49.6 KiB [1m[32mruntime.e41d246e6a7cb847d5e1.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.fd100e0d.js[39m[22m 1.29 MiB [1m[32mjs/app.fd100e0d.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/courses/index.module.scss[39m[22m 20.2 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 439 ms
+→ Watching... [2026/6/15 11:07:39]
+
+assets by status 33.9 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.3 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.25 MiB
+    asset [1m[32mjs/app.6a0148af.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.0219ae76.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.6a0148af.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.6a0148af.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 55 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.fd100e0d1066a6e289c1.hot-update.js[39m[22m 53.1 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.fd100e0d1066a6e289c1.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.fd100e0d1066a6e289c1.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.6a0148af.js[39m[22m 49.6 KiB [1m[32mruntime.fd100e0d1066a6e289c1.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.6a0148af.js[39m[22m 1.29 MiB [1m[32mjs/app.6a0148af.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/courses/index.module.scss[39m[22m 20 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 843 ms
+→ Watching... [2026/6/15 11:07:55]
+
+assets by status 34 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.18 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.14 MiB
+    asset [1m[32mjs/app.d2a32b46.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_booking-success_index_tsx.3f5d6fbc.js[39m[22m 2.76 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.d2a32b46.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.d2a32b46.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 37.8 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.6a0148af857ff9e3aeb6.hot-update.js[39m[22m 35.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.6a0148af857ff9e3aeb6.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.6a0148af857ff9e3aeb6.hot-update.json[39m[22m 69 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.d2a32b46.js[39m[22m 49.6 KiB [1m[32mruntime.6a0148af857ff9e3aeb6.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.d2a32b46.js[39m[22m 1.29 MiB [1m[32mjs/app.d2a32b46.js[39m[22m 5.05 MiB
+cached modules 5.72 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/booking-success/index.tsx[39m[22m 9.48 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 897 ms
+✖ Errors: 
+
+ModuleBuildError: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: D:\traenewfile\Book Yoga Trial Class\src\pages\courses\index.tsx: Unterminated JSX contents. (266:11)
+
+[0m [90m 264 |[39m         )}
+ [90m 265 |[39m       [33m<[39m[33m/[39m[33mScrollView[39m[33m>[39m
+[31m[1m>[22m[39m[90m 266 |[39m     [33m<[39m[33m/[39m[33mView[39m[33m>[39m
+ [90m     |[39m            [31m[1m^[22m[39m
+ [90m 267 |[39m   )[33m;[39m
+ [90m 268 |[39m }[33m;[39m
+ [90m 269 |[39m[0m
+
+→ Watching... [2026/6/15 11:10:16]
+
+ModuleBuildError: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: D:\traenewfile\Book Yoga Trial Class\src\pages\courses\index.tsx: Unterminated JSX contents. (266:11)
+
+[0m [90m 264 |[39m         )}
+ [90m 265 |[39m       [33m<[39m[33m/[39m[33mScrollView[39m[33m>[39m
+[31m[1m>[22m[39m[90m 266 |[39m     [33m<[39m[33m/[39m[33mView[39m[33m>[39m
+ [90m     |[39m            [31m[1m^[22m[39m
+ [90m 267 |[39m   )[33m;[39m
+ [90m 268 |[39m }[33m;[39m
+ [90m 269 |[39m[0m
+
+assets by status 33.9 MiB [1m[32m[cached][39m[22m 14 assets
+assets by status 6.4 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 6.38 MiB
+    asset [1m[32mjs/app.9c4de0f7.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/taro.9c4de0f7.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.9c4de0f7.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 11.2 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.d2a32b461307d3526f2d.hot-update.js[39m[22m 8.97 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.d2a32b461307d3526f2d.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.d2a32b461307d3526f2d.hot-update.json[39m[22m 395 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.9c4de0f7.js[39m[22m 49.6 KiB [1m[32mruntime.d2a32b461307d3526f2d.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.9c4de0f7.js[39m[22m 1.29 MiB [1m[32mjs/app.9c4de0f7.js[39m[22m 5.05 MiB
+cached modules 5.68 MiB [1m[32m[cached][39m[22m 777 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 7.24 KiB
+  [1m./src/app.config.ts[39m[22m 7.2 KiB [1m[33m[code generated][39m[22m
+  [1m./src/pages/courses/index.tsx[39m[22m 39 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m [1m[31m[1 error][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/pages/courses/index.tsx[39m[22m
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: D:\traenewfile\Book Yoga Trial Class\src\pages\courses\index.tsx: Unterminated JSX contents. (266:11)
+
+[0m [90m 264 |[39m         )}
+ [90m 265 |[39m       [33m<[39m[33m/[39m[33mScrollView[39m[33m>[39m
+[31m[1m>[22m[39m[90m 266 |[39m     [33m<[39m[33m/[39m[33mView[39m[33m>[39m
+ [90m     |[39m            [31m[1m^[22m[39m
+ [90m 267 |[39m   )[33m;[39m
+ [90m 268 |[39m }[33m;[39m
+ [90m 269 |[39m[0m
+    at toParseError (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parse-error.ts:95:45)
+    at TypeScriptParserMixin.raise (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:1504:19)
+    at TypeScriptParserMixin.jsxReadToken (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:104:22)
+    at TypeScriptParserMixin.getTokenFromCode (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:596:14)
+    at TypeScriptParserMixin.getTokenFromCode (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:4138:13)
+    at TypeScriptParserMixin.nextToken (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:279:10)
+    at TypeScriptParserMixin.next (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:122:10)
+    at TypeScriptParserMixin.eat (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\tokenizer\index.ts:127:12)
+    at TypeScriptParserMixin.expect (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\util.ts:156:15)
+    at TypeScriptParserMixin.jsxParseClosingElementAt (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:460:12)
+    at TypeScriptParserMixin.jsxParseElementAt (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:480:39)
+    at TypeScriptParserMixin.jsxParseElementAt (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:483:34)
+    at TypeScriptParserMixin.jsxParseElement (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:559:19)
+    at TypeScriptParserMixin.parseExprAtom (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:573:21)
+    at TypeScriptParserMixin.parseExprSubscripts (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:742:23)
+    at TypeScriptParserMixin.parseUpdate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:721:21)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:683:23)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3893:20)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:417:14)
+    at TypeScriptParserMixin.parseExprOps (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:429:23)
+    at TypeScriptParserMixin.parseMaybeConditional (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:384:23)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:301:21)
+    at fn (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3745:23)
+    at TypeScriptParserMixin.tryParse (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\util.ts:174:20)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3744:20)
+    at callback (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:257:12)
+    at TypeScriptParserMixin.allowInAnd (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:3197:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:256:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:3311:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:1825:16)
+    at TypeScriptParserMixin.parseExprAtom (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:1170:21)
+    at TypeScriptParserMixin.parseExprAtom (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\jsx\index.ts:583:22)
+    at TypeScriptParserMixin.parseExprSubscripts (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:742:23)
+    at TypeScriptParserMixin.parseUpdate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:721:21)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:683:23)
+    at TypeScriptParserMixin.parseMaybeUnary (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3893:20)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:417:14)
+    at TypeScriptParserMixin.parseExprOps (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:429:23)
+    at TypeScriptParserMixin.parseMaybeConditional (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:384:23)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:301:21)
+    at TypeScriptParserMixin.parseMaybeAssign (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3764:22)
+    at TypeScriptParserMixin.parseExpressionBase (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:226:23)
+    at callback (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:217:39)
+    at TypeScriptParserMixin.allowInAnd (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:3192:16)
+    at TypeScriptParserMixin.parseExpression (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\expression.ts:217:17)
+    at TypeScriptParserMixin.parseReturnStatement (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:1115:28)
+    at TypeScriptParserMixin.parseStatementContent (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:543:21)
+    at TypeScriptParserMixin.parseStatementContent (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\plugins\typescript\index.ts:3220:20)
+    at TypeScriptParserMixin.parseStatementLike (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:482:17)
+    at TypeScriptParserMixin.parseStatementListItem (D:\traenewfile\Book Yoga Trial Class\node_modules\@babel\parser\src\parser\statement.ts:431:17)
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[31m1 error[39m[22m in 643 ms
+→ Watching... [2026/6/15 11:10:55]
+
+assets by status 36.8 MiB [1m[32m[cached][39m[22m 14 assets
+assets by status 9.25 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 6.38 MiB
+    asset [1m[32mjs/app.81c9839b.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/taro.81c9839b.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.81c9839b.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 2.87 MiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.9c4de0f71b77cb6ffb63.hot-update.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.9c4de0f71b77cb6ffb63.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.9c4de0f71b77cb6ffb63.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.81c9839b.js[39m[22m 49.6 KiB [1m[32mruntime.9c4de0f71b77cb6ffb63.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.81c9839b.js[39m[22m 1.29 MiB [1m[32mjs/app.81c9839b.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 779 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 19.5 KiB
+  [1m./src/app.config.ts[39m[22m 7.2 KiB [1m[33m[code generated][39m[22m
+  [1m./src/pages/courses/index.tsx[39m[22m 12.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 517 ms

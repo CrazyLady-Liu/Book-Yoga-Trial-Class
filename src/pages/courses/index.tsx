@@ -113,7 +113,7 @@ const CoursesPage: React.FC = () => {
 
     if (couponFilter) {
       result = result.filter(c => {
-        if (c.price < couponFilter.minAmount && c.originalPrice < couponFilter.minAmount) {
+        if (c.price < couponFilter.minAmount) {
           return false;
         }
         if (couponFilter.scope === 'category' && couponFilter.categories?.length) {
@@ -192,19 +192,20 @@ const CoursesPage: React.FC = () => {
 
   return (
     <View className={styles.page}>
-      {couponFilter && (
-        <View className={styles.couponTipBar}>
-          <View className={styles.couponTipContent}>
-            <Text className={styles.couponTipIcon}>🎫</Text>
-            <Text className={styles.couponTipText}>
-              当前使用满{couponFilter.minAmount}减{couponFilter.couponValue}优惠券，订单满{couponFilter.minAmount}元可抵扣
-            </Text>
+      <View className={styles.stickyHeader}>
+        {couponFilter && (
+          <View className={styles.couponTipBar}>
+            <View className={styles.couponTipContent}>
+              <Text className={styles.couponTipIcon}>🎫</Text>
+              <Text className={styles.couponTipText}>
+                当前使用满{couponFilter.minAmount}减{couponFilter.couponValue}优惠券，订单满{couponFilter.minAmount}元可抵扣
+              </Text>
+            </View>
+            <Text className={styles.couponTipClose} onClick={handleDismissCouponTip}>✕</Text>
           </View>
-          <Text className={styles.couponTipClose} onClick={handleDismissCouponTip}>✕</Text>
-        </View>
-      )}
+        )}
 
-      <View className={styles.filterBar}>
+        <View className={styles.filterBar}>
         <ScrollView className={styles.categoryScroll} scrollX>
           {categories.map(cat => (
             <Text
@@ -240,6 +241,7 @@ const CoursesPage: React.FC = () => {
             <Text className={styles.sortIcon}>↕</Text>
           </View>
         </View>
+      </View>
       </View>
 
       <ScrollView className={styles.content} scrollY>
