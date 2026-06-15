@@ -327,40 +327,80 @@ export const getUserCoupons = (
   };
 };
 
-export const receiveCoupon = (userId: string, couponId: string): UserCoupon | null => {
+export type ReceiveCouponErrorCode =
+  | 'NOT_FOUND'
+  | 'NOT_ACTIVE'
+  | 'NOT_IN_TIME_RANGE'
+  | 'OUT_OF_STOCK'
+  | 'LIMIT_EXCEEDED'
+  | 'ALREADY_RECEIVED'
+  | 'UNKNOWN';
+
+export interface ReceiveCouponResult {
+  success: boolean;
+  userCoupon?: UserCoupon;
+  errorCode?: ReceiveCouponErrorCode;
+}
+
+export const receiveCoupon = (userId: string, couponId: string): ReceiveCouponResult => {
   const coupons = getStorage<Coupon[]>(COUPONS_STORAGE_KEY) || [];
   const userCoupons = getStorage<UserCoupon[]>(USER_COUPONS_STORAGE_KEY) || [];
-  
+
   const coupon = coupons.find(c => c.id === couponId);
-  if (!coupon || !coupon.isActive || coupon.stock <= 0) {
-    return null;
+  if (!coupon) {
+    return { success: false, errorCode: 'NOT_FOUND' };
   }
-  
-  const userReceivedCount = userCoupons.filter(
-    uc => uc.userId === userId && uc.couponId === couponId
-  ).length;
-  
+
+  if (!coupon.isActive) {
+    return { success: false, errorCode: 'NOT_ACTIVE' };
+  }
+
+  const now = new Date();
+  const startTime = new Date(coupon.startTime);
+  const endTime = new Date(coupon.endTime);
+  if (now < startTime || now > endTime) {
+    return { success: false, errorCode: 'NOT_IN_TIME_RANGE' };
+  }
+
+  if (coupon.stock <= 0) {
+    return { success: false, errorCode: 'OUT_OF_STOCK' };
+  }
+
+  const userReceivedList = userCoupons.filter(
+    uc => uc && uc.userId === userId && uc.couponId === couponId
+  );
+  const userReceivedCount = userReceivedList.length;
+
   if (userReceivedCount >= coupon.limitPerUser) {
-    return null;
+    return { success: false, errorCode: 'LIMIT_EXCEEDED' };
   }
-  
-  coupon.stock -= 1;
-  coupon.received += 1;
-  setStorage(COUPONS_STORAGE_KEY, coupons);
-  
-  const userCoupon: UserCoupon = {
-    id: 'uc_' + generateId(),
-    couponId: coupon.id,
-    coupon: { ...coupon },
-    userId,
-    status: 'available',
-    receiveTime: new Date().toISOString()
-  };
-  
-  userCoupons.push(userCoupon);
-  setStorage(USER_COUPONS_STORAGE_KEY, userCoupons);
-  
-  return userCoupon;
+
+  if (coupon.limitPerUser === 1 && userReceivedCount >= 1) {
+    return { success: false, errorCode: 'ALREADY_RECEIVED' };
+  }
+
+  try {
+    coupon.stock -= 1;
+    coupon.received += 1;
+    setStorage(COUPONS_STORAGE_KEY, coupons);
+
+    const userCoupon: UserCoupon = {
+      id: 'uc_' + generateId(),
+      couponId: coupon.id,
+      coupon: { ...coupon },
+      userId,
+      status: 'available',
+      receiveTime: new Date().toISOString()
+    };
+
+    userCoupons.push(userCoupon);
+    setStorage(USER_COUPONS_STORAGE_KEY, userCoupons);
+
+    return { success: true, userCoupon };
+  } catch (error) {
+    console.error('[CouponsData] receiveCoupon error:', error);
+    return { success: false, errorCode: 'UNKNOWN' };
+  }
 };
 
 export const useCoupon = (userCouponId: string, orderId: string): boolean => {

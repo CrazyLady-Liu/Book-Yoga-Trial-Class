@@ -1,10 +1,10 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import { View, Text, Button, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow, usePullDownRefresh } from '@tarojs/taro';
 import classnames from 'classnames';
 import styles from './index.module.scss';
 import { Coupon } from '@/types';
-import { getAvailableCoupons, receiveCoupon, getUserCoupons } from '@/data/coupons';
+import { getAvailableCoupons, receiveCoupon, getUserCoupons, ReceiveCouponResult, ReceiveCouponErrorCode } from '@/data/coupons';
 import { useUser } from '@/store/UserContext';
 import { showToast, navigateTo, formatDate, showModal } from '@/utils';
 import EmptyState from '@/components/EmptyState';
@@ -17,16 +17,43 @@ const COUPON_RULES = `1. 优惠券仅限在有效期内使用，过期自动作�
 6. 若订单发生退款，已使用的优惠券将不予退还；
 7. 优惠券最终解释权归本平台所有。`;
 
+const getErrorMsgByCode = (code: ReceiveCouponErrorCode): { title: string; message: string } => {
+  switch (code) {
+    case 'ALREADY_RECEIVED':
+      return { title: '领取失败', message: '您已领取过该优惠券，不可重复领取' };
+    case 'LIMIT_EXCEEDED':
+      return { title: '领取失败', message: '您已达到该优惠券的领取上限' };
+    case 'OUT_OF_STOCK':
+      return { title: '领取失败', message: '该优惠券已被领完，下次早点来哦' };
+    case 'NOT_ACTIVE':
+      return { title: '领取失败', message: '该优惠券活动已结束' };
+    case 'NOT_IN_TIME_RANGE':
+      return { title: '领取失败', message: '该优惠券不在领取时间范围内' };
+    case 'NOT_FOUND':
+      return { title: '领取失败', message: '该优惠券不存在或已下架' };
+    default:
+      return { title: '领取失败', message: '领取失败，请稍后重试' };
+  }
+};
+
 const CouponCenterPage: React.FC = () => {
   const { userInfo, isLoggedIn } = useUser();
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [receivingId, setReceivingId] = useState<string | null>(null);
+  const [receivingCouponIds, setReceivingCouponIds] = useState<Set<string>>(new Set());
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorTitle, setErrorTitle] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [claimedCouponIds, setClaimedCouponIds] = useState<Set<string>>(new Set());
+  const [receivedMapVersion, setReceivedMapVersion] = useState(0);
+
+  const pendingClaimsRef = useRef<Set<string>>(new Set());
+  const claimedRef = useRef<Set<string>>(new Set());
+
+  useEffect(() => {
+    claimedRef.current = claimedCouponIds;
+  }, [claimedCouponIds]);
 
   const userReceivedMap = useMemo(() => {
     if (!isLoggedIn || !userInfo) return new Map<string, number>();
@@ -37,16 +64,48 @@ const CouponCenterPage: React.FC = () => {
       map.set(uc.couponId, count + 1);
     });
     return map;
-  }, [isLoggedIn, userInfo]);
+  }, [isLoggedIn, userInfo, receivedMapVersion]);
 
   const loadCoupons = useCallback(() => {
     const data = getAvailableCoupons();
     setCoupons(data);
   }, []);
 
+  const initClaimedFromStorage = useCallback(() => {
+    if (!isLoggedIn || !userInfo) {
+      setClaimedCouponIds(new Set());
+      claimedRef.current = new Set();
+      return;
+    }
+    const { list } = getUserCoupons(userInfo.id);
+    const newClaimed = new Set<string>();
+    const couponCountMap = new Map<string, number>();
+    list.forEach(uc => {
+      const cid = uc.couponId;
+      couponCountMap.set(cid, (couponCountMap.get(cid) || 0) + 1);
+    });
+    couponCountMap.forEach((count, couponId) => {
+      const couponInfo = coupons.find(c => c.id === couponId);
+      const ucFromList = list.find(uc => uc.couponId === couponId);
+      const limit = couponInfo?.limitPerUser || ucFromList?.coupon.limitPerUser || 1;
+      if (count >= limit) {
+        newClaimed.add(couponId);
+      }
+    });
+    setClaimedCouponIds(newClaimed);
+    claimedRef.current = newClaimed;
+  }, [isLoggedIn, userInfo, coupons]);
+
   useDidShow(() => {
     loadCoupons();
+    initClaimedFromStorage();
   });
+
+  useEffect(() => {
+    if (isLoggedIn && userInfo && coupons.length > 0) {
+      initClaimedFromStorage();
+    }
+  }, [isLoggedIn, userInfo, coupons.length, initClaimedFromStorage]);
 
   usePullDownRefresh(() => {
     setIsRefreshing(true);
@@ -91,13 +150,24 @@ const CouponCenterPage: React.FC = () => {
 
     if (!userInfo) return;
 
-    if (claimedCouponIds.has(coupon.id)) {
+    if (pendingClaimsRef.current.has(coupon.id)) {
+      return;
+    }
+
+    if (claimedRef.current.has(coupon.id)) {
       showError('领取失败', '您已领取过该优惠券，不可重复领取');
       return;
     }
 
-    const receivedCount = userReceivedMap.get(coupon.id) || 0;
-    if (receivedCount >= coupon.limitPerUser) {
+    const freshUserCoupons = getUserCoupons(userInfo.id);
+    const freshReceivedCount = freshUserCoupons.list.filter(uc => uc.couponId === coupon.id).length;
+    if (freshReceivedCount >= coupon.limitPerUser) {
+      setClaimedCouponIds(prev => {
+        const next = new Set(prev);
+        next.add(coupon.id);
+        claimedRef.current = next;
+        return next;
+      });
       showError('领取失败', '您已达到该优惠券的领取上限');
       return;
     }
@@ -120,23 +190,50 @@ const CouponCenterPage: React.FC = () => {
       return;
     }
 
-    setReceivingId(coupon.id);
+    pendingClaimsRef.current.add(coupon.id);
+    setReceivingCouponIds(prev => new Set(prev).add(coupon.id));
 
     try {
       await new Promise(resolve => setTimeout(resolve, 500));
-      const result = receiveCoupon(userInfo.id, coupon.id);
-      if (result) {
-        setClaimedCouponIds(prev => new Set(prev).add(coupon.id));
+
+      const result: ReceiveCouponResult = receiveCoupon(userInfo.id, coupon.id);
+
+      if (result.success && result.userCoupon) {
+        const newClaimed = new Set(claimedRef.current);
+        const totalForCoupon =
+          freshUserCoupons.list.filter(uc => uc.couponId === coupon.id).length + 1;
+        if (totalForCoupon >= coupon.limitPerUser) {
+          newClaimed.add(coupon.id);
+        }
+        setClaimedCouponIds(newClaimed);
+        claimedRef.current = newClaimed;
+        setReceivedMapVersion(v => v + 1);
         showToast('领取成功！前往我的优惠券查看', 'success', 2500);
         loadCoupons();
       } else {
-        showError('领取失败', '领取失败，请稍后重试');
+        const errorInfo = getErrorMsgByCode(result.errorCode as ReceiveCouponErrorCode);
+        showError(errorInfo.title, errorInfo.message);
+
+        if (result.errorCode === 'LIMIT_EXCEEDED' || result.errorCode === 'ALREADY_RECEIVED') {
+          setClaimedCouponIds(prev => {
+            const next = new Set(prev);
+            next.add(coupon.id);
+            claimedRef.current = next;
+            return next;
+          });
+          setReceivedMapVersion(v => v + 1);
+        }
       }
     } catch (error) {
       console.error('[CouponCenter] 领取优惠券失败:', error);
       showError('领取失败', '系统异常，请稍后重试');
     } finally {
-      setReceivingId(null);
+      pendingClaimsRef.current.delete(coupon.id);
+      setReceivingCouponIds(prev => {
+        const next = new Set(prev);
+        next.delete(coupon.id);
+        return next;
+      });
     }
   };
 
@@ -199,7 +296,7 @@ const CouponCenterPage: React.FC = () => {
 
   const hasReceived = (coupon: Coupon) => {
     if (!isLoggedIn || !userInfo) return false;
-    if (claimedCouponIds.has(coupon.id)) return true;
+    if (claimedCouponIds.has(coupon.id) || claimedRef.current.has(coupon.id)) return true;
     const receivedCount = userReceivedMap.get(coupon.id) || 0;
     return receivedCount >= coupon.limitPerUser;
   };
@@ -207,6 +304,23 @@ const CouponCenterPage: React.FC = () => {
   const getReceivedCount = (coupon: Coupon) => {
     if (!isLoggedIn || !userInfo) return 0;
     return userReceivedMap.get(coupon.id) || 0;
+  };
+
+  const isButtonDisabled = (coupon: Coupon) => {
+    const received = hasReceived(coupon);
+    if (received) return true;
+    if (receivingCouponIds.has(coupon.id)) return true;
+    if (pendingClaimsRef.current.has(coupon.id)) return true;
+    return false;
+  };
+
+  const getButtonText = (coupon: Coupon) => {
+    const received = hasReceived(coupon);
+    if (receivingCouponIds.has(coupon.id) || pendingClaimsRef.current.has(coupon.id)) {
+      return '领取中...';
+    }
+    if (received) return '已领取';
+    return '立即领取';
   };
 
   return (
@@ -249,6 +363,8 @@ const CouponCenterPage: React.FC = () => {
             coupons.map(coupon => {
               const received = hasReceived(coupon);
               const receivedCount = getReceivedCount(coupon);
+              const btnDisabled = isButtonDisabled(coupon);
+              const btnText = getButtonText(coupon);
               return (
                 <View key={coupon.id} className={styles.couponCard}>
                   {received && (
@@ -283,16 +399,12 @@ const CouponCenterPage: React.FC = () => {
                           styles.receiveBtn,
                           coupon.type === 'discount' && styles.discount,
                           coupon.type === 'free' && styles.free,
-                          received && styles.received
+                          (received || btnDisabled) && styles.received
                         )}
                         onClick={() => handleReceiveCoupon(coupon)}
-                        disabled={received || receivingId === coupon.id}
+                        disabled={btnDisabled}
                       >
-                        {receivingId === coupon.id
-                          ? '领取中...'
-                          : received
-                          ? '已领取'
-                          : '立即领取'}
+                        {btnText}
                       </Button>
                     </View>
                   </View>
