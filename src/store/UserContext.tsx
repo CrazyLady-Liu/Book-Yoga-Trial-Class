@@ -76,7 +76,7 @@ export const defaultUserInfo: UserInfo = {
 
 export const mockLogin = (): UserInfo => {
   return {
-    id: 'user_' + Date.now(),
+    id: 'user_123',
     avatarUrl: 'https://picsum.photos/id/64/200/200',
     nickName: '瑜伽爱好者',
     phone: '13812345678',

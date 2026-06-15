@@ -3,6 +3,8 @@ import { generateId, getStorage, setStorage } from '@/utils';
 
 const COUPONS_STORAGE_KEY = 'available_coupons';
 const USER_COUPONS_STORAGE_KEY = 'user_coupons';
+const STORAGE_VERSION_KEY = 'coupons_data_version';
+const CURRENT_DATA_VERSION = '20260615_v2';
 
 const mockCoupons: Coupon[] = [
   {
@@ -98,6 +100,37 @@ const mockCoupons: Coupon[] = [
     received: 156,
     limitPerUser: 1,
     isActive: true
+  },
+  {
+    id: 'coupon_007',
+    name: 'VIP至尊专享券',
+    type: 'cash',
+    value: 200,
+    minAmount: 999,
+    description: '满999减200，全场通用',
+    scope: 'all',
+    startTime: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    endTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    stock: 100,
+    received: 23,
+    limitPerUser: 1,
+    isActive: true
+  },
+  {
+    id: 'coupon_008',
+    name: '高温瑜伽专享券',
+    type: 'cash',
+    value: 50,
+    minAmount: 199,
+    description: '高温瑜伽课程专享',
+    scope: 'category',
+    categories: ['高温瑜伽'],
+    startTime: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    endTime: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    stock: 200,
+    received: 45,
+    limitPerUser: 1,
+    isActive: true
   }
 ];
 
@@ -135,20 +168,39 @@ const mockUserCoupons: UserCoupon[] = [
     userId: 'user_123',
     status: 'expired',
     receiveTime: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000).toISOString()
+  },
+  {
+    id: 'user_coupon_005',
+    couponId: 'coupon_007',
+    coupon: mockCoupons[6],
+    userId: 'user_123',
+    status: 'available',
+    receiveTime: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString()
+  },
+  {
+    id: 'user_coupon_006',
+    couponId: 'coupon_008',
+    coupon: mockCoupons[7],
+    userId: 'user_123',
+    status: 'available',
+    receiveTime: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString()
   }
 ];
 
 const initCoupons = () => {
-  const stored = getStorage<Coupon[]>(COUPONS_STORAGE_KEY);
-  if (!stored) {
+  const storedVersion = getStorage<string>(STORAGE_VERSION_KEY);
+  if (storedVersion !== CURRENT_DATA_VERSION) {
     setStorage(COUPONS_STORAGE_KEY, mockCoupons);
+    setStorage(STORAGE_VERSION_KEY, CURRENT_DATA_VERSION);
+    console.log('[CouponsData] 数据版本更新，已重置优惠券库');
   }
 };
 
 const initUserCoupons = () => {
-  const stored = getStorage<UserCoupon[]>(USER_COUPONS_STORAGE_KEY);
-  if (!stored) {
+  const storedVersion = getStorage<string>(STORAGE_VERSION_KEY);
+  if (storedVersion !== CURRENT_DATA_VERSION) {
     setStorage(USER_COUPONS_STORAGE_KEY, mockUserCoupons);
+    console.log('[CouponsData] 数据版本更新，已重置用户优惠券');
   }
 };
 

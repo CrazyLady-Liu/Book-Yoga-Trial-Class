@@ -5,9 +5,10 @@ import classnames from 'classnames';
 import styles from './index.module.scss';
 import CourseCard from '@/components/CourseCard';
 import EmptyState from '@/components/EmptyState';
-import { Course } from '@/types';
+import { Course, Coupon } from '@/types';
 import { courseList } from '@/data/courses';
-import { showToast, switchTab, navigateTo } from '@/utils';
+import { getAvailableCoupons } from '@/data/coupons';
+import { showToast, switchTab, navigateTo, navigateBack } from '@/utils';
 
 const categories = [
   { key: 'all', label: '全部' },
@@ -51,6 +52,8 @@ const CoursesPage: React.FC = () => {
   const [sortBy, setSortBy] = useState('time');
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [couponFilter, setCouponFilter] = useState<CouponFilterInfo | null>(null);
+  const [showCouponRuleModal, setShowCouponRuleModal] = useState(false);
+  const [recommendCoupons, setRecommendCoupons] = useState<Coupon[]>([]);
 
   const loadData = useCallback(() => {
     console.log('[CoursesPage] 加载课程列表');
@@ -62,13 +65,28 @@ const CoursesPage: React.FC = () => {
     }
   }, []);
 
+  const loadRecommendCoupons = useCallback(() => {
+    try {
+      const allCoupons = getAvailableCoupons();
+      const generalCoupons = allCoupons.filter(c => c.scope === 'all' && c.minAmount <= 100);
+      const sorted = [...generalCoupons].sort((a, b) => a.minAmount - b.minAmount);
+      const top3 = sorted.slice(0, 3);
+      setRecommendCoupons(top3);
+    } catch (error) {
+      console.error('[CoursesPage] 加载推荐优惠券失败:', error);
+      setRecommendCoupons([]);
+    }
+  }, []);
+
   useEffect(() => {
     loadData();
-  }, [loadData]);
+    loadRecommendCoupons();
+  }, [loadData, loadRecommendCoupons]);
 
   useDidShow(() => {
     console.log('[CoursesPage] 页面显示');
     loadData();
+    loadRecommendCoupons();
   });
 
   useEffect(() => {
@@ -182,6 +200,30 @@ const CoursesPage: React.FC = () => {
     setCouponFilter(null);
   };
 
+  const handleGoCoupons = () => {
+    console.log('[CoursesPage] 返回优惠券列表');
+    navigateBack();
+  };
+
+  const handleViewCouponRule = () => {
+    console.log('[CoursesPage] 查看优惠券规则');
+    setShowCouponRuleModal(true);
+  };
+
+  const handleCloseRuleModal = () => {
+    setShowCouponRuleModal(false);
+  };
+
+  const handleGoCouponCenter = () => {
+    console.log('[CoursesPage] 跳转到领券中心');
+    navigateTo('/pages/coupon-center/index');
+  };
+
+  const handleReceiveCoupon = (coupon: Coupon) => {
+    console.log('[CoursesPage] 领取推荐优惠券:', coupon.id);
+    navigateTo('/pages/coupon-center/index');
+  };
+
   const handleCourseClick = (course: Course) => {
     let url = `/pages/booking-form/index?courseId=${course.id}`;
     if (couponFilter) {
@@ -254,6 +296,93 @@ const CoursesPage: React.FC = () => {
               />
             </View>
           ))
+        ) : couponFilter ? (
+          <View className={styles.noMatchCouponWrapper}>
+            <View className={styles.noMatchEmpty}>
+              <Text className={styles.noMatchIcon}>🎫</Text>
+              <Text className={styles.noMatchTitle}>暂无适配该优惠券的课程</Text>
+            </View>
+
+            <View className={styles.noMatchActions}>
+              <Button
+                className={classnames(styles.noMatchBtn, styles.noMatchBtnSecondary)}
+                onClick={handleGoCoupons}
+              >
+                返回优惠券列表
+              </Button>
+              <Button
+                className={classnames(styles.noMatchBtn, styles.noMatchBtnPrimary)}
+                onClick={handleViewCouponRule}
+              >
+                查看券完整规则
+              </Button>
+            </View>
+
+            {recommendCoupons.length > 0 && (
+              <View className={styles.recommendSection}>
+                <View className={styles.recommendHeader}>
+                  <Text className={styles.recommendTitle}>
+                    <Text className={styles.recommendIcon}>💎</Text>
+                    推荐通用无门槛优惠券
+                  </Text>
+                  <Text
+                    className={styles.recommendMore}
+                    onClick={handleGoCouponCenter}
+                  >
+                    更多 →
+                  </Text>
+                </View>
+                <View className={styles.recommendList}>
+                  {recommendCoupons.map(coupon => (
+                    <View key={coupon.id} className={styles.recommendCouponCard}>
+                      <View className={styles.recommendCouponLeft}>
+                        {coupon.type === 'cash' ? (
+                          <>
+                            <View className={styles.recommendAmount}>
+                              <Text className={styles.recommendCurrency}>¥</Text>
+                              <Text className={styles.recommendValue}>{coupon.value}</Text>
+                            </View>
+                            <Text className={styles.recommendCondition}>
+                              满{coupon.minAmount}可用
+                            </Text>
+                          </>
+                        ) : coupon.type === 'discount' ? (
+                          <>
+                            <View className={styles.recommendAmount}>
+                              <Text className={styles.recommendValue}>
+                                {(coupon.discount! * 10).toFixed(1)}
+                              </Text>
+                              <Text className={styles.recommendCurrency}>折</Text>
+                            </View>
+                            <Text className={styles.recommendCondition}>
+                              {coupon.minAmount > 0 ? `满${coupon.minAmount}可用` : '全场通用'}
+                            </Text>
+                          </>
+                        ) : (
+                          <>
+                            <View className={styles.recommendAmount}>
+                              <Text className={styles.recommendValue}>免费</Text>
+                            </View>
+                            <Text className={styles.recommendCondition}>体验课专享</Text>
+                          </>
+                        )}
+                      </View>
+                      <View className={styles.recommendCouponRight}>
+                        <Text className={styles.recommendCouponName}>{coupon.name}</Text>
+                        <Text className={styles.recommendCouponDesc}>{coupon.description}</Text>
+                        <Button
+                          className={styles.receiveBtn}
+                          onClick={() => handleReceiveCoupon(coupon)}
+                        >
+                          去领取
+                        </Button>
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            )}
+          </View>
         ) : (
           <EmptyState
             icon='🧘'
@@ -264,6 +393,66 @@ const CoursesPage: React.FC = () => {
           />
         )}
       </ScrollView>
+
+      {showCouponRuleModal && couponFilter && (
+        <View className={styles.modalMask} onClick={handleCloseRuleModal}>
+          <View className={styles.ruleModal} onClick={(e) => e.stopPropagation()}>
+            <View className={styles.ruleModalHeader}>
+              <Text className={styles.ruleModalTitle}>优惠券使用规则</Text>
+              <Text className={styles.ruleModalClose} onClick={handleCloseRuleModal}>✕</Text>
+            </View>
+            <ScrollView className={styles.ruleModalBody} scrollY>
+              <View className={styles.ruleItem}>
+                <Text className={styles.ruleLabel}>优惠类型</Text>
+                <Text className={styles.ruleValue}>
+                  {couponFilter.couponType === 'cash' ? '满减券' : '优惠券'}
+                </Text>
+              </View>
+              <View className={styles.ruleItem}>
+                <Text className={styles.ruleLabel}>优惠金额</Text>
+                <Text className={styles.ruleValue}>
+                  {couponFilter.couponType === 'cash'
+                    ? `满${couponFilter.minAmount}元减${couponFilter.couponValue}元`
+                    : `${couponFilter.couponValue}元`}
+                </Text>
+              </View>
+              <View className={styles.ruleItem}>
+                <Text className={styles.ruleLabel}>使用门槛</Text>
+                <Text className={styles.ruleValue}>订单金额满{couponFilter.minAmount}元可使用</Text>
+              </View>
+              <View className={styles.ruleItem}>
+                <Text className={styles.ruleLabel}>适用范围</Text>
+                <Text className={styles.ruleValue}>
+                  {couponFilter.scope === 'all'
+                    ? '全场课程通用'
+                    : couponFilter.scope === 'category'
+                      ? `指定分类可用：${couponFilter.categories?.join('、') || '无'}`
+                      : couponFilter.scope === 'course'
+                        ? '指定课程可用'
+                        : '全场通用'}
+                </Text>
+              </View>
+              <View className={styles.ruleItem}>
+                <Text className={styles.ruleLabel}>使用说明</Text>
+                <View className={styles.ruleDescList}>
+                  <Text className={styles.ruleDescText}>1. 每张优惠券限使用一次，不可叠加使用</Text>
+                  <Text className={styles.ruleDescText}>2. 不与其他优惠活动同享</Text>
+                  <Text className={styles.ruleDescText}>3. 若发生退款，优惠券不予退还</Text>
+                  <Text className={styles.ruleDescText}>4. 最终解释权归本平台所有</Text>
+                </View>
+              </View>
+            </ScrollView>
+            <View className={styles.ruleModalFooter}>
+              <Button
+                className={styles.ruleConfirmBtn}
+                onClick={handleCloseRuleModal}
+              >
+                我知道了
+              </Button>
+            </View>
+          </View>
+        </View>
+      )}
     </View>
   );
 };

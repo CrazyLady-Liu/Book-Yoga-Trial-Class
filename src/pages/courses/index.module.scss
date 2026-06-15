@@ -156,3 +156,314 @@
     opacity: 0.6;
   }
 }
+
+.noMatchCouponWrapper {
+  padding: $spacing-xl $spacing-sm;
+}
+
+.noMatchEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-xl * 2 0;
+}
+
+.noMatchIcon {
+  font-size: 120rpx;
+  margin-bottom: $spacing-lg;
+  opacity: 0.85;
+}
+
+.noMatchTitle {
+  font-size: $font-size-xl;
+  color: $color-text-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.noMatchActions {
+  display: flex;
+  gap: $spacing-md;
+  margin: 0 $spacing-sm $spacing-xl;
+}
+
+.noMatchBtn {
+  @include button-reset;
+  flex: 1;
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+.noMatchBtnSecondary {
+  background: $color-bg-card;
+  color: $color-text-primary;
+  border: 2rpx solid $color-border;
+}
+
+.noMatchBtnPrimary {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  border: none;
+}
+
+.recommendSection {
+  margin: 0 $spacing-sm;
+  padding: $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+}
+
+.recommendHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+}
+
+.recommendTitle {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.recommendIcon {
+  margin-right: $spacing-sm;
+  font-size: $font-size-xl;
+}
+
+.recommendMore {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.recommendList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.recommendCouponCard {
+  display: flex;
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.08) 0%, rgba(167, 139, 250, 0.05) 100%);
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 1rpx solid rgba(124, 92, 255, 0.15);
+}
+
+.recommendCouponLeft {
+  width: 200rpx;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -12rpx;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24rpx;
+    height: 24rpx;
+    background: $color-bg-card;
+    border-radius: $radius-round;
+  }
+}
+
+.recommendAmount {
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.recommendCurrency {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+}
+
+.recommendValue {
+  font-size: 56rpx;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+}
+
+.recommendCondition {
+  font-size: $font-size-xs;
+  opacity: 0.95;
+  margin-top: $spacing-xs;
+}
+
+.recommendCouponRight {
+  flex: 1;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-xs;
+}
+
+.recommendCouponName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.recommendCouponDesc {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.receiveBtn {
+  @include button-reset;
+  align-self: flex-start;
+  padding: $spacing-xs $spacing-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  border-radius: $radius-button;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  margin-top: $spacing-xs;
+  height: auto;
+  line-height: 1.6;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+}
+
+.modalMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: $spacing-xl;
+}
+
+.ruleModal {
+  width: 100%;
+  max-width: 640rpx;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.ruleModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+}
+
+.ruleModalTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.ruleModalClose {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  border-radius: $radius-round;
+
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.ruleModalBody {
+  flex: 1;
+  padding: $spacing-lg;
+  max-height: 60vh;
+}
+
+.ruleItem {
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ruleLabel {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-bottom: $spacing-xs;
+  font-weight: $font-weight-medium;
+}
+
+.ruleValue {
+  display: block;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.ruleDescList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.ruleDescText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.ruleModalFooter {
+  padding: $spacing-lg;
+  border-top: 1rpx solid $color-divider;
+}
+
+.ruleConfirmBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  border-radius: $radius-button;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+}

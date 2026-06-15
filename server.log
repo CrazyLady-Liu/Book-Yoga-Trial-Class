@@ -627,3 +627,357 @@ assets by status 43.3 MiB [1m[32m[cached][39m[22m 18 assets
 Entrypoint [1mapp[39m[22m 6.38 MiB = [1m[32mjs/runtime.311997f4.js[39m[22m 49.6 KiB [1m[32mjs/taro.311997f4.js[39m[22m 1.29 MiB [1m[32mjs/app.311997f4.js[39m[22m 5.05 MiB
 cached modules 5.74 MiB (javascript) 32.9 KiB (runtime) [1m[32m[cached][39m[22m 799 modules
 webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 257 ms
+→ Watching... [2026/6/15 16:00:14]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.29 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.25 MiB
+    asset [1m[32mjs/app.c0811af3.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.729da049.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.c0811af3.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.c0811af3.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 37.5 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.311997f4e1a33af2645d.hot-update.js[39m[22m 35.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.311997f4e1a33af2645d.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.311997f4e1a33af2645d.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.c0811af3.js[39m[22m 49.6 KiB [1m[32mruntime.311997f4e1a33af2645d.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.c0811af3.js[39m[22m 1.29 MiB [1m[32mjs/app.c0811af3.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/courses/index.tsx[39m[22m 12.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 5064 ms
+→ Watching... [2026/6/15 16:00:20]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.29 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.25 MiB
+    asset [1m[32mjs/app.73e46aee.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.17305df7.js[39m[22m 2.86 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.73e46aee.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.73e46aee.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 38.4 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.c0811af3906c004e0e8f.hot-update.js[39m[22m 36.5 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.c0811af3906c004e0e8f.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.c0811af3906c004e0e8f.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.73e46aee.js[39m[22m 49.6 KiB [1m[32mruntime.c0811af3906c004e0e8f.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.73e46aee.js[39m[22m 1.29 MiB [1m[32mjs/app.73e46aee.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/courses/index.tsx[39m[22m 12.6 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 768 ms
+→ Watching... [2026/6/15 16:00:37]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.35 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.28 MiB
+    asset [1m[32mjs/app.a0ef2d67.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.15ea4a09.js[39m[22m 2.89 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.a0ef2d67.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.a0ef2d67.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 68.7 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.73e46aee88b6b4bbeb34.hot-update.js[39m[22m 66.8 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.73e46aee88b6b4bbeb34.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.73e46aee88b6b4bbeb34.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.a0ef2d67.js[39m[22m 49.6 KiB [1m[32mruntime.73e46aee88b6b4bbeb34.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.a0ef2d67.js[39m[22m 1.29 MiB [1m[32mjs/app.a0ef2d67.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/courses/index.tsx[39m[22m 13.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 1174 ms
+⚠️ Warnings: 
+
+ModuleDependencyWarning: export 'getUserInfo' (imported as 'getUserInfo') was not found in '@/utils' (possible exports: formatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone)
+
+→ Watching... [2026/6/15 16:00:49]
+
+ModuleDependencyWarning: export 'getUserInfo' (imported as 'getUserInfo') was not found in '@/utils' (possible exports: formatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone)
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.32 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.28 MiB
+    asset [1m[32mjs/app.c67dde2e.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.e90b05bd.js[39m[22m 2.9 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.c67dde2e.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.c67dde2e.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 42.7 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.a0ef2d67866ffa7e7b5f.hot-update.js[39m[22m 40.8 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.a0ef2d67866ffa7e7b5f.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.a0ef2d67866ffa7e7b5f.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.c67dde2e.js[39m[22m 49.6 KiB [1m[32mruntime.a0ef2d67866ffa7e7b5f.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.c67dde2e.js[39m[22m 1.29 MiB [1m[32mjs/app.c67dde2e.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/courses/index.tsx[39m[22m 14.2 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./src/pages/courses/index.tsx[39m[22m [1m[32m264:19-30[39m[22m
+[1mexport 'getUserInfo' (imported as 'getUserInfo') was [1m[31mnot found[39m[22m[1m in '@/utils' (possible exports: [1m[32mformatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone[39m[22m[1m)[39m[22m
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[33m1 warning[39m[22m in 596 ms
+⚠️ Warnings: 
+
+ModuleDependencyWarning: export 'getUserInfo' (imported as 'getUserInfo') was not found in '@/utils' (possible exports: formatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone)
+
+→ Watching... [2026/6/15 16:01:21]
+
+ModuleDependencyWarning: export 'getUserInfo' (imported as 'getUserInfo') was not found in '@/utils' (possible exports: formatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone)
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.38 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.31 MiB
+    asset [1m[32mjs/app.8ac1cb42.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.ee161697.js[39m[22m 2.93 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.8ac1cb42.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.8ac1cb42.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 72.2 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.c67dde2e8b0783be97b9.hot-update.js[39m[22m 70.4 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.c67dde2e8b0783be97b9.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.c67dde2e8b0783be97b9.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.8ac1cb42.js[39m[22m 49.6 KiB [1m[32mruntime.c67dde2e8b0783be97b9.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.8ac1cb42.js[39m[22m 1.29 MiB [1m[32mjs/app.8ac1cb42.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/courses/index.tsx[39m[22m 23.6 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./src/pages/courses/index.tsx[39m[22m [1m[32m264:19-30[39m[22m
+[1mexport 'getUserInfo' (imported as 'getUserInfo') was [1m[31mnot found[39m[22m[1m in '@/utils' (possible exports: [1m[32mformatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone[39m[22m[1m)[39m[22m
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[33m1 warning[39m[22m in 715 ms
+⚠️ Warnings: 
+
+ModuleDependencyWarning: export 'getUserInfo' (imported as 'getUserInfo') was not found in '@/utils' (possible exports: formatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone)
+
+✖ Errors: 
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+→ Watching... [2026/6/15 16:02:28]
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.27 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.26 MiB
+    asset [1m[32mjs/app.c4d7cf32.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.b46193e5.js[39m[22m 2.88 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.c4d7cf32.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.c4d7cf32.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 3.96 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.8ac1cb4204818221e50c.hot-update.js[39m[22m 2.09 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.8ac1cb4204818221e50c.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.8ac1cb4204818221e50c.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.c4d7cf32.js[39m[22m 49.6 KiB [1m[32mruntime.8ac1cb4204818221e50c.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.c4d7cf32.js[39m[22m 1.29 MiB [1m[32mjs/app.c4d7cf32.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 779 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 3.05 KiB
+  [1m./src/pages/courses/index.module.scss[39m[22m 3.01 KiB [1m[33m[code generated][39m[22m
+  ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/courses/index.module.scss[39m[22m 39 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m [1m[31m[1 error][39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./src/pages/courses/index.tsx[39m[22m [1m[32m264:19-30[39m[22m
+[1mexport 'getUserInfo' (imported as 'getUserInfo') was [1m[31mnot found[39m[22m[1m in '@/utils' (possible exports: [1m[32mformatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone[39m[22m[1m)[39m[22m
+ @ ./src/app.config.ts 76:15-46
+
+[1m[31mERROR[39m[22m in [1m./src/pages/courses/index.module.scss[39m[22m (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/pages/courses/index.module.scss)
+[1mModule build [1m[31mfailed[39m[22m[1m (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet[39m[22m
+ @ ./src/pages/courses/index.module.scss 8:6-351 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-321 77:0-321 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/pages/courses/index.tsx 11:0-41 280:15-26 282:17-36 284:19-38 286:21-44 288:23-43 291:23-43 295:21-42 300:19-35 302:21-42 306:36-55 306:87-112 314:21-37 316:23-41 319:38-54 319:85-107 327:23-40 334:25-40 341:17-31 345:21-38 355:19-46 357:21-40 359:23-41 362:23-42 366:21-42 368:34-51 368:53-79 372:34-51 372:53-77 377:21-44 379:23-45 381:25-46 383:27-47 387:25-45 392:23-43 395:27-53 397:29-55 400:33-55 402:35-59 405:35-56 409:33-58 414:33-55 416:35-56 419:35-59 423:33-58 428:33-55 430:35-56 434:33-58 439:29-56 441:31-57 444:31-57 447:31-48 466:17-33 469:19-35 474:21-43 476:23-44 479:23-44 484:21-41 487:23-38 489:25-41 492:25-41 496:23-38 498:25-41 501:25-41 505:23-38 507:25-41 510:25-41 514:23-38 516:25-41 519:25-41 523:23-38 525:25-41 528:25-44 530:27-46 533:27-46 536:27-46 539:27-46 545:21-43 547:23-44
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[31m1 error[39m[22m and [1m[33m1 warning[39m[22m in 2609 ms
+⚠️ Warnings: 
+
+ModuleDependencyWarning: export 'getUserInfo' (imported as 'getUserInfo') was not found in '@/utils' (possible exports: formatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone)
+
+✖ Errors: 
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+→ Watching... [2026/6/15 16:03:14]
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+assets by status 43.4 MiB [1m[32m[cached][39m[22m 18 assets
+Entrypoint [1mapp[39m[22m 6.38 MiB = [1m[32mjs/runtime.c4d7cf32.js[39m[22m 49.6 KiB [1m[32mjs/taro.c4d7cf32.js[39m[22m 1.29 MiB [1m[32mjs/app.c4d7cf32.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB (javascript) 32.9 KiB (runtime) [1m[32m[cached][39m[22m 798 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/courses/index.module.scss[39m[22m 39 bytes [1m[33m[built][39m[22m [1m[31m[1 error][39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./src/pages/courses/index.tsx[39m[22m [1m[32m264:19-30[39m[22m
+[1mexport 'getUserInfo' (imported as 'getUserInfo') was [1m[31mnot found[39m[22m[1m in '@/utils' (possible exports: [1m[32mformatDate, formatDateTime, generateId, getStatusColor, getStatusText, getStorage, hideLoading, navigateBack, navigateTo, removeStorage, setStorage, showLoading, showModal, showToast, switchTab, validateName, validatePhone[39m[22m[1m)[39m[22m
+ @ ./src/app.config.ts 76:15-46
+
+[1m[31mERROR[39m[22m in [1m./src/pages/courses/index.module.scss[39m[22m (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/pages/courses/index.module.scss)
+[1mModule build [1m[31mfailed[39m[22m[1m (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet[39m[22m
+ @ ./src/pages/courses/index.module.scss 8:6-351 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-321 77:0-321 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/pages/courses/index.tsx 11:0-41 280:15-26 282:17-36 284:19-38 286:21-44 288:23-43 291:23-43 295:21-42 300:19-35 302:21-42 306:36-55 306:87-112 314:21-37 316:23-41 319:38-54 319:85-107 327:23-40 334:25-40 341:17-31 345:21-38 355:19-46 357:21-40 359:23-41 362:23-42 366:21-42 368:34-51 368:53-79 372:34-51 372:53-77 377:21-44 379:23-45 381:25-46 383:27-47 387:25-45 392:23-43 395:27-53 397:29-55 400:33-55 402:35-59 405:35-56 409:33-58 414:33-55 416:35-56 419:35-59 423:33-58 428:33-55 430:35-56 434:33-58 439:29-56 441:31-57 444:31-57 447:31-48 466:17-33 469:19-35 474:21-43 476:23-44 479:23-44 484:21-41 487:23-38 489:25-41 492:25-41 496:23-38 498:25-41 501:25-41 505:23-38 507:25-41 510:25-41 514:23-38 516:25-41 519:25-41 523:23-38 525:25-41 528:25-44 530:27-46 533:27-46 536:27-46 539:27-46 545:21-43 547:23-44
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[31m1 error[39m[22m and [1m[33m1 warning[39m[22m in 395 ms
+✖ Errors: 
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+→ Watching... [2026/6/15 16:04:19]
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.33 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.26 MiB
+    asset [1m[32mjs/app.cc3a2520.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.4f3b034e.js[39m[22m 2.88 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.cc3a2520.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.cc3a2520.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 72.2 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.c4d7cf32c4ef5d77655e.hot-update.js[39m[22m 70.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.c4d7cf32c4ef5d77655e.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.c4d7cf32c4ef5d77655e.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.cc3a2520.js[39m[22m 49.6 KiB [1m[32mruntime.c4d7cf32c4ef5d77655e.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.cc3a2520.js[39m[22m 1.29 MiB [1m[32mjs/app.cc3a2520.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 779 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 23.6 KiB
+  [1m./src/pages/courses/index.tsx[39m[22m 23.6 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/courses/index.module.scss[39m[22m 39 bytes [1m[33m[built][39m[22m [1m[31m[1 error][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/pages/courses/index.module.scss[39m[22m (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/pages/courses/index.module.scss)
+[1mModule build [1m[31mfailed[39m[22m[1m (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet[39m[22m
+ @ ./src/pages/courses/index.module.scss 8:6-351 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-321 77:0-321 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/pages/courses/index.tsx 11:0-41 280:15-26 282:17-36 284:19-38 286:21-44 288:23-43 291:23-43 295:21-42 300:19-35 302:21-42 306:36-55 306:87-112 314:21-37 316:23-41 319:38-54 319:85-107 327:23-40 334:25-40 341:17-31 345:21-38 355:19-46 357:21-40 359:23-41 362:23-42 366:21-42 368:34-51 368:53-79 372:34-51 372:53-77 377:21-44 379:23-45 381:25-46 383:27-47 387:25-45 392:23-43 395:27-53 397:29-55 400:33-55 402:35-59 405:35-56 409:33-58 414:33-55 416:35-56 419:35-59 423:33-58 428:33-55 430:35-56 434:33-58 439:29-56 441:31-57 444:31-57 447:31-48 466:17-33 469:19-35 474:21-43 476:23-44 479:23-44 484:21-41 487:23-38 489:25-41 492:25-41 496:23-38 498:25-41 501:25-41 505:23-38 507:25-41 510:25-41 514:23-38 516:25-41 519:25-41 523:23-38 525:25-41 528:25-44 530:27-46 533:27-46 536:27-46 539:27-46 545:21-43 547:23-44
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[31m1 error[39m[22m in 1191 ms
+✖ Errors: 
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+→ Watching... [2026/6/15 16:04:30]
+
+ModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.33 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.26 MiB
+    asset [1m[32mjs/app.24882481.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.005cf8a9.js[39m[22m 2.88 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.24882481.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.24882481.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 71.7 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.cc3a2520fa91749d3d8b.hot-update.js[39m[22m 69.8 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.cc3a2520fa91749d3d8b.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.cc3a2520fa91749d3d8b.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.24882481.js[39m[22m 49.6 KiB [1m[32mruntime.cc3a2520fa91749d3d8b.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.24882481.js[39m[22m 1.29 MiB [1m[32mjs/app.24882481.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 779 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 23.5 KiB
+  [1m./src/pages/courses/index.tsx[39m[22m 23.4 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/courses/index.module.scss[39m[22m 39 bytes [1m[33m[built][39m[22m [1m[31m[1 error][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/pages/courses/index.module.scss[39m[22m (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./src/pages/courses/index.module.scss)
+[1mModule build [1m[31mfailed[39m[22m[1m (from ./node_modules/sass-loader/dist/cjs.js):
+Undefined variable.
+    ╷
+168 │   padding: $spacing-xxl 0;
+    │            ^^^^^^^^^^^^
+    ╵
+  src\pages\courses\index.module.scss 168:12  root stylesheet[39m[22m
+ @ ./src/pages/courses/index.module.scss 8:6-351 22:17-24 26:7-21 52:25-39 53:36-47 53:50-64 57:6-67:7 58:54-65 58:68-82 64:42-53 64:56-70 66:21-28 77:0-321 77:0-321 78:22-29 78:33-47 78:50-64 55:4-68:5
+ @ ./src/pages/courses/index.tsx 11:0-41 274:15-26 276:17-36 278:19-38 280:21-44 282:23-43 285:23-43 289:21-42 294:19-35 296:21-42 300:36-55 300:87-112 308:21-37 310:23-41 313:38-54 313:85-107 321:23-40 328:25-40 335:17-31 339:21-38 349:19-46 351:21-40 353:23-41 356:23-42 360:21-42 362:34-51 362:53-79 366:34-51 366:53-77 371:21-44 373:23-45 375:25-46 377:27-47 381:25-45 386:23-43 389:27-53 391:29-55 394:33-55 396:35-59 399:35-56 403:33-58 408:33-55 410:35-56 413:35-59 417:33-58 422:33-55 424:35-56 428:33-58 433:29-56 435:31-57 438:31-57 441:31-48 460:17-33 463:19-35 468:21-43 470:23-44 473:23-44 478:21-41 481:23-38 483:25-41 486:25-41 490:23-38 492:25-41 495:25-41 499:23-38 501:25-41 504:25-41 508:23-38 510:25-41 513:25-41 517:23-38 519:25-41 522:25-44 524:27-46 527:27-46 530:27-46 533:27-46 539:21-43 541:23-44
+ @ ./src/app.config.ts 76:15-46
+
+webpack 5.78.0 compiled with [1m[31m1 error[39m[22m in 929 ms
+→ Watching... [2026/6/15 16:04:36]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.51 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.38 MiB
+    asset [1m[32mjs/app.647996a2.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_courses_index_tsx.52b974f4.js[39m[22m 3 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.647996a2.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.647996a2.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 128 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_courses_index_tsx.2488248149b6028b7d47.hot-update.js[39m[22m 126 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.2488248149b6028b7d47.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.2488248149b6028b7d47.hot-update.json[39m[22m 61 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.647996a2.js[39m[22m 49.6 KiB [1m[32mruntime.2488248149b6028b7d47.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.647996a2.js[39m[22m 1.29 MiB [1m[32mjs/app.647996a2.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 779 modules
+runtime modules 32.9 KiB 18 modules
+javascript modules 52.7 KiB
+  [1m./src/pages/courses/index.module.scss[39m[22m 3.01 KiB [1m[33m[code generated][39m[22m
+  ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/courses/index.module.scss[39m[22m 49.7 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 1312 ms
+→ Watching... [2026/6/15 16:04:55]
+
+assets by status 43.5 MiB [1m[32m[cached][39m[22m 18 assets
+Entrypoint [1mapp[39m[22m 6.38 MiB = [1m[32mjs/runtime.647996a2.js[39m[22m 49.6 KiB [1m[32mjs/taro.647996a2.js[39m[22m 1.29 MiB [1m[32mjs/app.647996a2.js[39m[22m 5.05 MiB
+cached modules 5.78 MiB (javascript) 32.9 KiB (runtime) [1m[32m[cached][39m[22m 799 modules
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 267 ms
