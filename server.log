@@ -422,3 +422,208 @@ javascript modules 19.5 KiB
   [1m./src/app.config.ts[39m[22m 7.2 KiB [1m[33m[code generated][39m[22m
   [1m./src/pages/courses/index.tsx[39m[22m 12.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
 webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 517 ms
+→ Watching... [2026/6/15 12:13:47]
+
+assets by status 22.7 MiB [1m[32m[cached][39m[22m 9 assets
+assets by info 20.6 MiB [1m[32m[immutable][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 20.5 MiB
+    asset [1m[32mjs/app.6575e517.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_booking-form_index_tsx.d0882608.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_orders_index_tsx.ed906cc7.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_order-detail_index_tsx.2f345b9a.js[39m[22m 2.81 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    + 4 assets
+  assets by info 91.4 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.81c9839b35cdb8dd7736.hot-update.js[39m[22m 17.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-form_index_tsx.81c9839b35cdb8dd7736.hot-update.js[39m[22m 17.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_order-detail_index_tsx.81c9839b35cdb8dd7736.hot-update.js[39m[22m 17.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_orders_index_tsx.81c9839b35cdb8dd7736.hot-update.js[39m[22m 17.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    + 3 assets
+asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.6575e517.js[39m[22m 49.6 KiB [1m[32mruntime.81c9839b35cdb8dd7736.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.6575e517.js[39m[22m 1.29 MiB [1m[32mjs/app.6575e517.js[39m[22m 5.05 MiB
+cached modules 5.72 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/data/orders.ts[39m[22m 5.88 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 1543 ms
+→ Watching... [2026/6/15 12:14:51]
+
+assets by status 22.7 MiB [1m[32m[cached][39m[22m 9 assets
+assets by info 20.6 MiB [1m[32m[immutable][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 20.5 MiB
+    asset [1m[32mjs/app.62fd8e19.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_booking-form_index_tsx.48de9139.js[39m[22m 2.88 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_orders_index_tsx.4fd7c43e.js[39m[22m 2.87 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_order-detail_index_tsx.53f7dec4.js[39m[22m 2.81 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    + 4 assets
+  assets by info 91.8 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.6575e517fea5780cfe85.hot-update.js[39m[22m 18 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-form_index_tsx.6575e517fea5780cfe85.hot-update.js[39m[22m 18 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_order-detail_index_tsx.6575e517fea5780cfe85.hot-update.js[39m[22m 18 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_orders_index_tsx.6575e517fea5780cfe85.hot-update.js[39m[22m 17.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    + 3 assets
+asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.62fd8e19.js[39m[22m 49.6 KiB [1m[32mruntime.6575e517fea5780cfe85.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.62fd8e19.js[39m[22m 1.29 MiB [1m[32mjs/app.62fd8e19.js[39m[22m 5.05 MiB
+cached modules 5.72 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/data/orders.ts[39m[22m 5.88 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 310 ms
+→ Watching... [2026/6/15 12:15:08]
+
+assets by status 22.7 MiB [1m[32m[cached][39m[22m 9 assets
+assets by info 20.8 MiB [1m[32m[immutable][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 20.6 MiB
+    asset [1m[32mjs/app.caaa0de5.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_orders_index_tsx.4aff2f57.js[39m[22m 2.9 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_booking-form_index_tsx.e4201c5c.js[39m[22m 2.88 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/src_pages_order-detail_index_tsx.ada597e4.js[39m[22m 2.83 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    + 4 assets
+  assets by info 214 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.62fd8e191176ec263073.hot-update.js[39m[22m 48 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_order-detail_index_tsx.62fd8e191176ec263073.hot-update.js[39m[22m 48 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_orders_index_tsx.62fd8e191176ec263073.hot-update.js[39m[22m 48 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_mine_index_tsx.62fd8e191176ec263073.hot-update.js[39m[22m 48 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    + 3 assets
+asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.caaa0de5.js[39m[22m 49.6 KiB [1m[32mruntime.62fd8e191176ec263073.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.caaa0de5.js[39m[22m 1.29 MiB [1m[32mjs/app.caaa0de5.js[39m[22m 5.05 MiB
+cached modules 5.72 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/data/orders.ts[39m[22m 6.49 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 444 ms
+→ Watching... [2026/6/15 12:15:43]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.34 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.26 MiB
+    asset [1m[32mjs/app.03e89645.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_booking-form_index_tsx.9f0a6bcd.js[39m[22m 2.88 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.03e89645.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.03e89645.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 80 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-form_index_tsx.caaa0de5c1d854c0af85.hot-update.js[39m[22m 78.1 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.caaa0de5c1d854c0af85.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.caaa0de5c1d854c0af85.hot-update.json[39m[22m 66 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.03e89645.js[39m[22m 49.6 KiB [1m[32mruntime.caaa0de5c1d854c0af85.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.03e89645.js[39m[22m 1.29 MiB [1m[32mjs/app.03e89645.js[39m[22m 5.05 MiB
+cached modules 5.7 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/booking-form/index.tsx[39m[22m 25.2 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 719 ms
+→ Watching... [2026/6/15 12:16:14]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.21 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.18 MiB
+    asset [1m[32mjs/app.b72b67f9.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_booking-success_index_tsx.d9f5193a.js[39m[22m 2.79 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.b72b67f9.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.b72b67f9.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 37.4 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.03e896458d3692461376.hot-update.js[39m[22m 35.5 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.03e896458d3692461376.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.03e896458d3692461376.hot-update.json[39m[22m 69 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.b72b67f9.js[39m[22m 49.6 KiB [1m[32mruntime.03e896458d3692461376.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.b72b67f9.js[39m[22m 1.29 MiB [1m[32mjs/app.b72b67f9.js[39m[22m 5.05 MiB
+cached modules 5.72 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/booking-success/index.tsx[39m[22m 10.9 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 297 ms
+→ Watching... [2026/6/15 12:16:38]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.26 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.19 MiB
+    asset [1m[32mjs/app.c0534332.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_booking-success_index_tsx.24e9367a.js[39m[22m 2.8 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.c0534332.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.c0534332.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 79.9 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_booking-success_index_tsx.b72b67f901b528ef92ff.hot-update.js[39m[22m 78 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.b72b67f901b528ef92ff.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.b72b67f901b528ef92ff.hot-update.json[39m[22m 69 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.c0534332.js[39m[22m 49.6 KiB [1m[32mruntime.b72b67f901b528ef92ff.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.c0534332.js[39m[22m 1.29 MiB [1m[32mjs/app.c0534332.js[39m[22m 5.05 MiB
+cached modules 5.7 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/booking-success/index.module.scss[39m[22m 30.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 335 ms
+→ Watching... [2026/6/15 12:17:00]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.29 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.22 MiB
+    asset [1m[32mjs/app.403d6d46.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_order-detail_index_tsx.ad054a4d.js[39m[22m 2.84 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.403d6d46.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.403d6d46.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 71.3 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_order-detail_index_tsx.c0534332c297188b3682.hot-update.js[39m[22m 69.4 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.c0534332c297188b3682.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.c0534332c297188b3682.hot-update.json[39m[22m 66 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.403d6d46.js[39m[22m 49.6 KiB [1m[32mruntime.c0534332c297188b3682.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.403d6d46.js[39m[22m 1.29 MiB [1m[32mjs/app.403d6d46.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/pages/order-detail/index.tsx[39m[22m 22.8 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 545 ms
+→ Watching... [2026/6/15 12:17:17]
+
+assets by status 34.1 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.31 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.23 MiB
+    asset [1m[32mjs/app.8d97da9c.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_order-detail_index_tsx.ab14899d.js[39m[22m 2.84 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.8d97da9c.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.8d97da9c.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 87.9 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_order-detail_index_tsx.403d6d46327d0fdaa989.hot-update.js[39m[22m 86.1 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.403d6d46327d0fdaa989.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.403d6d46327d0fdaa989.hot-update.json[39m[22m 66 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.8d97da9c.js[39m[22m 49.6 KiB [1m[32mruntime.403d6d46327d0fdaa989.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.8d97da9c.js[39m[22m 1.29 MiB [1m[32mjs/app.8d97da9c.js[39m[22m 5.05 MiB
+cached modules 5.7 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/pages/order-detail/index.module.scss[39m[22m 33.4 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 440 ms
+→ Watching... [2026/6/15 12:17:37]
+
+assets by status 34 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.32 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.29 MiB
+    asset [1m[32mjs/app.2a5c6eec.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_orders_index_tsx.dd4afe7f.js[39m[22m 2.91 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.2a5c6eec.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.2a5c6eec.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 27.8 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_orders_index_tsx.8d97da9c0bf564780e21.hot-update.js[39m[22m 25.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.8d97da9c0bf564780e21.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.8d97da9c0bf564780e21.hot-update.json[39m[22m 60 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.2a5c6eec.js[39m[22m 49.6 KiB [1m[32mruntime.8d97da9c0bf564780e21.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.2a5c6eec.js[39m[22m 1.29 MiB [1m[32mjs/app.2a5c6eec.js[39m[22m 5.05 MiB
+cached modules 5.73 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+[1m./src/components/OrderCard/index.tsx[39m[22m 7.51 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 292 ms
+→ Watching... [2026/6/15 12:17:48]
+
+assets by status 34 MiB [1m[32m[cached][39m[22m 13 assets
+assets by status 9.37 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32mjs/*.js[39m[22m 9.3 MiB
+    asset [1m[32mjs/app.311997f4.js[39m[22m 5.05 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: app)
+    asset [1m[32mjs/src_pages_orders_index_tsx.a190b022.js[39m[22m 2.91 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mjs/taro.311997f4.js[39m[22m 1.29 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: taro) (id hint: taro)
+    asset [1m[32mjs/runtime.311997f4.js[39m[22m 49.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: runtime)
+  assets by info 69.8 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_pages_orders_index_tsx.2a5c6eecc1ba950aad1e.hot-update.js[39m[22m 68 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mruntime.2a5c6eecc1ba950aad1e.hot-update.js[39m[22m 1.81 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: runtime)
+    asset [1m[32mruntime.2a5c6eecc1ba950aad1e.hot-update.json[39m[22m 60 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.44 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mapp[39m[22m 6.39 MiB = [1m[32mjs/runtime.311997f4.js[39m[22m 49.6 KiB [1m[32mruntime.2a5c6eecc1ba950aad1e.hot-update.js[39m[22m 1.81 KiB [1m[32mjs/taro.311997f4.js[39m[22m 1.29 MiB [1m[32mjs/app.311997f4.js[39m[22m 5.05 MiB
+cached modules 5.71 MiB [1m[32m[cached][39m[22m 780 modules
+runtime modules 32.9 KiB 18 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].oneOf[0].use[0]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[0]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]![1m./src/components/OrderCard/index.module.scss[39m[22m 26 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 427 ms
+→ Watching... [2026/6/15 12:18:49]
+
+assets by status 43.3 MiB [1m[32m[cached][39m[22m 18 assets
+Entrypoint [1mapp[39m[22m 6.38 MiB = [1m[32mjs/runtime.311997f4.js[39m[22m 49.6 KiB [1m[32mjs/taro.311997f4.js[39m[22m 1.29 MiB [1m[32mjs/app.311997f4.js[39m[22m 5.05 MiB
+cached modules 5.74 MiB (javascript) 32.9 KiB (runtime) [1m[32m[cached][39m[22m 799 modules
+webpack 5.78.0 compiled [1m[32msuccessfully[39m[22m in 257 ms

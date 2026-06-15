@@ -151,6 +151,22 @@
       color: $color-primary;
       font-weight: $font-weight-medium;
     }
+
+    .originalPrice {
+      color: $color-text-tertiary;
+      text-decoration: line-through;
+    }
+
+    .discountPrice {
+      color: $color-error;
+      font-weight: $font-weight-medium;
+    }
+
+    .finalPrice {
+      color: $color-primary;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-lg;
+    }
   }
 }
 

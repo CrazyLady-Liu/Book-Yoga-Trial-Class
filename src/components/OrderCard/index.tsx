@@ -88,6 +88,25 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain }) =
         </View>
       </View>
 
+      <View className={styles.priceSection}>
+        <View className={styles.priceRow}>
+          <Text className={styles.priceLabel}>原价</Text>
+          <Text className={styles.originalPrice}>¥{order.originalPrice}</Text>
+        </View>
+        {order.discountAmount > 0 && (
+          <View className={styles.priceRow}>
+            <Text className={styles.priceLabel}>
+              {order.couponName || '优惠减免'}
+            </Text>
+            <Text className={styles.discountPrice}>-¥{order.discountAmount}</Text>
+          </View>
+        )}
+        <View className={styles.priceRow}>
+          <Text className={styles.priceLabel}>实付</Text>
+          <Text className={styles.finalPrice}>¥{order.finalPrice}</Text>
+        </View>
+      </View>
+
       <View className={styles.cardFooter}>
         <Text className={styles.createTime}>创建时间: {order.createTime}</Text>
         <View className={styles.actionButtons}>

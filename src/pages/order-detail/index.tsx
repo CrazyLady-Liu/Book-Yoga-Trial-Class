@@ -298,11 +298,28 @@ const OrderDetailPage: React.FC = () => {
               <Text className={styles.label}>创建时间</Text>
               <Text className={styles.value}>{order.createTime}</Text>
             </View>
+
             <View className={styles.infoItem}>
-              <Text className={styles.label}>订单金额</Text>
-              <Text className={classnames(styles.value, styles.valueHighlight)}>
-                ¥{order.course.price === 0 ? '0' : order.course.price}
-              </Text>
+              <Text className={styles.label}>原价</Text>
+              <Text className={classnames(styles.value, styles.originalPrice)}>¥{order.originalPrice}</Text>
+            </View>
+
+            {order.discountAmount > 0 && (
+              <>
+                <View className={styles.infoItem}>
+                  <Text className={styles.label}>优惠券</Text>
+                  <Text className={styles.value}>{order.couponName || '满减优惠'}</Text>
+                </View>
+                <View className={styles.infoItem}>
+                  <Text className={styles.label}>优惠减免</Text>
+                  <Text className={classnames(styles.value, styles.discountPrice)}>-¥{order.discountAmount}</Text>
+                </View>
+              </>
+            )}
+
+            <View className={styles.infoItem}>
+              <Text className={styles.label}>实付金额</Text>
+              <Text className={classnames(styles.value, styles.finalPrice)}>¥{order.finalPrice}</Text>
             </View>
           </View>
         </View>

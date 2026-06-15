@@ -103,6 +103,31 @@ const BookingSuccessPage: React.FC = () => {
           </View>
         </View>
 
+        <View className={styles.priceCard}>
+          <Text className={styles.priceTitle}>订单金额</Text>
+          
+          <View className={styles.priceRow}>
+            <Text className={styles.priceLabel}>原价</Text>
+            <Text className={styles.originalPrice}>¥{order.originalPrice}</Text>
+          </View>
+
+          {order.discountAmount > 0 && (
+            <View className={styles.priceRow}>
+              <Text className={styles.priceLabel}>
+                {order.couponName ? `${order.couponName}` : '优惠减免'}
+              </Text>
+              <Text className={styles.discountPrice}>-¥{order.discountAmount}</Text>
+            </View>
+          )}
+
+          <View className={styles.priceDivider} />
+
+          <View className={styles.priceRow}>
+            <Text className={styles.priceLabel}>实付金额</Text>
+            <Text className={styles.finalPrice}>¥{order.finalPrice}</Text>
+          </View>
+        </View>
+
         <View className={styles.reminderSection}>
           <Text className={styles.reminderTitle}>
             <Text className={styles.reminderIcon}>⏰</Text>

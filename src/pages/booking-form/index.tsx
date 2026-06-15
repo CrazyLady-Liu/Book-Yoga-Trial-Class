@@ -238,8 +238,8 @@ const BookingFormPage: React.FC = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      const order = createOrder(course.id, formData);
-      console.log('[BookingFormPage] 预约成功, 订单号:', order.orderNo);
+      const order = createOrder(course.id, formData, selectedCoupon);
+      console.log('[BookingFormPage] 预约成功, 订单号:', order.orderNo, '优惠金额:', order.discountAmount);
 
       if (selectedCoupon) {
         const couponUsed = useCoupon(selectedCoupon.id, order.id);
@@ -261,7 +261,7 @@ const BookingFormPage: React.FC = () => {
       showToast('预约成功', 'success');
 
       setTimeout(() => {
-        navigateTo(`/pages/booking-success/index?orderId=${order.id}&discount=${priceInfo.discount}`);
+        navigateTo(`/pages/booking-success/index?orderId=${order.id}`);
       }, 1000);
     } catch (error) {
       console.error('[BookingFormPage] 预约失败:', error);

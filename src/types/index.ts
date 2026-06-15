@@ -52,6 +52,12 @@ export interface Order {
   verifyCode: string;
   isVerified: boolean;
   cancelReason?: string;
+  originalPrice: number;
+  discountAmount: number;
+  finalPrice: number;
+  couponId?: string;
+  couponName?: string;
+  discountType?: 'cash' | 'direct';
 }
 
 export type TabType = 'home' | 'courses' | 'orders' | 'mine';

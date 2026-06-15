@@ -1,5 +1,6 @@
-import { Order } from '@/types';
+import { Order, UserCoupon } from '@/types';
 import { courseList } from './courses';
+import { calculateDiscount } from './coupons';
 
 const generateOrderNo = () => {
   const timestamp = Date.now().toString();
@@ -27,7 +28,10 @@ export const mockOrders: Order[] = [
     status: 'confirmed',
     createTime: '2026-06-10 14:30:00',
     verifyCode: '123456',
-    isVerified: false
+    isVerified: false,
+    originalPrice: 199,
+    discountAmount: 0,
+    finalPrice: 199
   },
   {
     id: '2',
@@ -44,7 +48,13 @@ export const mockOrders: Order[] = [
     status: 'completed',
     createTime: '2026-06-08 10:22:33',
     verifyCode: '789012',
-    isVerified: true
+    isVerified: true,
+    originalPrice: 259,
+    discountAmount: 30,
+    finalPrice: 229,
+    couponId: 'coupon_002',
+    couponName: '会员日专享券',
+    discountType: 'cash'
   },
   {
     id: '3',
@@ -62,7 +72,13 @@ export const mockOrders: Order[] = [
     createTime: '2026-06-05 16:18:22',
     verifyCode: '345678',
     isVerified: false,
-    cancelReason: '个人时间安排冲突'
+    cancelReason: '个人时间安排冲突',
+    originalPrice: 199,
+    discountAmount: 50,
+    finalPrice: 149,
+    couponId: 'coupon_001',
+    couponName: '新人专享立减券',
+    discountType: 'cash'
   },
   {
     id: '4',
@@ -79,7 +95,10 @@ export const mockOrders: Order[] = [
     status: 'completed',
     createTime: '2026-06-11 09:15:22',
     verifyCode: '111222',
-    isVerified: true
+    isVerified: true,
+    originalPrice: 0,
+    discountAmount: 0,
+    finalPrice: 0
   },
   {
     id: '5',
@@ -96,7 +115,10 @@ export const mockOrders: Order[] = [
     status: 'completed',
     createTime: '2026-06-12 14:22:05',
     verifyCode: '333444',
-    isVerified: true
+    isVerified: true,
+    originalPrice: 0,
+    discountAmount: 0,
+    finalPrice: 0
   },
   {
     id: '6',
@@ -113,7 +135,10 @@ export const mockOrders: Order[] = [
     status: 'completed',
     createTime: '2026-06-13 15:18:33',
     verifyCode: '555666',
-    isVerified: true
+    isVerified: true,
+    originalPrice: 0,
+    discountAmount: 0,
+    finalPrice: 0
   }
 ];
 
@@ -130,8 +155,19 @@ export const getOrderById = (id: string): Order | undefined => {
   return ordersList.find(order => order.id === id);
 };
 
-export const createOrder = (courseId: string, bookingInfo: Order['bookingInfo']): Order => {
+export const createOrder = (
+  courseId: string,
+  bookingInfo: Order['bookingInfo'],
+  selectedCoupon?: UserCoupon | null
+): Order => {
   const course = courseList.find(c => c.id === courseId)!;
+  
+  const originalPrice = course.price;
+  const discountAmount = selectedCoupon
+    ? calculateDiscount(selectedCoupon.coupon, originalPrice)
+    : 0;
+  const finalPrice = Math.max(0, Math.round((originalPrice - discountAmount) * 100) / 100);
+
   const newOrder: Order = {
     id: Date.now().toString(),
     orderNo: generateOrderNo(),
@@ -141,8 +177,18 @@ export const createOrder = (courseId: string, bookingInfo: Order['bookingInfo'])
     status: 'confirmed',
     createTime: new Date().toLocaleString('zh-CN'),
     verifyCode: generateVerifyCode(),
-    isVerified: false
+    isVerified: false,
+    originalPrice,
+    discountAmount,
+    finalPrice
   };
+
+  if (selectedCoupon && discountAmount > 0) {
+    newOrder.couponId = selectedCoupon.couponId;
+    newOrder.couponName = selectedCoupon.coupon.name;
+    newOrder.discountType = selectedCoupon.coupon.type === 'cash' ? 'cash' : 'direct';
+  }
+
   ordersList.unshift(newOrder);
   
   const courseIndex = courseList.findIndex(c => c.id === courseId);
