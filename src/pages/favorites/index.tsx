@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useMemo } from 'react';
 import { View, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow, usePullDownRefresh, ITouchEvent } from '@tarojs/taro';
 import styles from './index.module.scss';
@@ -7,28 +7,19 @@ import EmptyState from '@/components/EmptyState';
 import { Course } from '@/types';
 import { useUser } from '@/store/UserContext';
 import { showToast, showModal, navigateTo, switchTab } from '@/utils';
+import { getCourseById } from '@/data/courses';
 
 const FavoritesPage: React.FC = () => {
-  const { isLoggedIn, getFavoriteCourses, toggleFavorite } = useUser();
-  const [favorites, setFavorites] = useState<Course[]>([]);
+  const { isLoggedIn, favoriteCourseIds, toggleFavorite } = useUser();
 
-  const loadData = useCallback(() => {
-    console.log('[FavoritesPage] 加载收藏课程列表');
-    try {
-      const data = getFavoriteCourses();
-      console.log('[FavoritesPage] 收藏课程数据:', data.length, '门');
-      setFavorites(data);
-    } catch (error) {
-      console.error('[FavoritesPage] 加载数据失败:', error);
-      showToast('数据加载失败', 'error');
-    }
-  }, [getFavoriteCourses]);
+  const favorites = useMemo<Course[]>(() => {
+    return favoriteCourseIds
+      .map(id => getCourseById(id))
+      .filter((course): course is Course => course !== undefined);
+  }, [favoriteCourseIds]);
 
   useDidShow(() => {
-    console.log('[FavoritesPage] 页面显示');
-    if (isLoggedIn) {
-      loadData();
-    }
+    console.log('[FavoritesPage] 页面显示, 收藏课程:', favoriteCourseIds.length, '门');
   });
 
   usePullDownRefresh(() => {
@@ -37,7 +28,6 @@ const FavoritesPage: React.FC = () => {
       return;
     }
     console.log('[FavoritesPage] 下拉刷新');
-    loadData();
     setTimeout(() => {
       Taro.stopPullDownRefresh();
       showToast('刷新成功', 'success');
@@ -54,9 +44,10 @@ const FavoritesPage: React.FC = () => {
     );
     
     if (confirmed) {
-      toggleFavorite(course.id);
-      showToast('已取消收藏', 'success');
-      loadData();
+      const isNowFavorited = toggleFavorite(course.id);
+      if (!isNowFavorited) {
+        showToast('已取消收藏', 'success');
+      }
     }
   };
 

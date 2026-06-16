@@ -13,14 +13,16 @@ const loginBenefits = [
 ];
 
 const MinePage: React.FC = () => {
-  const { userInfo, isLoggedIn, logout, getFavoriteCount } = useUser();
+  const { userInfo, isLoggedIn, logout, favoriteCourseIds } = useUser();
+
+  const favoriteCount = favoriteCourseIds.length;
 
   const menuItems = useMemo(() => [
     { icon: '📅', text: '我的预约', action: () => switchTab('/pages/orders/index'), badge: null },
-    { icon: '⭐', text: '收藏课程', action: () => navigateTo('/pages/favorites/index'), badge: getFavoriteCount() > 0 ? getFavoriteCount() : null },
+    { icon: '⭐', text: '收藏课程', action: () => navigateTo('/pages/favorites/index'), badge: favoriteCount > 0 ? favoriteCount : null },
     { icon: '🎫', text: '优惠券', action: () => navigateTo('/pages/coupons/index'), badge: null },
     { icon: '💬', text: '我的评价', action: () => showToast('功能开发中'), badge: null }
-  ], [getFavoriteCount]);
+  ], [favoriteCount]);
 
   const settingItems = [
     { icon: '⚙️', text: '账号设置', action: () => showToast('功能开发中') },
