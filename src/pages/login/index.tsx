@@ -3,7 +3,7 @@ import { View, Text, Button } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import classnames from 'classnames';
 import styles from './index.module.scss';
-import { useUser, mockLogin } from '@/store/UserContext';
+import { useUser, mockLogin, loginWithUserId, testUsers } from '@/store/UserContext';
 import { showToast, showLoading, hideLoading, navigateBack } from '@/utils';
 
 const LoginPage: React.FC = () => {
@@ -39,6 +39,30 @@ const LoginPage: React.FC = () => {
     }
   };
 
+  const handleTestLogin = async (userId: string) => {
+    if (!agreed) {
+      showToast('请先同意用户协议和隐私政策', 'none');
+      return;
+    }
+
+    const userInfo = loginWithUserId(userId);
+    if (!userInfo) {
+      showToast('账号不存在', 'error');
+      return;
+    }
+
+    showLoading('登录中...');
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    login(userInfo);
+    hideLoading();
+    showToast(`${userInfo.nickName} 登录成功`, 'success');
+    
+    setTimeout(() => {
+      navigateBack();
+    }, 800);
+  };
+
   const handleAgreementClick = () => {
     setAgreed(!agreed);
   };
@@ -61,6 +85,22 @@ const LoginPage: React.FC = () => {
           <Text className={styles.wechatIcon}>💬</Text>
           <Text>微信一键登录</Text>
         </Button>
+
+        <View className={styles.testAccounts}>
+          <Text className={styles.testTitle}>测试账号（开发用）</Text>
+          <View className={styles.testBtnList}>
+            {Object.entries(testUsers).map(([id, user]) => (
+              <Button
+                key={id}
+                className={classnames(styles.testBtn, id === 'user_123' && styles.testBtnActive)}
+                onClick={() => handleTestLogin(id)}
+              >
+                <Text className={styles.testBtnName}>{user.nickName}</Text>
+                <Text className={styles.testBtnId}>{id}</Text>
+              </Button>
+            ))}
+          </View>
+        </View>
 
         <View className={styles.phoneLogin}>
           <Text>其他登录方式：</Text>

@@ -293,6 +293,24 @@
   color: $color-text-primary;
 }
 
+.menuRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.menuBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuBadgeText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+}
+
 .menuArrow {
   font-size: $font-size-lg;
   color: $color-text-tertiary;

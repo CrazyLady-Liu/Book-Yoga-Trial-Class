@@ -292,3 +292,38 @@
   font-weight: $font-weight-semibold;
   border-radius: $radius-button;
 }
+
+.favoriteBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 $spacing-sm;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.favoriteIcon {
+  font-size: 40rpx;
+  margin-bottom: 2rpx;
+  transition: all $transition-base;
+
+  &.favorited {
+    animation: pulse 0.3s ease-in-out;
+  }
+}
+
+.favoriteText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}

@@ -92,6 +92,64 @@
   font-size: 36rpx;
 }
 
+.testAccounts {
+  margin-bottom: $spacing-lg;
+  padding: $spacing-md;
+  background: rgba($color-primary, 0.05);
+  border-radius: $radius-md;
+  border: 1rpx dashed rgba($color-primary, 0.2);
+}
+
+.testTitle {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-bottom: $spacing-sm;
+  text-align: center;
+}
+
+.testBtnList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  justify-content: center;
+}
+
+.testBtn {
+  @include button-reset;
+  flex: 1;
+  min-width: 180rpx;
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-card;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+    background: $color-bg-secondary;
+  }
+
+  &.testBtnActive {
+    border-color: $color-primary;
+    background: rgba($color-primary, 0.08);
+  }
+}
+
+.testBtnName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.testBtnId {
+  font-size: 20rpx;
+  color: $color-text-tertiary;
+}
+
 .phoneLogin {
   text-align: center;
   font-size: $font-size-sm;

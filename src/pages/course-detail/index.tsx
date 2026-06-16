@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, Image, Button, ScrollView } from '@tarojs/components';
-import Taro, { useRouter, useDidShow } from '@tarojs/taro';
+import { useRouter, useDidShow } from '@tarojs/taro';
 import classnames from 'classnames';
 import styles from './index.module.scss';
 import { Course } from '@/types';
 import { getCourseById } from '@/data/courses';
 import { useUser } from '@/store/UserContext';
-import { formatDate, showToast, showLoading, hideLoading, navigateTo, navigateBack } from '@/utils';
+import { formatDate, showToast, navigateTo, navigateBack } from '@/utils';
 
 const CourseDetailPage: React.FC = () => {
   const router = useRouter();
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn, isFavorite, toggleFavorite } = useUser();
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
+  const [favorited, setFavorited] = useState(false);
 
   const courseId = router.params.id as string;
 
@@ -48,9 +49,25 @@ const CourseDetailPage: React.FC = () => {
       const data = getCourseById(courseId);
       if (data) {
         setCourse(data);
+        setFavorited(isFavorite(courseId));
       }
     }
   });
+
+  const handleToggleFavorite = () => {
+    if (!isLoggedIn) {
+      console.log('[CourseDetailPage] 未登录，跳转登录页');
+      navigateTo('/pages/login/index');
+      return;
+    }
+
+    if (!course) return;
+
+    console.log('[CourseDetailPage] 切换收藏状态:', course.name);
+    const isNowFavorited = toggleFavorite(course.id);
+    setFavorited(isNowFavorited);
+    showToast(isNowFavorited ? '已加入收藏' : '已取消收藏', 'success');
+  };
 
   const handleBook = () => {
     if (!isLoggedIn) {
@@ -180,6 +197,12 @@ const CourseDetailPage: React.FC = () => {
       </ScrollView>
 
       <View className={styles.bottomBar}>
+        <View className={styles.favoriteBtn} onClick={handleToggleFavorite}>
+          <Text className={classnames(styles.favoriteIcon, favorited && styles.favorited)}>
+            {favorited ? '❤️' : '🤍'}
+          </Text>
+          <Text className={styles.favoriteText}>{favorited ? '已收藏' : '收藏'}</Text>
+        </View>
         <View className={styles.pricePreview}>
           <Text className={styles.pricePreviewLabel}>体验价</Text>
           <Text className={styles.pricePreviewValue}>

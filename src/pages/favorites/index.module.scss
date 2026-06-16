@@ -1,0 +1,38 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.content {
+  padding: $spacing-md $page-padding;
+}
+
+.courseList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.loginTip {
+  margin: $spacing-xl;
+  text-align: center;
+}
+
+.removeBtn {
+  @include button-reset;
+  height: $button-height-sm;
+  padding: 0 $spacing-md;
+  background: $color-error;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  border-radius: $radius-button;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.96);
+  }
+}

@@ -1,23 +1,9 @@
 import React, { useMemo } from 'react';
 import { View, Text, Button, Image, ScrollView } from '@tarojs/components';
-import classnames from 'classnames';
 import styles from './index.module.scss';
 import { useUser } from '@/store/UserContext';
 import { getOrders } from '@/data/orders';
 import { showToast, showModal, navigateTo, switchTab } from '@/utils';
-
-const menuItems = [
-  { icon: '📅', text: '我的预约', action: () => switchTab('/pages/orders/index') },
-  { icon: '⭐', text: '收藏课程', action: () => showToast('功能开发中') },
-  { icon: '🎫', text: '优惠券', action: () => navigateTo('/pages/coupons/index') },
-  { icon: '💬', text: '我的评价', action: () => showToast('功能开发中') }
-];
-
-const settingItems = [
-  { icon: '⚙️', text: '账号设置', action: () => showToast('功能开发中') },
-  { icon: '📞', text: '联系客服', action: () => showToast('功能开发中') },
-  { icon: '📖', text: '关于我们', action: () => showToast('功能开发中') }
-];
 
 const loginBenefits = [
   { icon: '📋', title: '查看预约订单', desc: '随时查看课程预约记录' },
@@ -27,7 +13,20 @@ const loginBenefits = [
 ];
 
 const MinePage: React.FC = () => {
-  const { userInfo, isLoggedIn, logout } = useUser();
+  const { userInfo, isLoggedIn, logout, getFavoriteCount } = useUser();
+
+  const menuItems = useMemo(() => [
+    { icon: '📅', text: '我的预约', action: () => switchTab('/pages/orders/index'), badge: null },
+    { icon: '⭐', text: '收藏课程', action: () => navigateTo('/pages/favorites/index'), badge: getFavoriteCount() > 0 ? getFavoriteCount() : null },
+    { icon: '🎫', text: '优惠券', action: () => navigateTo('/pages/coupons/index'), badge: null },
+    { icon: '💬', text: '我的评价', action: () => showToast('功能开发中'), badge: null }
+  ], [getFavoriteCount]);
+
+  const settingItems = [
+    { icon: '⚙️', text: '账号设置', action: () => showToast('功能开发中') },
+    { icon: '📞', text: '联系客服', action: () => showToast('功能开发中') },
+    { icon: '📖', text: '关于我们', action: () => showToast('功能开发中') }
+  ];
 
   const stats = useMemo(() => {
     if (!isLoggedIn) {
@@ -119,7 +118,14 @@ const MinePage: React.FC = () => {
                 >
                   <View className={styles.menuIcon}>{item.icon}</View>
                   <Text className={styles.menuText}>{item.text}</Text>
-                  <Text className={styles.menuArrow}>›</Text>
+                  <View className={styles.menuRight}>
+                    {item.badge !== null && (
+                      <View className={styles.menuBadge}>
+                        <Text className={styles.menuBadgeText}>({item.badge})</Text>
+                      </View>
+                    )}
+                    <Text className={styles.menuArrow}>›</Text>
+                  </View>
                 </View>
               ))}
             </View>
