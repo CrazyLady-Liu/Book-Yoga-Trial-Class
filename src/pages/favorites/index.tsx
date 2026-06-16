@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, ScrollView } from '@tarojs/components';
-import Taro, { useDidShow, usePullDownRefresh, ITouchEvent } from '@tarojs/taro';
+import Taro, { useDidShow, usePullDownRefresh } from '@tarojs/taro';
 import styles from './index.module.scss';
 import CourseCard from '@/components/CourseCard';
 import EmptyState from '@/components/EmptyState';
@@ -34,7 +34,7 @@ const FavoritesPage: React.FC = () => {
     }, 1000);
   });
 
-  const handleRemoveFavorite = async (course: Course, e: ITouchEvent) => {
+  const handleRemoveFavorite = async (course: Course, e: any) => {
     e.stopPropagation();
     console.log('[FavoritesPage] 取消收藏课程:', course.id, course.name);
     const confirmed = await showModal(

@@ -29,6 +29,7 @@ export interface Course {
   level: '初级' | '中级' | '高级';
   isHot: boolean;
   isNew: boolean;
+  isOffline: boolean;
 }
 
 export type OrderStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled';

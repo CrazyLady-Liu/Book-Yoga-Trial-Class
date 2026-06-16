@@ -7,6 +7,7 @@ interface UserContextType {
   userInfo: UserInfo | null;
   isLoggedIn: boolean;
   favoriteCourseIds: string[];
+  hasSeenFavoriteGuide: boolean;
   login: (userInfo: UserInfo) => void;
   logout: () => void;
   updateUserInfo: (info: Partial<UserInfo>) => void;
@@ -14,17 +15,20 @@ interface UserContextType {
   isFavorite: (courseId: string) => boolean;
   getFavoriteCourses: () => Course[];
   getFavoriteCount: () => number;
+  markFavoriteGuideAsSeen: () => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'user_info';
 const STORAGE_KEY_FAVORITES = 'favorite_courses';
+const STORAGE_KEY_FAVORITE_GUIDE = 'favorite_guide_seen';
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [favoriteCourseIds, setFavoriteCourseIds] = useState<string[]>([]);
+  const [hasSeenFavoriteGuide, setHasSeenFavoriteGuide] = useState(false);
 
   useEffect(() => {
     const storedUser = getStorage<UserInfo>(STORAGE_KEY);
@@ -37,6 +41,11 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (storedFavorites) {
       console.log('[UserContext] 从本地存储恢复收藏课程:', storedFavorites.length, '门');
       setFavoriteCourseIds(storedFavorites);
+    }
+    const storedGuide = getStorage<boolean>(STORAGE_KEY_FAVORITE_GUIDE);
+    if (storedGuide) {
+      console.log('[UserContext] 已查看过收藏引导');
+      setHasSeenFavoriteGuide(true);
     }
   }, []);
 
@@ -52,8 +61,10 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUserInfo(null);
     setIsLoggedIn(false);
     setFavoriteCourseIds([]);
+    setHasSeenFavoriteGuide(false);
     removeStorage(STORAGE_KEY);
     removeStorage(STORAGE_KEY_FAVORITES);
+    removeStorage(STORAGE_KEY_FAVORITE_GUIDE);
   };
 
   const updateUserInfo = (info: Partial<UserInfo>) => {
@@ -94,18 +105,26 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return favoriteCourseIds.length;
   }, [favoriteCourseIds]);
 
+  const markFavoriteGuideAsSeen = useCallback(() => {
+    console.log('[UserContext] 标记收藏引导为已查看');
+    setHasSeenFavoriteGuide(true);
+    setStorage(STORAGE_KEY_FAVORITE_GUIDE, true);
+  }, []);
+
   return (
     <UserContext.Provider value={{
       userInfo,
       isLoggedIn,
       favoriteCourseIds,
+      hasSeenFavoriteGuide,
       login,
       logout,
       updateUserInfo,
       toggleFavorite,
       isFavorite,
       getFavoriteCourses,
-      getFavoriteCount
+      getFavoriteCount,
+      markFavoriteGuideAsSeen
     }}>
       {children}
     </UserContext.Provider>

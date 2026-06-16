@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text, Image } from '@tarojs/components';
-import Taro from '@tarojs/taro';
 import classnames from 'classnames';
 import styles from './index.module.scss';
 import { Course } from '@/types';
-import { formatDate, navigateTo } from '@/utils';
+import { formatDate, navigateTo, showToast } from '@/utils';
 
 interface CourseCardProps {
   course: Course;
@@ -13,6 +12,10 @@ interface CourseCardProps {
 
 const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
   const handleClick = () => {
+    if (course.isOffline) {
+      showToast('课程已下架', 'none');
+      return;
+    }
     if (onClick) {
       onClick();
     } else {
@@ -26,7 +29,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
   };
 
   return (
-    <View className={styles.courseCard} onClick={handleClick}>
+    <View className={classnames(styles.courseCard, course.isOffline && styles.offline)} onClick={handleClick}>
       <View className={styles.coverContainer}>
         <Image
           className={styles.coverImage}
@@ -35,10 +38,13 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
           onError={handleImageError}
         />
         <View className={styles.tagContainer}>
-          {course.isHot && (
+          {course.isOffline && (
+            <Text className={classnames(styles.tag, styles.offlineTag)}>课程已下架</Text>
+          )}
+          {!course.isOffline && course.isHot && (
             <Text className={classnames(styles.tag, styles.hotTag)}>热门</Text>
           )}
-          {course.isNew && (
+          {!course.isOffline && course.isNew && (
             <Text className={classnames(styles.tag, styles.newTag)}>新课</Text>
           )}
         </View>

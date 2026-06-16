@@ -41,6 +41,10 @@
   background: rgba($color-error, 0.95);
 }
 
+.offlineTag {
+  background: rgba($color-text-tertiary, 0.95);
+}
+
 .content {
   padding: 0 $page-padding;
 }
@@ -55,12 +59,54 @@
   z-index: 10;
 }
 
+.courseNameRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
 .courseName {
+  flex: 1;
   font-size: $font-size-xxl;
   font-weight: $font-weight-semibold;
   color: $color-text-primary;
-  margin-bottom: $spacing-md;
   line-height: $line-height-tight;
+  margin: 0;
+}
+
+.headerFavoriteBtn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba($color-primary-light, 0.15) 100%);
+  border-radius: $radius-button;
+  transition: all $transition-base;
+  flex-shrink: 0;
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.85;
+  }
+}
+
+.headerFavoriteIcon {
+  font-size: 32rpx;
+  color: $color-text-tertiary;
+  transition: all $transition-base;
+
+  &.favorited {
+    color: $color-primary;
+    animation: pulse 0.3s ease-in-out;
+  }
+}
+
+.headerFavoriteText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
 }
 
 .metaRow {
@@ -293,33 +339,15 @@
   border-radius: $radius-button;
 }
 
-.favoriteBtn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 $spacing-sm;
-  transition: all $transition-base;
-
-  &:active {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-}
-
-.favoriteIcon {
-  font-size: 40rpx;
-  margin-bottom: 2rpx;
-  transition: all $transition-base;
-
-  &.favorited {
-    animation: pulse 0.3s ease-in-out;
-  }
-}
-
-.favoriteText {
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+.offlineBtn {
+  @include button-reset;
+  flex: 2;
+  height: $button-height-lg;
+  background: $color-text-tertiary;
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-button;
 }
 
 @keyframes pulse {

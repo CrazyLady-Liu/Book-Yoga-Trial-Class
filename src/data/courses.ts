@@ -22,7 +22,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '零基础友好'],
     level: '初级',
     isHot: true,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '2',
@@ -45,7 +46,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '进阶课程'],
     level: '中级',
     isHot: true,
-    isNew: true
+    isNew: true,
+    isOffline: false
   },
   {
     id: '3',
@@ -68,7 +70,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '减压放松'],
     level: '初级',
     isHot: false,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '4',
@@ -91,7 +94,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '传统瑜伽'],
     level: '高级',
     isHot: false,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '5',
@@ -114,7 +118,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '塑形减脂'],
     level: '初级',
     isHot: true,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '6',
@@ -137,7 +142,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '空中瑜伽', '热门'],
     level: '中级',
     isHot: true,
-    isNew: true
+    isNew: true,
+    isOffline: false
   },
   {
     id: '7',
@@ -160,7 +166,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '冥想放松'],
     level: '初级',
     isHot: false,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '8',
@@ -183,7 +190,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '减脂排毒'],
     level: '中级',
     isHot: false,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '9',
@@ -206,7 +214,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '亲子互动'],
     level: '初级',
     isHot: false,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '10',
@@ -229,7 +238,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '理疗康复'],
     level: '初级',
     isHot: true,
-    isNew: false
+    isNew: false,
+    isOffline: false
   },
   {
     id: '11',
@@ -252,7 +262,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '零基础友好'],
     level: '初级',
     isHot: true,
-    isNew: false
+    isNew: false,
+    isOffline: true
   },
   {
     id: '12',
@@ -275,7 +286,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '进阶课程'],
     level: '中级',
     isHot: true,
-    isNew: true
+    isNew: true,
+    isOffline: true
   },
   {
     id: '13',
@@ -298,7 +310,8 @@ export const courseList: Course[] = [
     tags: ['体验课', '空中瑜伽', '热门'],
     level: '中级',
     isHot: true,
-    isNew: true
+    isNew: true,
+    isOffline: true
   }
 ];
 

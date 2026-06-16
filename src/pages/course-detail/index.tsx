@@ -6,11 +6,11 @@ import styles from './index.module.scss';
 import { Course } from '@/types';
 import { getCourseById } from '@/data/courses';
 import { useUser } from '@/store/UserContext';
-import { formatDate, showToast, navigateTo, navigateBack } from '@/utils';
+import { formatDate, showToast, showModal, navigateTo, navigateBack } from '@/utils';
 
 const CourseDetailPage: React.FC = () => {
   const router = useRouter();
-  const { isLoggedIn, isFavorite, toggleFavorite } = useUser();
+  const { isLoggedIn, isFavorite, toggleFavorite, hasSeenFavoriteGuide, markFavoriteGuideAsSeen } = useUser();
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
   const [favorited, setFavorited] = useState(false);
@@ -25,7 +25,7 @@ const CourseDetailPage: React.FC = () => {
         const data = getCourseById(courseId);
         if (data) {
           setCourse(data);
-          console.log('[CourseDetailPage] 课程信息:', data.name);
+          console.log('[CourseDetailPage] 课程信息:', data.name, '是否下架:', data.isOffline);
         } else {
           console.error('[CourseDetailPage] 课程不存在:', courseId);
           showToast('课程不存在', 'error');
@@ -54,7 +54,7 @@ const CourseDetailPage: React.FC = () => {
     }
   });
 
-  const handleToggleFavorite = () => {
+  const handleToggleFavorite = async () => {
     if (!isLoggedIn) {
       console.log('[CourseDetailPage] 未登录，跳转登录页');
       navigateTo('/pages/login/index');
@@ -62,6 +62,19 @@ const CourseDetailPage: React.FC = () => {
     }
 
     if (!course) return;
+
+    if (!favorited && !hasSeenFavoriteGuide) {
+      const confirmed = await showModal(
+        '收藏课程',
+        '收藏后可在个人中心快速找到课程',
+        { confirmText: '知道了', cancelText: '取消', showCancel: false }
+      );
+      if (confirmed) {
+        markFavoriteGuideAsSeen();
+      } else {
+          return;
+        }
+    }
 
     console.log('[CourseDetailPage] 切换收藏状态:', course.name);
     const isNowFavorited = toggleFavorite(course.id);
@@ -77,6 +90,11 @@ const CourseDetailPage: React.FC = () => {
     }
 
     if (!course) return;
+
+    if (course.isOffline) {
+      showToast('课程已下架，无法预约', 'none');
+      return;
+    }
 
     if (course.remainingSlots <= 0) {
       showToast('名额已满', 'none');
@@ -112,10 +130,13 @@ const CourseDetailPage: React.FC = () => {
             onError={handleImageError}
           />
           <View className={styles.tagContainer}>
-            {course.isHot && (
+            {course.isOffline && (
+              <Text className={classnames(styles.tag, styles.offlineTag)}>课程已下架</Text>
+            )}
+            {!course.isOffline && course.isHot && (
               <Text className={classnames(styles.tag, styles.hotTag)}>热门</Text>
             )}
-            {course.isNew && (
+            {!course.isOffline && course.isNew && (
               <Text className={classnames(styles.tag, styles.newTag)}>新课</Text>
             )}
           </View>
@@ -123,7 +144,15 @@ const CourseDetailPage: React.FC = () => {
 
         <View className={styles.content}>
           <View className={styles.basicInfo}>
-            <Text className={styles.courseName}>{course.name}</Text>
+            <View className={styles.courseNameRow}>
+              <Text className={styles.courseName}>{course.name}</Text>
+              <View className={styles.headerFavoriteBtn} onClick={handleToggleFavorite}>
+                <Text className={classnames(styles.headerFavoriteIcon, favorited && styles.favorited)}>
+                  {favorited ? '★' : '☆'}
+                </Text>
+                <Text className={styles.headerFavoriteText}>{favorited ? '已收藏' : '收藏'}</Text>
+              </View>
+            </View>
             
             <View className={styles.metaRow}>
               <Text className={styles.levelTag}>{course.level}</Text>
@@ -197,19 +226,17 @@ const CourseDetailPage: React.FC = () => {
       </ScrollView>
 
       <View className={styles.bottomBar}>
-        <View className={styles.favoriteBtn} onClick={handleToggleFavorite}>
-          <Text className={classnames(styles.favoriteIcon, favorited && styles.favorited)}>
-            {favorited ? '❤️' : '🤍'}
-          </Text>
-          <Text className={styles.favoriteText}>{favorited ? '已收藏' : '收藏'}</Text>
-        </View>
         <View className={styles.pricePreview}>
           <Text className={styles.pricePreviewLabel}>体验价</Text>
           <Text className={styles.pricePreviewValue}>
             ¥{course.price === 0 ? '0' : course.price}
           </Text>
         </View>
-        {course.remainingSlots > 0 ? (
+        {course.isOffline ? (
+          <Button className={styles.offlineBtn} disabled>
+            课程已下架
+          </Button>
+        ) : course.remainingSlots > 0 ? (
           <Button
             className={classnames(styles.bookBtn, !isLoggedIn && styles.disabled)}
             onClick={handleBook}
