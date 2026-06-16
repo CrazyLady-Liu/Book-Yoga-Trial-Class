@@ -78,18 +78,21 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const toggleFavorite = useCallback((courseId: string): boolean => {
     console.log('[UserContext] 切换收藏状态:', courseId);
-    let isFav = false;
-    setFavoriteCourseIds(prev => {
-      const newFavorites = prev.includes(courseId)
-        ? prev.filter(id => id !== courseId)
-        : [...prev, courseId];
-      isFav = !prev.includes(courseId);
-      setStorage(STORAGE_KEY_FAVORITES, newFavorites);
-      console.log('[UserContext] 收藏状态更新:', isFav ? '已收藏' : '已取消', '共', newFavorites.length, '门');
-      return newFavorites;
-    });
-    return isFav;
-  }, []);
+    const isCurrentlyFavorited = favoriteCourseIds.includes(courseId);
+    const isNowFavorited = !isCurrentlyFavorited;
+    
+    let newFavorites: string[];
+    if (isCurrentlyFavorited) {
+      newFavorites = favoriteCourseIds.filter(id => id !== courseId);
+    } else {
+      newFavorites = [...favoriteCourseIds, courseId];
+    }
+    
+    setFavoriteCourseIds(newFavorites);
+    setStorage(STORAGE_KEY_FAVORITES, newFavorites);
+    console.log('[UserContext] 收藏状态更新:', isNowFavorited ? '已收藏' : '已取消', '共', newFavorites.length, '门');
+    return isNowFavorited;
+  }, [favoriteCourseIds]);
 
   const isFavorite = useCallback((courseId: string): boolean => {
     return favoriteCourseIds.includes(courseId);

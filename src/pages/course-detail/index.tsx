@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { View, Text, Image, Button, ScrollView } from '@tarojs/components';
 import { useRouter, useDidShow } from '@tarojs/taro';
 import classnames from 'classnames';
@@ -10,12 +10,15 @@ import { formatDate, showToast, showModal, navigateTo, navigateBack } from '@/ut
 
 const CourseDetailPage: React.FC = () => {
   const router = useRouter();
-  const { isLoggedIn, isFavorite, toggleFavorite, hasSeenFavoriteGuide, markFavoriteGuideAsSeen } = useUser();
+  const { isLoggedIn, favoriteCourseIds, toggleFavorite, hasSeenFavoriteGuide, markFavoriteGuideAsSeen } = useUser();
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
-  const [favorited, setFavorited] = useState(false);
 
   const courseId = router.params.id as string;
+
+  const favorited = useMemo(() => {
+    return favoriteCourseIds.includes(courseId);
+  }, [favoriteCourseIds, courseId]);
 
   const loadData = useCallback(() => {
     console.log('[CourseDetailPage] 加载课程详情, ID:', courseId);
@@ -49,7 +52,6 @@ const CourseDetailPage: React.FC = () => {
       const data = getCourseById(courseId);
       if (data) {
         setCourse(data);
-        setFavorited(isFavorite(courseId));
       }
     }
   });
@@ -72,13 +74,13 @@ const CourseDetailPage: React.FC = () => {
       if (confirmed) {
         markFavoriteGuideAsSeen();
       } else {
-          return;
-        }
+        return;
+      }
     }
 
-    console.log('[CourseDetailPage] 切换收藏状态:', course.name);
+    console.log('[CourseDetailPage] 切换收藏状态:', course.name, '当前:', favorited ? '已收藏' : '未收藏');
     const isNowFavorited = toggleFavorite(course.id);
-    setFavorited(isNowFavorited);
+    console.log('[CourseDetailPage] 切换后:', isNowFavorited ? '已收藏' : '已取消');
     showToast(isNowFavorited ? '已加入收藏' : '已取消收藏', 'success');
   };
 
