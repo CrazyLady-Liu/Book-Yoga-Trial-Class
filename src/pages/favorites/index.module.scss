@@ -4,16 +4,124 @@
   min-height: 100vh;
   background: $color-bg-page;
   padding-bottom: 120rpx;
+
+  &.batchMode {
+    padding-bottom: 0;
+  }
+}
+
+.batchActionBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding calc(env(safe-area-inset-top) + #{$spacing-md});
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.batchActionLeft {
+  display: flex;
+  align-items: center;
+}
+
+.batchActionRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.batchActionBtn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-button;
+  background: $color-bg-secondary;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.96);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.deleteBtn {
+    background: $color-error;
+
+    .batchActionText {
+      color: $color-text-white;
+    }
+  }
+}
+
+.batchActionIcon {
+  font-size: $font-size-lg;
+  color: $color-primary;
+}
+
+.batchActionText {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
 }
 
 .content {
   padding: $spacing-md $page-padding;
+
+  &.batchContent {
+    padding-top: calc(env(safe-area-inset-top) + 120rpx + #{$spacing-md});
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.headerTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.manageBtn {
+  padding: $spacing-sm $spacing-md;
+  background: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba($color-primary-light, 0.15) 100%);
+  border-radius: $radius-button;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.96);
+  }
+}
+
+.manageBtnText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
 }
 
 .courseList {
   display: flex;
   flex-direction: column;
   gap: $spacing-md;
+}
+
+.courseItem {
+  position: relative;
 }
 
 .loginTip {

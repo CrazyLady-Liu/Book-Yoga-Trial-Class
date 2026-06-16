@@ -8,10 +8,19 @@ import { formatDate, navigateTo, showToast } from '@/utils';
 interface CourseCardProps {
   course: Course;
   onClick?: () => void;
+  batchMode?: boolean;
+  isSelected?: boolean;
+  onSelect?: (courseId: string) => void;
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
-  const handleClick = () => {
+const CourseCard: React.FC<CourseCardProps> = ({ course, onClick, batchMode = false, isSelected = false, onSelect }) => {
+  const handleCardClick = () => {
+    if (batchMode) {
+      if (onSelect) {
+        onSelect(course.id);
+      }
+      return;
+    }
     if (course.isOffline) {
       showToast('课程已下架', 'none');
       return;
@@ -24,13 +33,25 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
     }
   };
 
+  const handleCheckboxClick = (e: any) => {
+    e.stopPropagation();
+    if (onSelect) {
+      onSelect(course.id);
+    }
+  };
+
   const handleImageError = () => {
     console.error('[CourseCard] 图片加载失败:', course.coverImage);
   };
 
   return (
-    <View className={classnames(styles.courseCard, course.isOffline && styles.offline)} onClick={handleClick}>
+    <View className={classnames(styles.courseCard, course.isOffline && styles.offline, batchMode && styles.batchMode, isSelected && styles.selected)} onClick={handleCardClick}>
       <View className={styles.coverContainer}>
+        {batchMode && (
+          <View className={classnames(styles.checkbox, isSelected && styles.checkboxSelected)} onClick={handleCheckboxClick}>
+            {isSelected && <Text className={styles.checkboxIcon}>✓</Text>}
+          </View>
+        )}
         <Image
           className={styles.coverImage}
           src={course.coverImage}
