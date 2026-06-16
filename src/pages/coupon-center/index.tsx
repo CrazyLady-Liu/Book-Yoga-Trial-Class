@@ -36,6 +36,11 @@ const getErrorMsgByCode = (code: ReceiveCouponErrorCode): { title: string; messa
   }
 };
 
+interface BatchClaimResult {
+  success: string[];
+  failed: { couponId: string; couponName: string; errorCode: ReceiveCouponErrorCode }[];
+}
+
 const CouponCenterPage: React.FC = () => {
   const { userInfo, isLoggedIn } = useUser();
   const [coupons, setCoupons] = useState<Coupon[]>([]);
@@ -43,13 +48,17 @@ const CouponCenterPage: React.FC = () => {
   const [receivingCouponIds, setReceivingCouponIds] = useState<Set<string>>(new Set());
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [showBatchResultModal, setShowBatchResultModal] = useState(false);
+  const [batchResult, setBatchResult] = useState<BatchClaimResult | null>(null);
   const [errorTitle, setErrorTitle] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [claimedCouponIds, setClaimedCouponIds] = useState<Set<string>>(new Set());
   const [receivedMapVersion, setReceivedMapVersion] = useState(0);
+  const [isBatchClaiming, setIsBatchClaiming] = useState(false);
 
   const pendingClaimsRef = useRef<Set<string>>(new Set());
   const claimedRef = useRef<Set<string>>(new Set());
+  const batchClaimingRef = useRef(false);
 
   useEffect(() => {
     claimedRef.current = claimedCouponIds;
@@ -309,6 +318,7 @@ const CouponCenterPage: React.FC = () => {
   const isButtonDisabled = (coupon: Coupon) => {
     const received = hasReceived(coupon);
     if (received) return true;
+    if (isBatchClaiming) return true;
     if (receivingCouponIds.has(coupon.id)) return true;
     if (pendingClaimsRef.current.has(coupon.id)) return true;
     return false;
@@ -316,11 +326,161 @@ const CouponCenterPage: React.FC = () => {
 
   const getButtonText = (coupon: Coupon) => {
     const received = hasReceived(coupon);
+    if (isBatchClaiming) return '领取中...';
     if (receivingCouponIds.has(coupon.id) || pendingClaimsRef.current.has(coupon.id)) {
       return '领取中...';
     }
     if (received) return '已领取';
     return '立即领取';
+  };
+
+  const claimableCoupons = useMemo<Coupon[]>(() => {
+    if (!isLoggedIn || !userInfo) return [];
+    const now = new Date();
+    return coupons.filter(coupon => {
+      if (claimedCouponIds.has(coupon.id)) return false;
+      if (!coupon.isActive || coupon.stock <= 0) return false;
+      const couponStart = new Date(coupon.startTime);
+      const couponEnd = new Date(coupon.endTime);
+      if (now < couponStart || now > couponEnd) return false;
+      const receivedCount = userReceivedMap.get(coupon.id) || 0;
+      if (receivedCount >= coupon.limitPerUser) return false;
+      return true;
+    });
+  }, [coupons, isLoggedIn, userInfo, claimedCouponIds, userReceivedMap]);
+
+  const shouldShowClaimAll = claimableCoupons.length >= 2;
+
+  const handleCloseBatchResultModal = () => {
+    setShowBatchResultModal(false);
+    setBatchResult(null);
+  };
+
+  const handleClaimAll = async () => {
+    if (!isLoggedIn) {
+      const confirmed = await showModal(
+        '登录提示',
+        '登录后即可领取优惠券，是否立即登录？',
+        { confirmText: '立即登录', cancelText: '再想想' }
+      );
+      if (confirmed) {
+        navigateTo('/pages/login/index');
+      }
+      return;
+    }
+
+    if (!userInfo) return;
+    if (batchClaimingRef.current || isBatchClaiming) return;
+    if (claimableCoupons.length < 2) return;
+
+    batchClaimingRef.current = true;
+    setIsBatchClaiming(true);
+
+    const successIds: string[] = [];
+    const failedItems: BatchClaimResult['failed'] = [];
+
+    for (const coupon of claimableCoupons) {
+      if (pendingClaimsRef.current.has(coupon.id)) continue;
+      if (claimedRef.current.has(coupon.id)) {
+        failedItems.push({ couponId: coupon.id, couponName: coupon.name, errorCode: 'ALREADY_RECEIVED' });
+        continue;
+      }
+
+      pendingClaimsRef.current.add(coupon.id);
+      setReceivingCouponIds(prev => new Set(prev).add(coupon.id));
+
+      try {
+        await new Promise(resolve => setTimeout(resolve, 200));
+
+        const freshUserCoupons = getUserCoupons(userInfo.id);
+        const freshReceivedCount = freshUserCoupons.list.filter(uc => uc.couponId === coupon.id).length;
+        if (freshReceivedCount >= coupon.limitPerUser) {
+          failedItems.push({ couponId: coupon.id, couponName: coupon.name, errorCode: 'LIMIT_EXCEEDED' });
+          const next = new Set(claimedRef.current);
+          next.add(coupon.id);
+          setClaimedCouponIds(next);
+          claimedRef.current = next;
+          continue;
+        }
+
+        const result: ReceiveCouponResult = receiveCoupon(userInfo.id, coupon.id);
+
+        if (result.success && result.userCoupon) {
+          successIds.push(coupon.id);
+          const newClaimed = new Set(claimedRef.current);
+          const totalForCoupon = freshReceivedCount + 1;
+          if (totalForCoupon >= coupon.limitPerUser) {
+            newClaimed.add(coupon.id);
+          }
+          setClaimedCouponIds(newClaimed);
+          claimedRef.current = newClaimed;
+        } else {
+          failedItems.push({
+            couponId: coupon.id,
+            couponName: coupon.name,
+            errorCode: (result.errorCode || 'UNKNOWN') as ReceiveCouponErrorCode
+          });
+          if (result.errorCode === 'LIMIT_EXCEEDED' || result.errorCode === 'ALREADY_RECEIVED') {
+            const next = new Set(claimedRef.current);
+            next.add(coupon.id);
+            setClaimedCouponIds(next);
+            claimedRef.current = next;
+          }
+        }
+      } catch (error) {
+        console.error('[CouponCenter] 批量领取失败:', coupon.id, error);
+        failedItems.push({ couponId: coupon.id, couponName: coupon.name, errorCode: 'UNKNOWN' });
+      } finally {
+        pendingClaimsRef.current.delete(coupon.id);
+        setReceivingCouponIds(prev => {
+          const next = new Set(prev);
+          next.delete(coupon.id);
+          return next;
+        });
+      }
+    }
+
+    setReceivedMapVersion(v => v + 1);
+    loadCoupons();
+
+    const finalResult: BatchClaimResult = { success: successIds, failed: failedItems };
+    setBatchResult(finalResult);
+    setShowBatchResultModal(true);
+
+    if (successIds.length > 0 && failedItems.length === 0) {
+      showToast(`已领取${successIds.length}张优惠券！`, 'success', 2500);
+    }
+
+    batchClaimingRef.current = false;
+    setIsBatchClaiming(false);
+  };
+
+  const getBatchResultContent = (result: BatchClaimResult): { title: string; content: string } => {
+    const { success, failed } = result;
+    if (success.length > 0 && failed.length === 0) {
+      return {
+        title: '🎉 全部领取成功',
+        content: `恭喜！您已成功领取${success.length}张优惠券，可前往「我的优惠券」查看使用。`
+      };
+    }
+    if (success.length === 0 && failed.length > 0) {
+      const failReasons = failed.map(f => {
+        const msg = getErrorMsgByCode(f.errorCode);
+        return `· ${f.couponName}：${msg.message}`;
+      }).join('\n');
+      return {
+        title: '领取失败',
+        content: failReasons
+      };
+    }
+    const failReasons = failed.map(f => {
+      const msg = getErrorMsgByCode(f.errorCode);
+      return `· ${f.couponName}：${msg.message}`;
+    }).join('\n');
+    return {
+      title: '部分领取成功',
+      content: `成功领取 ${success.length} 张，失败 ${failed.length} 张：\n${failReasons}`
+    };
   };
 
   return (
@@ -354,10 +514,27 @@ const CouponCenterPage: React.FC = () => {
         )}
 
         <View className={styles.section}>
-          <Text className={styles.sectionTitle}>
-            <Text className={styles.icon}>🔥</Text>
-            热门优惠券
-          </Text>
+          <View className={styles.sectionHeader}>
+            <Text className={styles.sectionTitle}>
+              <Text className={styles.icon}>🔥</Text>
+              热门优惠券
+            </Text>
+            {shouldShowClaimAll && (
+              <Button
+                className={classnames(
+                  styles.claimAllBtn,
+                  isBatchClaiming && styles.claimAllBtnDisabled
+                )}
+                onClick={handleClaimAll}
+                disabled={isBatchClaiming}
+              >
+                {isBatchClaiming
+                  ? '一键领取中...'
+                  : `一键领取全部可领券（${claimableCoupons.length}张）`
+                }
+              </Button>
+            )}
+          </View>
 
           {coupons.length > 0 ? (
             coupons.map(coupon => {
@@ -454,6 +631,36 @@ const CouponCenterPage: React.FC = () => {
             </View>
             <View className={styles.modalFooter}>
               <Button className={styles.modalConfirmBtn} onClick={handleCloseErrorModal}>
+                确定
+              </Button>
+            </View>
+          </View>
+        </View>
+      )}
+
+      {showBatchResultModal && batchResult && (
+        <View className={styles.modalOverlay} onClick={handleCloseBatchResultModal}>
+          <View className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <View className={styles.modalHeader}>
+              <Text className={styles.modalTitle}>{getBatchResultContent(batchResult).title}</Text>
+              <Text className={styles.modalClose} onClick={handleCloseBatchResultModal}>×</Text>
+            </View>
+            <ScrollView className={styles.modalBody} scrollY>
+              <Text className={styles.modalText}>{getBatchResultContent(batchResult).content}</Text>
+            </ScrollView>
+            <View className={styles.modalFooter}>
+              {batchResult.success.length > 0 && (
+                <Button className={styles.modalSecondaryBtn} onClick={handleGoToMyCoupons}>
+                  查看我的优惠券
+                </Button>
+              )}
+              <Button
+                className={classnames(
+                  styles.modalConfirmBtn,
+                  batchResult.success.length === 0 && styles.modalConfirmBtnFull
+                )}
+                onClick={handleCloseBatchResultModal}
+              >
                 确定
               </Button>
             </View>
