@@ -10,6 +10,188 @@
   height: 100%;
 }
 
+.tipBanner {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: linear-gradient(135deg, rgba($color-primary, 0.08) 0%, rgba($color-primary-light, 0.12) 100%);
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-md;
+  border: 2rpx solid rgba($color-primary, 0.15);
+}
+
+.tipIcon {
+  font-size: 48rpx;
+  flex-shrink: 0;
+}
+
+.tipContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.tipTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+.tipDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.tabBar {
+  display: flex;
+  align-items: center;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-xs;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.tabItem {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-sm 0;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+
+  &.active {
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    color: $color-text-white;
+    font-weight: $font-weight-semibold;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.tabBadge {
+  min-width: 36rpx;
+  height: 36rpx;
+  padding: 0 10rpx;
+  background: $color-error;
+  color: #fff;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.pendingList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.pendingCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  position: relative;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.995);
+  }
+}
+
+.pendingBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $color-error;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: $spacing-xs $spacing-md;
+  border-bottom-left-radius: $radius-md;
+  z-index: 1;
+}
+
+.pendingCardContent {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+}
+
+.pendingCover {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  background: $color-bg-secondary;
+  object-fit: cover;
+}
+
+.pendingInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-sm;
+}
+
+.pendingCourseName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.pendingMeta {
+  display: flex;
+  align-items: center;
+}
+
+.pendingMetaText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.pendingCardFooter {
+  padding: 0 $spacing-lg $spacing-lg;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reviewBtn {
+  @include button-reset;
+  min-width: 200rpx;
+  height: $button-height-md;
+  padding: 0 $spacing-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-button;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
+}
+
 .reviewList {
   display: flex;
   flex-direction: column;
@@ -292,6 +474,44 @@
   padding: $spacing-lg;
 }
 
+.reviewCourseInfo {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-secondary;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-lg;
+}
+
+.reviewCourseCover {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.reviewCourseDetail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-xs;
+}
+
+.reviewCourseName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.reviewCourseMeta {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
 .formSection {
   margin-bottom: $spacing-lg;
 
@@ -312,6 +532,12 @@
   display: flex;
   align-items: center;
   gap: $spacing-md;
+}
+
+.ratingScore {
+  font-size: $font-size-lg;
+  color: #FFB800;
+  font-weight: $font-weight-semibold;
 }
 
 .tagOptions {
@@ -351,6 +577,14 @@
   color: $color-text-primary;
   line-height: $line-height-normal;
   box-sizing: border-box;
+}
+
+.textCount {
+  display: block;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+  text-align: right;
 }
 
 .imageUploader {
