@@ -12,6 +12,7 @@ export default defineAppConfig({
     'pages/coupons/index',
     'pages/coupon-center/index',
     'pages/favorites/index',
+    'pages/my-reviews/index',
     'pages/index/index'
   ],
   window: {

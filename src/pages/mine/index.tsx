@@ -21,7 +21,7 @@ const MinePage: React.FC = () => {
     { icon: '📅', text: '我的预约', action: () => switchTab('/pages/orders/index'), badge: null },
     { icon: '⭐', text: '收藏课程', action: () => navigateTo('/pages/favorites/index'), badge: favoriteCount > 0 ? favoriteCount : null },
     { icon: '🎫', text: '优惠券', action: () => navigateTo('/pages/coupons/index'), badge: null },
-    { icon: '💬', text: '我的评价', action: () => showToast('功能开发中'), badge: null }
+    { icon: '💬', text: '我的评价', action: () => navigateTo('/pages/my-reviews/index'), badge: null }
   ], [favoriteCount]);
 
   const settingItems = [

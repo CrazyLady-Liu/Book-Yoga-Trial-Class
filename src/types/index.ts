@@ -102,3 +102,40 @@ export interface UserCoupon {
   usedTime?: string;
   orderId?: string;
 }
+
+export type CourseType = '私教课' | '团课' | '体验课';
+
+export const RECOMMEND_TAGS = [
+  '老师专业',
+  '环境干净',
+  '节奏舒缓',
+  '氛围很好',
+  '收获满满',
+  '值得推荐',
+  '性价比高',
+  '设施完善'
+] as const;
+
+export type RecommendTag = typeof RECOMMEND_TAGS[number];
+
+export interface ReviewCourseInfo {
+  id: string;
+  name: string;
+  coverImage: string;
+  courseType: CourseType;
+  classDate: string;
+  teacherName: string;
+}
+
+export interface Review {
+  id: string;
+  userId: string;
+  orderId: string;
+  course: ReviewCourseInfo;
+  rating: 1 | 2 | 3 | 4 | 5;
+  recommendTags: RecommendTag[];
+  content: string;
+  images: string[];
+  createTime: string;
+  updateTime: string;
+}
