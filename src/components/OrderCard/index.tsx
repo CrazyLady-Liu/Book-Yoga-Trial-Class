@@ -5,14 +5,16 @@ import styles from './index.module.scss';
 import { Order } from '@/types';
 import { formatDate, getStatusText, navigateTo } from '@/utils';
 import { getCourseById } from '@/data/courses';
+import { isOrderReviewed } from '@/data/reviews';
 
 interface OrderCardProps {
   order: Order;
   onCancel?: () => void;
   onBookAgain?: (order: Order) => void;
+  onReview?: (order: Order) => void;
 }
 
-const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain }) => {
+const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain, onReview }) => {
   const handleCardClick = () => {
     console.log('[OrderCard] 点击订单:', order.orderNo);
     navigateTo(`/pages/order-detail/index?id=${order.id}`);
@@ -47,6 +49,13 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain }) =
     }
     if (onBookAgain) {
       onBookAgain(order);
+    }
+  };
+
+  const handleReviewClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onReview) {
+      onReview(order);
     }
   };
 
@@ -126,27 +135,37 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onCancel, onBookAgain }) =
             </>
           )}
           {order.status === 'completed' && (
-            isCourseFull() ? (
-              <View className={styles.btnTooltipWrapper}>
+            <>
+              {!isOrderReviewed(order.id) && (
                 <Button
-                  className={classnames(styles.btn, styles.btnOutline, styles.btnDisabled)}
-                  disabled
+                  className={classnames(styles.btn, styles.btnReview)}
+                  onClick={handleReviewClick}
+                >
+                  去评价
+                </Button>
+              )}
+              {isCourseFull() ? (
+                <View className={styles.btnTooltipWrapper}>
+                  <Button
+                    className={classnames(styles.btn, styles.btnOutline, styles.btnDisabled)}
+                    disabled
+                  >
+                    再次预约
+                  </Button>
+                  <View className={styles.tooltip}>
+                    <View className={styles.tooltipArrow} />
+                    <Text className={styles.tooltipText}>本期课程名额已满，可查看其他排期</Text>
+                  </View>
+                </View>
+              ) : (
+                <Button
+                  className={classnames(styles.btn, styles.btnOutline)}
+                  onClick={handleBookAgainClick}
                 >
                   再次预约
                 </Button>
-                <View className={styles.tooltip}>
-                  <View className={styles.tooltipArrow} />
-                  <Text className={styles.tooltipText}>本期课程名额已满，可查看其他排期</Text>
-                </View>
-              </View>
-            ) : (
-              <Button
-                className={classnames(styles.btn, styles.btnOutline)}
-                onClick={handleBookAgainClick}
-              >
-                再次预约
-              </Button>
-            )
+              )}
+            </>
           )}
         </View>
       </View>

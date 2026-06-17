@@ -184,6 +184,12 @@
   border: none;
 }
 
+.btnReview {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-white;
+  border: none;
+}
+
 .btnDisabled {
   background: $color-bg-page;
   color: $color-text-disabled;

@@ -345,6 +345,10 @@ export const formatReviewTime = (dateStr: string): string => {
 
 export const REVIEW_REWARD_COUPON_ID = 'coupon_010';
 
+export const isOrderReviewed = (orderId: string): boolean => {
+  return reviewsList.some(review => review.orderId === orderId);
+};
+
 export const getPendingReviewOrders = (userId: string): Order[] => {
   const allOrders = getAllOrders();
   const userReviews = getUserReviews(userId);
