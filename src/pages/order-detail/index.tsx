@@ -7,6 +7,7 @@ import { Order, Review, RecommendTag, RECOMMEND_TAGS, CourseType } from '@/types
 import { getOrderById, cancelOrder, verifyOrder } from '@/data/orders';
 import { getCourseById } from '@/data/courses';
 import { isOrderReviewed, createReviewWithReward } from '@/data/reviews';
+import { useUser } from '@/store/UserContext';
 import {
   formatDate,
   getStatusText,
@@ -34,6 +35,7 @@ interface ReviewFormState {
 
 const OrderDetailPage: React.FC = () => {
   const router = useRouter();
+  const { userInfo } = useUser();
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
   const [showReviewModal, setShowReviewModal] = useState(false);
@@ -258,7 +260,7 @@ const OrderDetailPage: React.FC = () => {
   };
 
   const handleSubmitReview = () => {
-    if (!order) return;
+    if (!order || !userInfo) return;
 
     if (reviewForm.rating === 0) {
       showToast('请选择星级评分');
@@ -273,7 +275,7 @@ const OrderDetailPage: React.FC = () => {
     const courseType = getCourseTypeFromTags(course.tags);
 
     const { review, couponReward } = createReviewWithReward({
-      userId: 'user_001',
+      userId: userInfo.id,
       orderId: order.id,
       course: {
         id: course.id,

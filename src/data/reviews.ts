@@ -63,37 +63,6 @@ export const mockReviews: Review[] = [
     updateTime: '2026-06-12 18:22:00'
   },
   {
-    id: 'review_003',
-    userId: 'user_001',
-    orderId: '5',
-    course: buildCourseInfo(11, '体验课'),
-    rating: 4,
-    recommendTags: ['节奏舒缓', '氛围很好', '设施完善'],
-    content: '流瑜伽的节奏刚刚好，不会太快也不会太慢。中间有几个体式做不到位，老师都过来帮忙调整了。唯一有点小遗憾是教室稍微有点小，人多的时候感觉有点挤。总体还是很满意的，会继续来。',
-    images: [],
-    createTime: '2026-06-13 20:15:00',
-    updateTime: '2026-06-14 09:30:00'
-  },
-  {
-    id: 'review_004',
-    userId: 'user_001',
-    orderId: '6',
-    course: buildCourseInfo(12, '私教课'),
-    rating: 5,
-    recommendTags: ['老师专业', '环境干净', '性价比高', '收获满满', '值得推荐'],
-    content: '第一次尝试空中瑜伽私教课，体验感满分！一对一的教学真的很有针对性，周老师根据我的身体情况设计了专属的课程内容。吊床的感觉很奇妙，在上面做拉伸比在垫子上深入很多，尤其是脊柱的放松效果特别好。本来还有点紧张害怕，老师一直在旁边保护和引导，很快就放松下来了。一个小时下来，感觉整个人都轻盈了，颈椎也舒服了很多。强烈推荐大家尝试空中瑜伽，真的是不一样的体验！私教课虽然价格稍高，但真的物超所值，准备办个私教卡长期练习了。',
-    images: [
-      'https://picsum.photos/id/1015/600/600',
-      'https://picsum.photos/id/1036/600/600',
-      'https://picsum.photos/id/1044/600/600',
-      'https://picsum.photos/id/1039/600/600',
-      'https://picsum.photos/id/1018/600/600',
-      'https://picsum.photos/id/1025/600/600'
-    ],
-    createTime: '2026-06-15 10:45:00',
-    updateTime: '2026-06-15 10:45:00'
-  },
-  {
     id: 'review_005',
     userId: 'user_001',
     orderId: 'order_007',
