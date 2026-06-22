@@ -24,8 +24,16 @@ const MinePage: React.FC = () => {
     { icon: '💬', text: '我的评价', action: () => navigateTo('/pages/my-reviews/index'), badge: null }
   ], [favoriteCount]);
 
+  const handleAccountSettings = () => {
+    if (isLoggedIn) {
+      navigateTo('/pages/account-settings/index');
+    } else {
+      navigateTo('/pages/login/index?redirect=/pages/account-settings/index');
+    }
+  };
+
   const settingItems = [
-    { icon: '⚙️', text: '账号设置', action: () => showToast('功能开发中') },
+    { icon: '⚙️', text: '账号设置', action: handleAccountSettings },
     { icon: '📞', text: '联系客服', action: () => showToast('功能开发中') },
     { icon: '📖', text: '关于我们', action: () => showToast('功能开发中') }
   ];
@@ -175,6 +183,21 @@ const MinePage: React.FC = () => {
                   </View>
                 ))}
               </View>
+            </View>
+
+            <View className={styles.menuSection}>
+              <Text className={styles.menuTitle}>设置</Text>
+              {settingItems.map((item, index) => (
+                <View
+                  key={index}
+                  className={styles.menuItem}
+                  onClick={item.action}
+                >
+                  <View className={styles.menuIcon}>{item.icon}</View>
+                  <Text className={styles.menuText}>{item.text}</Text>
+                  <Text className={styles.menuArrow}>›</Text>
+                </View>
+              ))}
             </View>
           </View>
         )}

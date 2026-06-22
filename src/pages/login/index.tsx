@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from '@tarojs/components';
-import Taro from '@tarojs/taro';
+import { useRouter } from '@tarojs/taro';
 import classnames from 'classnames';
 import styles from './index.module.scss';
 import { useUser, mockLogin, loginWithUserId, testUsers } from '@/store/UserContext';
-import { showToast, showLoading, hideLoading, navigateBack } from '@/utils';
+import { showToast, showLoading, hideLoading, navigateBack, navigateTo } from '@/utils';
 
 const LoginPage: React.FC = () => {
   const { login } = useUser();
   const [agreed, setAgreed] = useState(true);
+  const router = useRouter();
+  const redirect = router.params.redirect || '';
+
+  const handleLoginSuccess = (delay: number = 800) => {
+    setTimeout(() => {
+      if (redirect) {
+        navigateTo(redirect);
+      } else {
+        navigateBack();
+      }
+    }, delay);
+  };
 
   const handleWechatLogin = async () => {
     if (!agreed) {
@@ -29,9 +41,7 @@ const LoginPage: React.FC = () => {
       hideLoading();
       showToast('登录成功', 'success');
       
-      setTimeout(() => {
-        navigateBack();
-      }, 1000);
+      handleLoginSuccess(1000);
     } catch (error) {
       console.error('[LoginPage] 登录失败:', error);
       hideLoading();
@@ -58,9 +68,7 @@ const LoginPage: React.FC = () => {
     hideLoading();
     showToast(`${userInfo.nickName} 登录成功`, 'success');
     
-    setTimeout(() => {
-      navigateBack();
-    }, 800);
+    handleLoginSuccess(800);
   };
 
   const handleAgreementClick = () => {

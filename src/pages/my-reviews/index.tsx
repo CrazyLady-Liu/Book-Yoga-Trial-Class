@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, ScrollView, Image } from '@tarojs/components';
 import Taro, { useDidShow, usePullDownRefresh } from '@tarojs/taro';
 import classnames from 'classnames';
@@ -39,12 +39,21 @@ const ratingTextMap: Record<number, string> = {
   5: '超赞'
 };
 
+const CONTENT_MAX_LENGTH = 500;
+
 interface EditFormState {
   rating: Review['rating'];
   recommendTags: RecommendTag[];
   content: string;
   images: string[];
 }
+
+const DEFAULT_FORM_STATE: Readonly<EditFormState> = {
+  rating: 5,
+  recommendTags: [],
+  content: '',
+  images: []
+} as const;
 
 const getCourseTypeFromTags = (tags: string[]): CourseType => {
   if (tags.includes('私教课')) return '私教课';
@@ -61,12 +70,7 @@ const MyReviewsPage: React.FC = () => {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
   const [editingReview, setEditingReview] = useState<Review | null>(null);
   const [publishingOrder, setPublishingOrder] = useState<Order | null>(null);
-  const [editForm, setEditForm] = useState<EditFormState>({
-    rating: 5,
-    recommendTags: [],
-    content: '',
-    images: []
-  });
+  const [editForm, setEditForm] = useState<EditFormState>({ ...DEFAULT_FORM_STATE });
   const [deleteTarget, setDeleteTarget] = useState<Review | null>(null);
 
   const loadData = useCallback(() => {
@@ -94,6 +98,16 @@ const MyReviewsPage: React.FC = () => {
       showToast('刷新成功', 'success');
     }, 1000);
   });
+
+  const isModalVisible = publishingOrder !== null || editingReview !== null;
+
+  useEffect(() => {
+    if (isModalVisible) {
+      console.log('[MyReviewsPage] 评价弹窗已打开');
+    } else {
+      console.log('[MyReviewsPage] 评价弹窗已关闭，重置表单状态');
+    }
+  }, [isModalVisible]);
 
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);
@@ -123,12 +137,7 @@ const MyReviewsPage: React.FC = () => {
 
   const openPublishModal = (order: Order) => {
     setPublishingOrder(order);
-    setEditForm({
-      rating: 5,
-      recommendTags: [],
-      content: '',
-      images: []
-    });
+    setEditForm({ ...DEFAULT_FORM_STATE });
   };
 
   const closePublishModal = () => {
@@ -162,8 +171,41 @@ const MyReviewsPage: React.FC = () => {
     });
   };
 
-  const handleContentChange = (e: any) => {
-    setEditForm(prev => ({ ...prev, content: e.detail.value }));
+  const processContentInput = (rawValue: string, source: 'input' | 'paste') => {
+    const value = rawValue ?? '';
+    const isOverLimit = value.length > CONTENT_MAX_LENGTH;
+    
+    let processedValue = value;
+    if (isOverLimit) {
+      processedValue = value.substring(0, CONTENT_MAX_LENGTH);
+      showToast(`最多只能输入${CONTENT_MAX_LENGTH}字`);
+      console.log(`[MyReviewsPage] 评价内容超长，已自动截断，来源: ${source}，原长度: ${value.length}`);
+    }
+
+    setEditForm(prev => ({ ...prev, content: processedValue }));
+  };
+
+  const handleContentInput = (e: any) => {
+    const value = e?.detail?.value ?? '';
+    processContentInput(value, 'input');
+  };
+
+  const handleContentPaste = (e: any) => {
+    const clipboardData = e?.detail?.data || e?.clipboardData;
+    let pastedText = '';
+    
+    if (clipboardData?.getData) {
+      pastedText = clipboardData.getData('text') || '';
+    } else if (typeof clipboardData === 'string') {
+      pastedText = clipboardData;
+    }
+
+    if (pastedText) {
+      const currentContent = editForm.content || '';
+      const newValue = currentContent + pastedText;
+      processContentInput(newValue, 'paste');
+      e?.preventDefault?.();
+    }
   };
 
   const handleChooseImage = async () => {
@@ -200,7 +242,7 @@ const MyReviewsPage: React.FC = () => {
       showToast('请选择星级评分');
       return;
     }
-    if (!editForm.content.trim()) {
+    if (!(editForm.content || '').trim()) {
       showToast('请输入评价内容');
       return;
     }
@@ -221,7 +263,7 @@ const MyReviewsPage: React.FC = () => {
       },
       rating: editForm.rating,
       recommendTags: editForm.recommendTags,
-      content: editForm.content.trim(),
+      content: (editForm.content || '').trim(),
       images: editForm.images
     });
 
@@ -246,7 +288,7 @@ const MyReviewsPage: React.FC = () => {
       showToast('请选择星级评分');
       return;
     }
-    if (!editForm.content.trim()) {
+    if (!(editForm.content || '').trim()) {
       showToast('请输入评价内容');
       return;
     }
@@ -254,7 +296,7 @@ const MyReviewsPage: React.FC = () => {
     const result = updateReview(editingReview.id, {
       rating: editForm.rating,
       recommendTags: editForm.recommendTags,
-      content: editForm.content.trim(),
+      content: (editForm.content || '').trim(),
       images: editForm.images
     });
 
@@ -385,12 +427,13 @@ const MyReviewsPage: React.FC = () => {
                 className={styles.textarea}
                 placeholder='分享您的课程体验吧~'
                 value={editForm.content}
-                onInput={handleContentChange}
-                maxlength={500}
+                onInput={handleContentInput}
+                onPaste={handleContentPaste}
+                maxlength={CONTENT_MAX_LENGTH}
                 autoHeight
               />
               <Text className={styles.textCount}>
-                {editForm.content.length}/500
+                {editForm.content.length}/{CONTENT_MAX_LENGTH}
               </Text>
             </View>
 
@@ -704,12 +747,13 @@ const MyReviewsPage: React.FC = () => {
                   className={styles.textarea}
                   placeholder='分享您的课程体验吧~'
                   value={editForm.content}
-                  onInput={handleContentChange}
-                  maxlength={500}
+                  onInput={handleContentInput}
+                  onPaste={handleContentPaste}
+                  maxlength={CONTENT_MAX_LENGTH}
                   autoHeight
                 />
                 <Text className={styles.textCount}>
-                  {editForm.content.length}/500
+                  {editForm.content.length}/{CONTENT_MAX_LENGTH}
                 </Text>
               </View>
 

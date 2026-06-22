@@ -1,0 +1,163 @@
+﻿﻿@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: $spacing-xl;
+}
+
+.section {
+  margin: $spacing-md $page-padding;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  background: $color-bg-page;
+  border-bottom: 1rpx solid $color-divider;
+}
+
+.profileHeader {
+  padding: $spacing-xl $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.avatarWrapper {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: $radius-round;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: $color-bg-page;
+  @include flex-center;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+}
+
+.avatarPlaceholder {
+  font-size: 56rpx;
+}
+
+.profileInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.profileLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.profileValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.arrow {
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  transition: all $transition-base;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.settingIcon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-md;
+  background: linear-gradient(135deg, rgba($color-primary, 0.15) 0%, rgba($color-primary-light, 0.25) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  margin-right: $spacing-md;
+  flex-shrink: 0;
+}
+
+.settingContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.settingText {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.settingDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.settingRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-shrink: 0;
+}
+
+.settingValue {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  @include text-ellipsis;
+  max-width: 240rpx;
+}
+
+.logoutSection {
+  margin: $spacing-xl $page-padding;
+}
+
+.logoutBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-lg;
+  background: $color-bg-card;
+  color: $color-error;
+  font-size: $font-size-md;
+  border-radius: $radius-button;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+    transform: scale(0.98);
+  }
+}
