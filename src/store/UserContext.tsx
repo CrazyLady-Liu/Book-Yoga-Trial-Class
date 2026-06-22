@@ -142,9 +142,14 @@ export const useUser = (): UserContextType => {
   return context;
 };
 
+const DEFAULT_AVATAR = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0U5RTVGRiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzNCIgZmlsbD0iIjdDNUNGRiIvPjxwYXRoIGQ9Ik00MCAxNzAgQzQwIDEzMCAxNjAgMTMwIDE2MCAxNzAgTDE2MCAyMDAgTDQwIDIwMCBaIiBmaWxsPSIjN0M1Q0ZGIi8+PC9zdmc+';
+const AVATAR_1 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0ZDRTJGNSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzNCIgZmlsbD0iI0U5MUU2MyIvPjxwYXRoIGQ9Ik00MCAxNzAgQzQwIDEzMCAxNjAgMTMwIDE2MCAxNzAgTDE2MCAyMDAgTDQwIDIwMCBaIiBmaWxsPSIjRTkxRTYzIi8+PC9zdmc+';
+const AVATAR_2 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0RDRkZFQiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzNCIgZmlsbD0iIzRBQ0Y1MCIvPjxwYXRoIGQ9Ik00MCAxNzAgQzQwIDEzMCAxNjAgMTMwIDE2MCAxNzAgTDE2MCAyMDAgTDQwIDIwMCBaIiBmaWxsPSIjNEFDRjUwIi8+PC9zdmc+';
+const AVATAR_3 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0ZGRTVDQyIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzNCIgZmlsbD0iI0ZGQjMwMCIvPjxwYXRoIGQ9Ik00MCAxNzAgQzQwIDEzMCAxNjAgMTMwIDE2MCAxNzAgTDE2MCAyMDAgTDQwIDIwMCBaIiBmaWxsPSIjRkZCMzAwIi8+PC9zdmc+';
+
 export const defaultUserInfo: UserInfo = {
   id: '',
-  avatarUrl: 'https://picsum.photos/id/64/200/200',
+  avatarUrl: DEFAULT_AVATAR,
   nickName: '',
   phone: '',
   gender: '女',
@@ -154,7 +159,7 @@ export const defaultUserInfo: UserInfo = {
 export const mockLogin = (): UserInfo => {
   return {
     id: 'user_123',
-    avatarUrl: 'https://picsum.photos/id/64/200/200',
+    avatarUrl: AVATAR_1,
     nickName: '瑜伽爱好者',
     phone: '13812345678',
     gender: '女',
@@ -165,7 +170,7 @@ export const mockLogin = (): UserInfo => {
 export const testUsers: Record<string, UserInfo> = {
   user_123: {
     id: 'user_123',
-    avatarUrl: 'https://picsum.photos/id/64/200/200',
+    avatarUrl: AVATAR_1,
     nickName: '瑜伽爱好者',
     phone: '13812345678',
     gender: '女',
@@ -173,7 +178,7 @@ export const testUsers: Record<string, UserInfo> = {
   },
   user_456: {
     id: 'user_456',
-    avatarUrl: 'https://picsum.photos/id/65/200/200',
+    avatarUrl: AVATAR_2,
     nickName: '新用户小美',
     phone: '13987654321',
     gender: '女',
@@ -181,7 +186,7 @@ export const testUsers: Record<string, UserInfo> = {
   },
   user_789: {
     id: 'user_789',
-    avatarUrl: 'https://picsum.photos/id/91/200/200',
+    avatarUrl: AVATAR_3,
     nickName: '会员小王',
     phone: '13700001111',
     gender: '男',

@@ -1,20 +1,39 @@
-﻿﻿import React, { useMemo } from 'react';
+﻿﻿﻿import React, { useMemo } from 'react';
 import { View, Text, Image, ScrollView, Button } from '@tarojs/components';
-import Taro, { useDidShow } from '@tarojs/taro';
+import { useDidShow } from '@tarojs/taro';
 import styles from './index.module.scss';
-import { useUser } from '@/store/UserContext';
-import { showToast, showModal, navigateTo, navigateBack } from '@/utils';
+import { useUser, defaultUserInfo } from '@/store/UserContext';
+import { showToast, showModal, navigateBack } from '@/utils';
+
+const PLACEHOLDER_AVATAR = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0U5RTVGRiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzNCIgZmlsbD0iIjdDNUNGRiIvPjxwYXRoIGQ9Ik00MCAxNzAgQzQwIDEzMCAxNjAgMTMwIDE2MCAxNzAgTDE2MCAyMDAgTDQwIDIwMCBaIiBmaWxsPSIjN0M1Q0ZGIi8+PC9zdmc+';
 
 const AccountSettingsPage: React.FC = () => {
   const { userInfo, isLoggedIn, logout } = useUser();
 
   useDidShow(() => {
-    console.log('[AccountSettingsPage] 页面显示');
+    console.log('[AccountSettingsPage] 页面显示, isLoggedIn:', isLoggedIn, 'userInfo:', userInfo?.nickName);
     if (!isLoggedIn) {
       showToast('请先登录', 'none');
       setTimeout(() => navigateBack(), 1000);
     }
   });
+
+  const displayUserInfo = useMemo(() => {
+    if (!userInfo) {
+      return {
+        ...defaultUserInfo,
+        avatarUrl: PLACEHOLDER_AVATAR,
+        nickName: '加载中...',
+        phone: ''
+      };
+    }
+    return {
+      ...defaultUserInfo,
+      ...userInfo,
+      avatarUrl: userInfo.avatarUrl || PLACEHOLDER_AVATAR,
+      nickName: userInfo.nickName || '未设置昵称'
+    };
+  }, [userInfo]);
 
   const handleEditProfile = () => {
     showToast('个人资料编辑功能开发中', 'none');
@@ -24,44 +43,48 @@ const AccountSettingsPage: React.FC = () => {
     showToast('头像更换功能开发中', 'none');
   };
 
+  const handleAvatarError = () => {
+    console.warn('[AccountSettingsPage] 头像加载失败，使用占位图');
+  };
+
   const settingItems = useMemo(() => [
     {
-      icon: '',
+      icon: '📱',
       text: '手机号',
-      value: userInfo?.phone?.replace(/(\d{3})\d{4}(\d{4})/, '****') || '',
+      value: displayUserInfo.phone ? displayUserInfo.phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2') : '未绑定',
       action: () => showToast('手机号更换功能开发中', 'none')
     },
     {
-      icon: '',
+      icon: '🔒',
       text: '修改密码',
       value: '',
       action: () => showToast('密码修改功能开发中', 'none')
     },
     {
-      icon: '',
+      icon: '👤',
       text: '性别',
-      value: userInfo?.gender || '',
+      value: displayUserInfo.gender || '未设置',
       action: () => showToast('性别修改功能开发中', 'none')
     },
     {
-      icon: '',
+      icon: '🎂',
       text: '生日',
-      value: userInfo?.birthday || '',
+      value: displayUserInfo.birthday || '未设置',
       action: () => showToast('生日修改功能开发中', 'none')
     }
-  ], [userInfo]);
+  ], [displayUserInfo]);
 
   const securityItems = [
-    { icon: '', text: '账号安全', desc: '登录设备、账号保护', action: () => showToast('账号安全功能开发中', 'none') },
-    { icon: '', text: '消息通知', desc: '预约提醒、优惠活动', action: () => showToast('消息通知设置开发中', 'none') },
-    { icon: '', text: '清除缓存', desc: '释放本地存储空间', action: () => showToast('清除缓存功能开发中', 'none') }
+    { icon: '🛡️', text: '账号安全', desc: '登录设备、账号保护', action: () => showToast('账号安全功能开发中', 'none') },
+    { icon: '🔔', text: '消息通知', desc: '预约提醒、优惠活动', action: () => showToast('消息通知设置开发中', 'none') },
+    { icon: '🗑️', text: '清除缓存', desc: '释放本地存储空间', action: () => showToast('清除缓存功能开发中', 'none') }
   ];
 
   const otherItems = [
-    { icon: '', text: '联系客服', action: () => showToast('联系客服功能开发中', 'none') },
-    { icon: '', text: '关于我们', action: () => showToast('关于我们功能开发中', 'none') },
-    { icon: '', text: '用户协议', action: () => showToast('用户协议功能开发中', 'none') },
-    { icon: '', text: '隐私政策', action: () => showToast('隐私政策功能开发中', 'none') }
+    { icon: '📞', text: '联系客服', action: () => showToast('联系客服功能开发中', 'none') },
+    { icon: '📖', text: '关于我们', action: () => showToast('关于我们功能开发中', 'none') },
+    { icon: '📄', text: '用户协议', action: () => showToast('用户协议功能开发中', 'none') },
+    { icon: '🔐', text: '隐私政策', action: () => showToast('隐私政策功能开发中', 'none') }
   ];
 
   const handleLogout = async () => {
@@ -79,7 +102,7 @@ const AccountSettingsPage: React.FC = () => {
     }
   };
 
-  if (!isLoggedIn || !userInfo) {
+  if (!isLoggedIn) {
     return (
       <View className={styles.page}>
         <View style={{ padding: '48rpx 32rpx' }}>
@@ -96,17 +119,18 @@ const AccountSettingsPage: React.FC = () => {
           <Text className={styles.sectionTitle}>个人资料</Text>
           <View className={styles.profileHeader} onClick={handleEditProfile}>
             <View className={styles.avatarWrapper} onClick={(e) => { e.stopPropagation(); handleAvatarClick(); }}>
-              {userInfo.avatarUrl ? (
-                <Image className={styles.avatarImg} src={userInfo.avatarUrl} mode='aspectFill' />
-              ) : (
-                <Text className={styles.avatarPlaceholder}></Text>
-              )}
+              <Image
+                className={styles.avatarImg}
+                src={displayUserInfo.avatarUrl}
+                mode='aspectFill'
+                onError={handleAvatarError}
+              />
             </View>
             <View className={styles.profileInfo}>
               <Text className={styles.profileLabel}>昵称</Text>
-              <Text className={styles.profileValue}>{userInfo.nickName}</Text>
+              <Text className={styles.profileValue}>{displayUserInfo.nickName}</Text>
             </View>
-            <Text className={styles.arrow}></Text>
+            <Text className={styles.arrow}>›</Text>
           </View>
           {settingItems.map((item, index) => (
             <View key={index} className={styles.settingItem} onClick={item.action}>
@@ -116,7 +140,7 @@ const AccountSettingsPage: React.FC = () => {
               </View>
               <View className={styles.settingRight}>
                 {item.value && <Text className={styles.settingValue}>{item.value}</Text>}
-                <Text className={styles.arrow}></Text>
+                <Text className={styles.arrow}>›</Text>
               </View>
             </View>
           ))}
@@ -131,7 +155,7 @@ const AccountSettingsPage: React.FC = () => {
                 <Text className={styles.settingText}>{item.text}</Text>
                 <Text className={styles.settingDesc}>{item.desc}</Text>
               </View>
-              <Text className={styles.arrow}></Text>
+              <Text className={styles.arrow}>›</Text>
             </View>
           ))}
         </View>
@@ -144,7 +168,7 @@ const AccountSettingsPage: React.FC = () => {
               <View className={styles.settingContent}>
                 <Text className={styles.settingText}>{item.text}</Text>
               </View>
-              <Text className={styles.arrow}></Text>
+              <Text className={styles.arrow}>›</Text>
             </View>
           ))}
         </View>

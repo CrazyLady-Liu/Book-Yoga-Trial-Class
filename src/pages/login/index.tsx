@@ -12,11 +12,14 @@ const LoginPage: React.FC = () => {
   const router = useRouter();
   const redirect = router.params.redirect || '';
 
-  const handleLoginSuccess = (delay: number = 800) => {
+  const handleLoginSuccess = (userInfo: any, delay: number = 800) => {
+    console.log('[LoginPage] 用户信息已写入全局状态:', userInfo.nickName);
     setTimeout(() => {
       if (redirect) {
+        console.log('[LoginPage] 登录成功后跳转至:', redirect);
         navigateTo(redirect);
       } else {
+        console.log('[LoginPage] 登录成功后返回上一页');
         navigateBack();
       }
     }, delay);
@@ -41,7 +44,7 @@ const LoginPage: React.FC = () => {
       hideLoading();
       showToast('登录成功', 'success');
       
-      handleLoginSuccess(1000);
+      handleLoginSuccess(userInfo, 1000);
     } catch (error) {
       console.error('[LoginPage] 登录失败:', error);
       hideLoading();
@@ -68,7 +71,7 @@ const LoginPage: React.FC = () => {
     hideLoading();
     showToast(`${userInfo.nickName} 登录成功`, 'success');
     
-    handleLoginSuccess(800);
+    handleLoginSuccess(userInfo, 800);
   };
 
   const handleAgreementClick = () => {
